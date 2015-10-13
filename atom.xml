@@ -353,18 +353,18 @@ retrolambda {
     <link href="http://wangqiankun.github.io/2015/10/13/tools/Studio%E4%BD%BF%E7%94%A8Gerrit%E6%8F%92%E4%BB%B6/"/>
     <id>http://wangqiankun.github.io/2015/10/13/tools/Studio使用Gerrit插件/</id>
     <published>2015-10-13T14:13:03.000Z</published>
-    <updated>2015-10-13T14:48:39.000Z</updated>
+    <updated>2015-10-13T14:51:39.000Z</updated>
     <content type="html"><![CDATA[<ol>
 <li>搜索安装Gerrit插件</li>
-<li>在菜单中设置URL和Git用户名和密码<img src="/pic/gerrit1.png" alt=""></li>
-<li>在AS的主界面就能看到详细信息了<img src="/pic/gerrit2.png" alt=""></li>
+<li>在菜单中设置URL和Git用户名和密码<br> <img src="/pic/gerrit1.png" alt=""></li>
+<li>在AS的主界面就能看到详细信息了<br> <img src="/pic/gerrit2.png" alt=""></li>
 </ol>
 ]]></content>
     <summary type="html">
     <![CDATA[<ol>
 <li>搜索安装Gerrit插件</li>
-<li>在菜单中设置URL和Git用户名和密码<img src="/pic/gerrit1.png" alt=""></li>
-<li>在AS的主界面就能看到详细信息了<img src="/pic/gerrit2.png" a]]>
+<li>在菜单中设置URL和Git用户名和密码<br> <img src="/pic/gerrit1.png" alt=""></li>
+<li>在AS的主界面就能看到详细信息了<br> <img src="/pic/gerr]]>
     </summary>
     
       <category term="Tools" scheme="http://wangqiankun.github.io/tags/Tools/"/>
