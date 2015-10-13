@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://wangqiankun.github.io/"/>
-  <updated>2015-10-13T10:52:46.000Z</updated>
+  <updated>2015-10-13T12:01:58.000Z</updated>
   <id>http://wangqiankun.github.io/</id>
   
   <author>
@@ -15,11 +15,50 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[使用merge标签 减少布局嵌套]]></title>
+    <link href="http://wangqiankun.github.io/2015/10/13/%E4%BD%BF%E7%94%A8merge%E6%A0%87%E7%AD%BE%20%E5%87%8F%E5%B0%91%E5%B8%83%E5%B1%80%E5%B5%8C%E5%A5%97/"/>
+    <id>http://wangqiankun.github.io/2015/10/13/使用merge标签 减少布局嵌套/</id>
+    <published>2015-10-13T12:00:17.000Z</published>
+    <updated>2015-10-13T12:01:58.000Z</updated>
+    <content type="html"><![CDATA[<p>当包含有mearge标签的布局被添加到另一个布局时，该布局的merge节点会被删除，而该布局的子View会被肢解添加到新的父布局中</p>
+<p>merge标签结合include标签一起使用时尤其有用</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>当包含有mearge标签的布局被添加到另一个布局时，该布局的merge节点会被删除，而该布局的子View会被肢解添加到新的父布局中</p>
+<p>merge标签结合include标签一起使用时尤其有用</p>
+]]>
+    </summary>
+    
+      <category term="Android" scheme="http://wangqiankun.github.io/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Gradle系列之BuildConfig文件]]></title>
+    <link href="http://wangqiankun.github.io/2015/10/13/tools/Gradle%E7%B3%BB%E5%88%97%E4%B9%8BBuildConfig%E6%96%87%E4%BB%B6/"/>
+    <id>http://wangqiankun.github.io/2015/10/13/tools/Gradle系列之BuildConfig文件/</id>
+    <published>2015-10-13T10:57:17.000Z</published>
+    <updated>2015-10-13T11:23:56.000Z</updated>
+    <content type="html"><![CDATA[<p> 在使用Gradle配置debug和release时，会对应生成BuildConfig.java文件，默认不打包状态使用的是debug状态。</p>
+<p><strong>问题来了：当你需要调试正式环境时，直接运行的程序需要使用release状态怎么办？</strong></p>
+<p><img src="/pic/gradle_buildconfig.gif" alt=""></p>
+<p>注意：选择debug或者release后，对应BuildConfig.java所属文件夹上会替换成有星号标志的</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p> 在使用Gradle配置debug和release时，会对应生成BuildConfig.java文件，默认不打包状态使用的是debug状态。</p>
+<p><strong>问题来了：当你需要调试正式环境时，直接运行的程序需要使用release状态怎么办？</strong><]]>
+    </summary>
+    
+      <category term="Tools" scheme="http://wangqiankun.github.io/tags/Tools/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[Gradle自动构建]]></title>
     <link href="http://wangqiankun.github.io/2015/10/13/tools/Gradle%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA/"/>
     <id>http://wangqiankun.github.io/2015/10/13/tools/Gradle自动构建/</id>
     <published>2015-10-13T08:31:32.000Z</published>
-    <updated>2015-10-13T10:52:46.000Z</updated>
+    <updated>2015-10-13T11:27:01.000Z</updated>
     <content type="html"><![CDATA[<blockquote>
 <p>构建跟打包有天壤之别，一句命令可以打成你想要的各种包<br>可灵活配置生产与测试环境的差异…等</p>
 <p>牛逼之处，远不止于此</p>
@@ -67,7 +106,7 @@
 <p>  点击运行三角右边的机器人图标，选择’Edit Configurations…’–&gt;‘Defaults’</p>
 <p>  出来的列表，每个都点击，看着像有关系的选择框都点下选中，好了…不知道哪个起的作用</p>
 <p>有google到解决方法： Gradle下 release {‘这里添加 ‘debuggable true’’} 没试这个就好了</p>
-<h2 id="无解BUG">无解BUG</h2><p>  自动生成的BuildConfig文件，默认为release状态的（可能看不懂这句话 自己写遍就知道了），</p>
+<h2 id="无解BUG（已解决，见下篇博文)">无解BUG（已解决，见<a href="http://wangqiankun.github.io/2015/10/13/tools/Gradle%E7%B3%BB%E5%88%97%E4%B9%8BBuildConfig%E6%96%87%E4%BB%B6/">下篇博文</a>)</h2><p>  自动生成的BuildConfig文件，默认为release状态的（可能看不懂这句话 自己写遍就知道了），</p>
 <p>  找了一下午，试了无数种方法，都不行！！！都不行！！！都不行！！！</p>
 <p>  最后无奈，重新down了一份代码，就好了啊！！！就好了啊！！！就好了啊！！！坑爹玩意儿！</p>
 ]]></content>

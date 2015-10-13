@@ -158,6 +158,134 @@
           
           
             
+              <a class="post-title-link" href="/2015/10/13/使用merge标签 减少布局嵌套/" itemprop="url">
+                使用merge标签 减少布局嵌套
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-10-13T20:00:17+08:00" content="2015-10-13">
+            2015-10-13
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>当包含有mearge标签的布局被添加到另一个布局时，该布局的merge节点会被删除，而该布局的子View会被肢解添加到新的父布局中</p>
+<p>merge标签结合include标签一起使用时尤其有用</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/10/13/tools/Gradle系列之BuildConfig文件/" itemprop="url">
+                Gradle系列之BuildConfig文件
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-10-13T18:57:17+08:00" content="2015-10-13">
+            2015-10-13
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p> 在使用Gradle配置debug和release时，会对应生成BuildConfig.java文件，默认不打包状态使用的是debug状态。</p>
+<p><strong>问题来了：当你需要调试正式环境时，直接运行的程序需要使用release状态怎么办？</strong></p>
+<p><img src="/pic/gradle_buildconfig.gif" alt=""></p>
+<p>注意：选择debug或者release后，对应BuildConfig.java所属文件夹上会替换成有星号标志的</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/10/13/tools/Gradle自动构建/" itemprop="url">
                 Gradle自动构建
               </a>
@@ -236,7 +364,7 @@
 <p>  点击运行三角右边的机器人图标，选择’Edit Configurations…’–&gt;‘Defaults’</p>
 <p>  出来的列表，每个都点击，看着像有关系的选择框都点下选中，好了…不知道哪个起的作用</p>
 <p>有google到解决方法： Gradle下 release {‘这里添加 ‘debuggable true’’} 没试这个就好了</p>
-<h2 id="无解BUG">无解BUG</h2><p>  自动生成的BuildConfig文件，默认为release状态的（可能看不懂这句话 自己写遍就知道了），</p>
+<h2 id="无解BUG（已解决，见下篇博文)">无解BUG（已解决，见<a href="http://wangqiankun.github.io/2015/10/13/tools/Gradle%E7%B3%BB%E5%88%97%E4%B9%8BBuildConfig%E6%96%87%E4%BB%B6/">下篇博文</a>)</h2><p>  自动生成的BuildConfig文件，默认为release状态的（可能看不懂这句话 自己写遍就知道了），</p>
 <p>  找了一下午，试了无数种方法，都不行！！！都不行！！！都不行！！！</p>
 <p>  最后无奈，重新down了一份代码，就好了啊！！！就好了啊！！！就好了啊！！！坑爹玩意儿！</p>
 </span>
@@ -292,7 +420,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -306,7 +434,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-count">2</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
