@@ -55,7 +55,7 @@ Mac可能会提示 ‘sudo: ./gradlew: command not found’ ，意思大概为�
 
 在项目目录中先执行 ‘./gradlew clean’ 如果提示没权限 则使用 ‘sudo ./gradlew clean’
 Mac可能会提示 ‘sudo: ./gradlew: command not found’ ，意思大概为文件为非可执行状态,先执行 ‘chmod 755 grad">
-<meta property="og:updated_time" content="2015-10-13T08:48:57.000Z">
+<meta property="og:updated_time" content="2015-10-13T08:57:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Gradle自动构建">
 <meta name="twitter:description" content="构建跟打包有天壤之别，一句命令可以打成你想要的各种包可灵活配置生产与测试环境的差异…等牛逼之处，远不止于此
@@ -235,26 +235,7 @@ Mac可能会提示 ‘sudo: ./gradlew: command not found’ ，意思大概为�
 <blockquote>
 <p>Could not resolve all dependencies for configuration ‘:classpath’.<br>Cannot resolve external dependency com.android.tools.build:gradle:1.3.0 because no repositories are defined.<br>     Required by:<br>         :Butler:unspecified<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"> x项目中有类似 classpath <span class="string">'io.fabric.tools:gradle:1.+'</span>的语句，</span><br><span class="line"></span><br><span class="line"> 改成最新的版本，或者确定版本名就好。（类似<span class="symbol">gradle:</span><span class="number">1.20</span>.<span class="number">0</span>结尾）</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- 定义打包时间函数 (放在android&#123;&#125;之前)</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">packageTime</span><span class="params">()</span> &#123;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> new <span class="constant">Date</span>().format(<span class="string">"MM.dd"</span>, <span class="constant">TimeZone</span>.getTimeZone(<span class="string">"UTC"</span>))</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  使用方法：<span class="variable">$&#123;</span>packageTime()&#125; 拼在字符串中</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- 修改生成的最终文件名(放在android&#123;&#125;内最后)</span><br></pre></td></tr></table></figure></p>
 </blockquote>
-<p> applicationVariants.all {</p>
-<pre><code>variant -&gt;
-    variant.outputs.<span class="keyword">each</span> {
-        output -&gt;
-            <span class="keyword">def</span> outputFile = output.outputFile
-            <span class="keyword">if</span> (outputFile != <span class="keyword">null</span> &amp;&amp; outputFile.name.endsWith(<span class="string">'.apk'</span>)) {
-                <span class="keyword">File</span> outputDirectory = <span class="keyword">new</span> <span class="keyword">File</span>(outputFile.parent);
-                <span class="keyword">def</span> fileName
-                <span class="keyword">if</span> (variant.buildType.name == <span class="string">"release"</span>) {
-                                        <span class="comment">// 输出apk名称</span>
-                    fileName = <span class="string">"Butler_v${defaultConfig.versionName}_${packageTime()}.apk"</span>
-                } <span class="keyword">else</span> {
-                    fileName = <span class="string">"Butler_v${defaultConfig.versionName}_${packageTime()}_beta.apk"</span>
-                }
-                output.outputFile = <span class="keyword">new</span> <span class="keyword">File</span>(outputDirectory, fileName)
-            }
-    }
-
-}
-</code></pre><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="asciidoc"><span class="bullet">- </span>报错</span></span><br></pre></td></tr></table></figure>
+<p>applicationVariants.all {<br>      variant -&gt;<br>        variant.outputs.each {<br>            output -&gt;<br>                def outputFile = output.outputFile<br>                if (outputFile != null &amp;&amp; outputFile.name.endsWith(‘.apk’)) {<br>                    File outputDirectory = new File(outputFile.parent);<br>                    def fileName<br>                    if (variant.buildType.name == “release”) {<br>                                            // 输出apk名称<br>                        fileName = “Butler<em>v${defaultConfig.versionName}</em>${packageTime()}.apk”<br>                    } else {<br>                        fileName = “Butler<em>v${defaultConfig.versionName}</em>${packageTime()}_beta.apk”<br>                    }<br>                    output.outputFile = new File(outputDirectory, fileName)<br>                }<br>        }<br>    }<br><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="asciidoc"><span class="bullet">- </span>报错</span></span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>Could not resolve all dependencies for configuration ‘:classpath’.<br>Cannot resolve external dependency com.android.tools.build:gradle:1.3.0 because no repositories are defined.<br>     Required by:<br>         :Butler:unspecified<br>  <figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  解决地址： <span class="symbol">http:</span>/<span class="regexp">/stackoverflow.com/questions</span><span class="regexp">/28921964/googles</span>-android-basic-samples-code-broken-gradle-issues</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- 报错</span><br></pre></td></tr></table></figure></p>
 </blockquote>
