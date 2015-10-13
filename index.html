@@ -917,8 +917,8 @@ retrolambda {
           
           
             
-              <a class="post-title-link" href="/2015/10/13/使用友盟自定义错误/" itemprop="url">
-                使用友盟自定义错误
+              <a class="post-title-link" href="/2015/10/13/tools/git入门/" itemprop="url">
+                git入门
               </a>
             
           
@@ -928,7 +928,7 @@ retrolambda {
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-10-13T20:16:41+08:00" content="2015-10-13">
+          <time itemprop="dateCreated" datetime="2015-10-13T22:12:50+08:00" content="2015-10-13">
             2015-10-13
           </time>
         </span>
@@ -948,14 +948,19 @@ retrolambda {
 
       
         
-          <span itemprop="articleBody"><p>因为catch的Error或Exception友盟无法获取，那么就可以使用友盟提供的自定义错误来解决</p>
+          <span itemprop="articleBody"><p>###常用命令</p>
 <ol>
-<li>在AndroidManifest.xml里面添加读取日志的权限android.permission.READ_LOGS</li>
-<li>在MainActicity的OnCreate方法中调用<br>MobclickAgent.setCatchUncaughtExceptions(true);</li>
-<li>在catch的语句中使用用MobclickAgent.reportError(Context context,String error) 或者<br>MobclickAgent.reportError(Context context, Throwable e)语句，使友盟上传日志</li>
+<li>从服务器down代码  -&gt;git clone</li>
+<li>查看提交纪录  -&gt;git log</li>
+<li>添加某个修改的文件  -&gt;git add 修改的文件</li>
+<li>把不想提交的文件放入.gitignore中  -&gt;不知道</li>
+<li>add全部修改过的文件  -&gt;git commit -a或git commit —all</li>
+<li>更新代码  -&gt;git pull -r（r表示rebase）</li>
+<li>本地提交代码  -&gt;git commit -m “这里是备注”</li>
+<li>向服务器提交代码  -&gt;git push（未确认）</li>
+<li>把修改提交到gerrit中repo的master分支上（如果不是master分支，refs/for/分支名） -&gt;git push origin HEAD:refs/for/master</li>
+<li>本地纪录提交审核不通过的代码（git add 修改的文件）  -&gt;git commit —amend<br>11status</li>
 </ol>
-<p>也可以自定义标签<br>MobclickAgent.onEvent(Contextcontext, String event_id, String  label);</p>
-<p>参考<a href="http://www.apkbus.com/home.php?mod=space&amp;uid=317549&amp;do=blog&amp;id=54835" target="_blank" rel="external">MobclickAgent——友盟用户分析工具</a></p>
 </span>
         
       
@@ -1013,7 +1018,7 @@ retrolambda {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

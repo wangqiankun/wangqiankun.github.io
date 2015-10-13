@@ -371,6 +371,39 @@ retrolambda {
   </entry>
   
   <entry>
+    <title><![CDATA[git入门]]></title>
+    <link href="http://wangqiankun.github.io/2015/10/13/tools/git%E5%85%A5%E9%97%A8/"/>
+    <id>http://wangqiankun.github.io/2015/10/13/tools/git入门/</id>
+    <published>2015-10-13T14:12:50.000Z</published>
+    <updated>2015-10-13T14:44:15.000Z</updated>
+    <content type="html"><![CDATA[<p>###常用命令</p>
+<ol>
+<li>从服务器down代码  -&gt;git clone</li>
+<li>查看提交纪录  -&gt;git log</li>
+<li>添加某个修改的文件  -&gt;git add 修改的文件</li>
+<li>把不想提交的文件放入.gitignore中  -&gt;不知道</li>
+<li>add全部修改过的文件  -&gt;git commit -a或git commit —all</li>
+<li>更新代码  -&gt;git pull -r（r表示rebase）</li>
+<li>本地提交代码  -&gt;git commit -m “这里是备注”</li>
+<li>向服务器提交代码  -&gt;git push（未确认）</li>
+<li>把修改提交到gerrit中repo的master分支上（如果不是master分支，refs/for/分支名） -&gt;git push origin HEAD:refs/for/master</li>
+<li>本地纪录提交审核不通过的代码（git add 修改的文件）  -&gt;git commit —amend<br>11status</li>
+</ol>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>###常用命令</p>
+<ol>
+<li>从服务器down代码  -&gt;git clone</li>
+<li>查看提交纪录  -&gt;git log</li>
+<li>添加某个修改的文件  -&gt;git add 修改的文件</li>
+<li>把不想提交的文件放入.]]>
+    </summary>
+    
+      <category term="Tools" scheme="http://wangqiankun.github.io/tags/Tools/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[使用友盟自定义错误]]></title>
     <link href="http://wangqiankun.github.io/2015/10/13/%E4%BD%BF%E7%94%A8%E5%8F%8B%E7%9B%9F%E8%87%AA%E5%AE%9A%E4%B9%89%E9%94%99%E8%AF%AF/"/>
     <id>http://wangqiankun.github.io/2015/10/13/使用友盟自定义错误/</id>

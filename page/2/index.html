@@ -158,6 +158,75 @@
           
           
             
+              <a class="post-title-link" href="/2015/10/13/使用友盟自定义错误/" itemprop="url">
+                使用友盟自定义错误
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-10-13T20:16:41+08:00" content="2015-10-13">
+            2015-10-13
+          </time>
+        </span>
+
+        
+
+        
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>因为catch的Error或Exception友盟无法获取，那么就可以使用友盟提供的自定义错误来解决</p>
+<ol>
+<li>在AndroidManifest.xml里面添加读取日志的权限android.permission.READ_LOGS</li>
+<li>在MainActicity的OnCreate方法中调用<br>MobclickAgent.setCatchUncaughtExceptions(true);</li>
+<li>在catch的语句中使用用MobclickAgent.reportError(Context context,String error) 或者<br>MobclickAgent.reportError(Context context, Throwable e)语句，使友盟上传日志</li>
+</ol>
+<p>也可以自定义标签<br>MobclickAgent.onEvent(Contextcontext, String event_id, String  label);</p>
+<p>参考<a href="http://www.apkbus.com/home.php?mod=space&amp;uid=317549&amp;do=blog&amp;id=54835" target="_blank" rel="external">MobclickAgent——友盟用户分析工具</a></p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/10/13/TextView中的滚动效果/" itemprop="url">
                 TextView中的滚动效果
               </a>
@@ -491,7 +560,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
