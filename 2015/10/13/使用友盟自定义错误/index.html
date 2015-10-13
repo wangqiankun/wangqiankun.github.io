@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="Tools," />
+  <meta name="keywords" content="Android," />
 
 
 
@@ -39,26 +39,28 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="在使用Gradle配置debug和release时，会对应生成BuildConfig.java文件，默认不打包状态使用的是debug状态。
-问题来了：当你需要调试正式环境时，直接运行的程序需要使用release状态怎么办？
+<meta name="description" content="因为catch的Error或Exception友盟无法获取，那么就可以使用友盟提供的自定义错误来解决
 
-注意：选择debug或者release后，对应BuildConfig.java所属文件夹上会替换成有星号标志的">
+在AndroidManifest.xml里面添加读取日志的权限android.permission.READ_LOGS
+在MainActicity的OnCreate方法中调用MobclickAgent.setCatchUncaughtExceptions(true);
+在catch的语句中使用用">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Gradle系列之BuildConfig文件">
-<meta property="og:url" content="http://wangqiankun.github.io/2015/10/13/tools/Gradle系列之BuildConfig文件/index.html">
+<meta property="og:title" content="使用友盟自定义错误">
+<meta property="og:url" content="http://wangqiankun.github.io/2015/10/13/使用友盟自定义错误/index.html">
 <meta property="og:site_name" content="Qiankun's Blog">
-<meta property="og:description" content="在使用Gradle配置debug和release时，会对应生成BuildConfig.java文件，默认不打包状态使用的是debug状态。
-问题来了：当你需要调试正式环境时，直接运行的程序需要使用release状态怎么办？
+<meta property="og:description" content="因为catch的Error或Exception友盟无法获取，那么就可以使用友盟提供的自定义错误来解决
 
-注意：选择debug或者release后，对应BuildConfig.java所属文件夹上会替换成有星号标志的">
-<meta property="og:image" content="http://wangqiankun.github.io/pic/gradle_buildconfig.gif">
-<meta property="og:updated_time" content="2015-10-13T12:05:06.000Z">
+在AndroidManifest.xml里面添加读取日志的权限android.permission.READ_LOGS
+在MainActicity的OnCreate方法中调用MobclickAgent.setCatchUncaughtExceptions(true);
+在catch的语句中使用用">
+<meta property="og:updated_time" content="2015-10-13T12:25:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Gradle系列之BuildConfig文件">
-<meta name="twitter:description" content="在使用Gradle配置debug和release时，会对应生成BuildConfig.java文件，默认不打包状态使用的是debug状态。
-问题来了：当你需要调试正式环境时，直接运行的程序需要使用release状态怎么办？
+<meta name="twitter:title" content="使用友盟自定义错误">
+<meta name="twitter:description" content="因为catch的Error或Exception友盟无法获取，那么就可以使用友盟提供的自定义错误来解决
 
-注意：选择debug或者release后，对应BuildConfig.java所属文件夹上会替换成有星号标志的">
+在AndroidManifest.xml里面添加读取日志的权限android.permission.READ_LOGS
+在MainActicity的OnCreate方法中调用MobclickAgent.setCatchUncaughtExceptions(true);
+在catch的语句中使用用">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -68,7 +70,7 @@
   };
 </script>
 
-  <title> Gradle系列之BuildConfig文件 | Qiankun's Blog </title>
+  <title> 使用友盟自定义错误 | Qiankun's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -167,7 +169,7 @@
           
           
             
-              Gradle系列之BuildConfig文件
+              使用友盟自定义错误
             
           
         </h1>
@@ -176,7 +178,7 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-10-13T18:57:17+08:00" content="2015-10-13">
+          <time itemprop="dateCreated" datetime="2015-10-13T20:16:41+08:00" content="2015-10-13">
             2015-10-13
           </time>
         </span>
@@ -195,10 +197,14 @@
       
 
       
-        <span itemprop="articleBody"><p> 在使用Gradle配置debug和release时，会对应生成BuildConfig.java文件，默认不打包状态使用的是debug状态。</p>
-<p><strong>问题来了：当你需要调试正式环境时，直接运行的程序需要使用release状态怎么办？</strong></p>
-<p><img src="/pic/gradle_buildconfig.gif" alt=""></p>
-<p>注意：选择debug或者release后，对应BuildConfig.java所属文件夹上会替换成有星号标志的</p>
+        <span itemprop="articleBody"><p>因为catch的Error或Exception友盟无法获取，那么就可以使用友盟提供的自定义错误来解决</p>
+<ol>
+<li>在AndroidManifest.xml里面添加读取日志的权限android.permission.READ_LOGS</li>
+<li>在MainActicity的OnCreate方法中调用<br>MobclickAgent.setCatchUncaughtExceptions(true);</li>
+<li>在catch的语句中使用用MobclickAgent.reportError(Context context,String error) 或者<br>MobclickAgent.reportError(Context context, Throwable e)语句，使友盟上传日志</li>
+</ol>
+<p>也可以自定义标签<br>MobclickAgent.onEvent(Contextcontext, String event_id, String  label);</p>
+<p>参考<a href="http://www.apkbus.com/home.php?mod=space&amp;uid=317549&amp;do=blog&amp;id=54835" target="_blank" rel="external">MobclickAgent——友盟用户分析工具</a></p>
 </span>
       
     </div>
@@ -207,7 +213,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Tools/" rel="tag">#Tools</a>
+            <a href="/tags/Android/" rel="tag">#Android</a>
           
         </div>
       
@@ -216,13 +222,13 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/13/使用merge标签 减少布局嵌套/" rel="prev">使用merge标签 减少布局嵌套</a>
+              <a href="/2015/10/13/tools/Studio使用Gerrit插件/" rel="prev">Studio使用Gerrit插件</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/13/tools/Gradle自动构建/" rel="next">Gradle自动构建</a>
+              <a href="/2015/10/13/TextView中的滚动效果/" rel="next">TextView中的滚动效果</a>
             
           </div>
         </div>

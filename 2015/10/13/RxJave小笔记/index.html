@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="Tools," />
+  <meta name="keywords" content="Android," />
 
 
 
@@ -39,26 +39,19 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="在使用Gradle配置debug和release时，会对应生成BuildConfig.java文件，默认不打包状态使用的是debug状态。
-问题来了：当你需要调试正式环境时，直接运行的程序需要使用release状态怎么办？
-
-注意：选择debug或者release后，对应BuildConfig.java所属文件夹上会替换成有星号标志的">
+<meta name="description" content="自用，摘抄于大头鬼blog
+###基本流程一般响应式编程的信息流如下所示：Observable -&amp;gt; Operator 1 -&amp;gt; Operator 2 -&amp;gt; Operator 3 -&amp;gt; Subscriberobservable是事件的生产者，subscriber是事件最终的消费者。Operators 即操作符：为了解决对Observable对象的变换的问题。用于在Obser">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Gradle系列之BuildConfig文件">
-<meta property="og:url" content="http://wangqiankun.github.io/2015/10/13/tools/Gradle系列之BuildConfig文件/index.html">
+<meta property="og:title" content="RxJave小笔记">
+<meta property="og:url" content="http://wangqiankun.github.io/2015/10/13/RxJave小笔记/index.html">
 <meta property="og:site_name" content="Qiankun's Blog">
-<meta property="og:description" content="在使用Gradle配置debug和release时，会对应生成BuildConfig.java文件，默认不打包状态使用的是debug状态。
-问题来了：当你需要调试正式环境时，直接运行的程序需要使用release状态怎么办？
-
-注意：选择debug或者release后，对应BuildConfig.java所属文件夹上会替换成有星号标志的">
-<meta property="og:image" content="http://wangqiankun.github.io/pic/gradle_buildconfig.gif">
-<meta property="og:updated_time" content="2015-10-13T12:05:06.000Z">
+<meta property="og:description" content="自用，摘抄于大头鬼blog
+###基本流程一般响应式编程的信息流如下所示：Observable -&amp;gt; Operator 1 -&amp;gt; Operator 2 -&amp;gt; Operator 3 -&amp;gt; Subscriberobservable是事件的生产者，subscriber是事件最终的消费者。Operators 即操作符：为了解决对Observable对象的变换的问题。用于在Obser">
+<meta property="og:updated_time" content="2015-10-13T14:29:31.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Gradle系列之BuildConfig文件">
-<meta name="twitter:description" content="在使用Gradle配置debug和release时，会对应生成BuildConfig.java文件，默认不打包状态使用的是debug状态。
-问题来了：当你需要调试正式环境时，直接运行的程序需要使用release状态怎么办？
-
-注意：选择debug或者release后，对应BuildConfig.java所属文件夹上会替换成有星号标志的">
+<meta name="twitter:title" content="RxJave小笔记">
+<meta name="twitter:description" content="自用，摘抄于大头鬼blog
+###基本流程一般响应式编程的信息流如下所示：Observable -&amp;gt; Operator 1 -&amp;gt; Operator 2 -&amp;gt; Operator 3 -&amp;gt; Subscriberobservable是事件的生产者，subscriber是事件最终的消费者。Operators 即操作符：为了解决对Observable对象的变换的问题。用于在Obser">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -68,7 +61,7 @@
   };
 </script>
 
-  <title> Gradle系列之BuildConfig文件 | Qiankun's Blog </title>
+  <title> RxJave小笔记 | Qiankun's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -167,7 +160,7 @@
           
           
             
-              Gradle系列之BuildConfig文件
+              RxJave小笔记
             
           
         </h1>
@@ -176,7 +169,7 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-10-13T18:57:17+08:00" content="2015-10-13">
+          <time itemprop="dateCreated" datetime="2015-10-13T22:29:13+08:00" content="2015-10-13">
             2015-10-13
           </time>
         </span>
@@ -195,10 +188,32 @@
       
 
       
-        <span itemprop="articleBody"><p> 在使用Gradle配置debug和release时，会对应生成BuildConfig.java文件，默认不打包状态使用的是debug状态。</p>
-<p><strong>问题来了：当你需要调试正式环境时，直接运行的程序需要使用release状态怎么办？</strong></p>
-<p><img src="/pic/gradle_buildconfig.gif" alt=""></p>
-<p>注意：选择debug或者release后，对应BuildConfig.java所属文件夹上会替换成有星号标志的</p>
+        <span itemprop="articleBody"><p>自用，摘抄于<a href="http://blog.csdn.net/lzyzsd/article/category/2767743" target="_blank" rel="external">大头鬼blog</a></p>
+<p>###基本流程<br>一般响应式编程的信息流如下所示：<br>Observable -&gt; Operator 1 -&gt; Operator 2 -&gt; Operator 3 -&gt; Subscriber<br>observable是事件的生产者，subscriber是事件最终的消费者。<br>Operators 即操作符：为了解决对Observable对象的变换的问题。用于在Observable和最终的Subscriber之间修改Observable发出的事件</p>
+<ol>
+<li>Observable<string> stringObservable = Observable.create(new Observable.OnSub…){…}</string></li>
+<li>Subscriber<string> subscriber = new Subscriber<string>() {…}</string></string></li>
+<li>stringObservable.subscribe(subscriber);<br>通俗解释下上述代码：1为创建事件 2.</li>
+</ol>
+<h4 id="响应式特点">响应式特点</h4><p>Subscriber有三个方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.subscribe(<span class="keyword">new</span> Subscriber&lt;String&gt;() &#123;</span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNext</span><span class="params">(String s)</span> </span>&#123; System.out.println(s); &#125;</span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCompleted</span><span class="params">()</span> </span>&#123; System.out.println(<span class="string">"Completed!"</span>); &#125;</span><br><span class="line">	<span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable e)</span> </span>&#123; System.out.println(<span class="string">"Ouch!"</span>); &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<p>1.只要有异常发生onError()一定会被调用</p>
+<p>这极大的简化了错误处理。只需要在一个地方处理错误即可以。</p>
+<p>2.操作符不需要处理异常</p>
+<p>将异常处理交给订阅者来做，Observerable的操作符调用链中一旦有一个抛出了异常，就会直接执行onError()方法。</p>
+<p>3.你能够知道什么时候订阅者已经接收了全部的数据。</p>
+<p>####Operators常用操作符</p>
+<ol>
+<li>map 就是用来把把一个事件转换为另一个事件的。</li>
+<li>flatMap 它可以返回任何它想返回的Observable对象。</li>
+<li>filter(title -&gt; title != null)  过滤某种不满足条件，比如!＝nullfilter()输出和输入相同的元素，并且会过滤掉那些不满足检查条件的。</li>
+<li>take()输出最多指定数量的结果。 take(5)</li>
+<li>doOnNext()允许我们在每次输出一个元素之前做一些额外的事情，比如这里的保存标题。.doOnNext(title -&gt; saveTitle(title))</li>
+<li>.subscribeOn(Schedulers.io()) 指定在Schedulers io中执行</li>
+<li>.observeOn(AndroidSchedulers.mainThread()) 指定在主线程中执行</li>
+<li>Observable.subscribe()返回一个Observable  其中纪录了是否与订阅者有关联 。调用unsubscribing方法可以取消关联，并立即停止整个调用链</li>
+<li>可自定义</li>
+</ol>
 </span>
       
     </div>
@@ -207,7 +222,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Tools/" rel="tag">#Tools</a>
+            <a href="/tags/Android/" rel="tag">#Android</a>
           
         </div>
       
@@ -216,13 +231,13 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/13/使用merge标签 减少布局嵌套/" rel="prev">使用merge标签 减少布局嵌套</a>
+              <a href="/2015/10/13/ToastUtils-java/" rel="prev">ToastUtils.java</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/13/tools/Gradle自动构建/" rel="next">Gradle自动构建</a>
+              <a href="/2015/10/13/Studio使用Java8的lambda命令/" rel="next">Studio使用Java8的lambda命令</a>
             
           </div>
         </div>
@@ -333,7 +348,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#响应式特点"><span class="nav-number">1.</span> <span class="nav-text">响应式特点</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

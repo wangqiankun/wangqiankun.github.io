@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="Tools," />
+  <meta name="keywords" content="Android," />
 
 
 
@@ -39,26 +39,16 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="在使用Gradle配置debug和release时，会对应生成BuildConfig.java文件，默认不打包状态使用的是debug状态。
-问题来了：当你需要调试正式环境时，直接运行的程序需要使用release状态怎么办？
-
-注意：选择debug或者release后，对应BuildConfig.java所属文件夹上会替换成有星号标志的">
+<meta name="description" content="###使用前1234567Button button = (Button) findViewById(R.id.button);button.setOnClickListener(new View.OnClickListener() &amp;#123;   @Override   public void onClick(View v) &amp;#123;       method();   &amp;#125;&amp;#1">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Gradle系列之BuildConfig文件">
-<meta property="og:url" content="http://wangqiankun.github.io/2015/10/13/tools/Gradle系列之BuildConfig文件/index.html">
+<meta property="og:title" content="Studio使用Java8的lambda命令">
+<meta property="og:url" content="http://wangqiankun.github.io/2015/10/13/Studio使用Java8的lambda命令/index.html">
 <meta property="og:site_name" content="Qiankun's Blog">
-<meta property="og:description" content="在使用Gradle配置debug和release时，会对应生成BuildConfig.java文件，默认不打包状态使用的是debug状态。
-问题来了：当你需要调试正式环境时，直接运行的程序需要使用release状态怎么办？
-
-注意：选择debug或者release后，对应BuildConfig.java所属文件夹上会替换成有星号标志的">
-<meta property="og:image" content="http://wangqiankun.github.io/pic/gradle_buildconfig.gif">
-<meta property="og:updated_time" content="2015-10-13T12:05:06.000Z">
+<meta property="og:description" content="###使用前1234567Button button = (Button) findViewById(R.id.button);button.setOnClickListener(new View.OnClickListener() &amp;#123;   @Override   public void onClick(View v) &amp;#123;       method();   &amp;#125;&amp;#1">
+<meta property="og:updated_time" content="2015-10-13T14:27:56.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Gradle系列之BuildConfig文件">
-<meta name="twitter:description" content="在使用Gradle配置debug和release时，会对应生成BuildConfig.java文件，默认不打包状态使用的是debug状态。
-问题来了：当你需要调试正式环境时，直接运行的程序需要使用release状态怎么办？
-
-注意：选择debug或者release后，对应BuildConfig.java所属文件夹上会替换成有星号标志的">
+<meta name="twitter:title" content="Studio使用Java8的lambda命令">
+<meta name="twitter:description" content="###使用前1234567Button button = (Button) findViewById(R.id.button);button.setOnClickListener(new View.OnClickListener() &amp;#123;   @Override   public void onClick(View v) &amp;#123;       method();   &amp;#125;&amp;#1">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -68,7 +58,7 @@
   };
 </script>
 
-  <title> Gradle系列之BuildConfig文件 | Qiankun's Blog </title>
+  <title> Studio使用Java8的lambda命令 | Qiankun's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -167,7 +157,7 @@
           
           
             
-              Gradle系列之BuildConfig文件
+              Studio使用Java8的lambda命令
             
           
         </h1>
@@ -176,7 +166,7 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-10-13T18:57:17+08:00" content="2015-10-13">
+          <time itemprop="dateCreated" datetime="2015-10-13T22:27:30+08:00" content="2015-10-13">
             2015-10-13
           </time>
         </span>
@@ -195,10 +185,63 @@
       
 
       
-        <span itemprop="articleBody"><p> 在使用Gradle配置debug和release时，会对应生成BuildConfig.java文件，默认不打包状态使用的是debug状态。</p>
-<p><strong>问题来了：当你需要调试正式环境时，直接运行的程序需要使用release状态怎么办？</strong></p>
-<p><img src="/pic/gradle_buildconfig.gif" alt=""></p>
-<p>注意：选择debug或者release后，对应BuildConfig.java所属文件夹上会替换成有星号标志的</p>
+        <span itemprop="articleBody"><p>###使用前<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Button</span> button = (<span class="type">Button</span>) findViewById(R.id.button);</span><br><span class="line">button.setOnClickListener(new <span class="type">View</span>.<span class="type">OnClickListener</span>() &#123;</span><br><span class="line">   @<span class="type">Override</span></span><br><span class="line">   public <span class="type">void</span> onClick(<span class="type">View</span> v) &#123;</span><br><span class="line">       <span class="keyword">method</span>();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>###使用后(我所知道的所有的匿名内部类都可简化)<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Button</span> button = (<span class="type">Button</span>) findViewById(R.id.button);</span><br><span class="line">button.setOnClickListener(v -&gt; <span class="keyword">method</span>());</span><br></pre></td></tr></table></figure></p>
+<p>1.在Project工程目录使用</p>
+<pre><code><span class="keyword">dependencies</span> {
+<span class="keyword">classpath</span> <span class="string">'com.android.tools.build:gradle:1.2.3'</span>
+<span class="keyword">classpath</span> <span class="string">'me.tatarka:gradle-retrolambda:3.1.0'</span>
+<span class="comment">// <span class="doctag">NOTE:</span> Do not place your application dependencies here; they belong</span>
+<span class="comment">// in the individual module build.gradle files</span>
+}
+</code></pre><p> 2.在Moudule中使用 以下是例子</p>
+<pre><code>apply plugin: <span class="string">'com.android.application'</span>
+<span class="comment">//添加－1</span>
+apply plugin: <span class="string">'me.tatarka.retrolambda'</span>
+
+
+android {
+compileSdkVersion <span class="number">21</span>
+buildToolsVersion <span class="string">"21.1.2"</span>
+
+defaultConfig {
+    applicationId <span class="string">"com.wqk.demo.rxandroid"</span>
+    minSdkVersion <span class="number">14</span>
+    targetSdkVersion <span class="number">21</span>
+    versionCode <span class="number">1</span>
+    versionName <span class="string">"1.0"</span>
+}
+
+<span class="comment">//添加－2</span>
+compileOptions {
+    <span class="keyword">sourceCompatibility</span> JavaVersion.VERSION_1_8
+    <span class="keyword">targetCompatibility</span> JavaVersion.VERSION_1_8
+}
+
+buildTypes {
+    release {
+        minifyEnabled <span class="keyword">false</span>
+        proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span>
+        }
+    }
+}
+
+<span class="keyword">dependencies</span> {
+    <span class="keyword">compile</span> <span class="keyword">fileTree</span>(<span class="keyword">include</span>: [<span class="string">'*.jar'</span>], dir: <span class="string">'libs'</span>)
+    <span class="keyword">compile</span> <span class="string">'com.android.support:appcompat-v7:22.2.0'</span>
+    <span class="keyword">compile</span> <span class="string">'io.reactivex:rxandroid:0.25.0'</span>
+}
+
+<span class="keyword">repositories</span> {
+    mavenCentral()
+}
+
+<span class="comment">//添加JAVA8支持 －3</span>
+retrolambda {
+<span class="comment">//Comend＋；可以弹出本地JDK地址设置界面，拷贝就行</span>
+   jdk <span class="string">"/Library/Java/JavaVirtualMachines/jdk1.8.0_20.jdk/Contents/Home"</span>
+}
+</code></pre><p>3.注意事项：需下载JAVA8 （编码可以不用，在Gradle另配）</p>
 </span>
       
     </div>
@@ -207,7 +250,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Tools/" rel="tag">#Tools</a>
+            <a href="/tags/Android/" rel="tag">#Android</a>
           
         </div>
       
@@ -216,13 +259,13 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/13/使用merge标签 减少布局嵌套/" rel="prev">使用merge标签 减少布局嵌套</a>
+              <a href="/2015/10/13/RxJave小笔记/" rel="prev">RxJave小笔记</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/13/tools/Gradle自动构建/" rel="next">Gradle自动构建</a>
+              <a href="/2015/10/13/Button的点击效果和Clickable效果/" rel="next">Button的点击效果和Clickable效果</a>
             
           </div>
         </div>

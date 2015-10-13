@@ -39,26 +39,19 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="在使用Gradle配置debug和release时，会对应生成BuildConfig.java文件，默认不打包状态使用的是debug状态。
-问题来了：当你需要调试正式环境时，直接运行的程序需要使用release状态怎么办？
-
-注意：选择debug或者release后，对应BuildConfig.java所属文件夹上会替换成有星号标志的">
+<meta name="description" content="提交代码遇到权限问题：
+12345localhost:main wangqiankun$ git push origin HEAD:refs/for/masterUsername for &apos;http://192.xxx.xx.xxx&apos;: wangqiankunPassword for &apos;http://wangqiankun@192.xxx.xx.xxx&apos;:remote: Unauthorizedf">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Gradle系列之BuildConfig文件">
-<meta property="og:url" content="http://wangqiankun.github.io/2015/10/13/tools/Gradle系列之BuildConfig文件/index.html">
+<meta property="og:title" content="那些年我所趟过的坑系列之Git配置双账号">
+<meta property="og:url" content="http://wangqiankun.github.io/2015/10/13/tools/那些年我所趟过的坑系列之Git配置双账号/index.html">
 <meta property="og:site_name" content="Qiankun's Blog">
-<meta property="og:description" content="在使用Gradle配置debug和release时，会对应生成BuildConfig.java文件，默认不打包状态使用的是debug状态。
-问题来了：当你需要调试正式环境时，直接运行的程序需要使用release状态怎么办？
-
-注意：选择debug或者release后，对应BuildConfig.java所属文件夹上会替换成有星号标志的">
-<meta property="og:image" content="http://wangqiankun.github.io/pic/gradle_buildconfig.gif">
-<meta property="og:updated_time" content="2015-10-13T12:05:06.000Z">
+<meta property="og:description" content="提交代码遇到权限问题：
+12345localhost:main wangqiankun$ git push origin HEAD:refs/for/masterUsername for &apos;http://192.xxx.xx.xxx&apos;: wangqiankunPassword for &apos;http://wangqiankun@192.xxx.xx.xxx&apos;:remote: Unauthorizedf">
+<meta property="og:updated_time" content="2015-10-13T14:16:59.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Gradle系列之BuildConfig文件">
-<meta name="twitter:description" content="在使用Gradle配置debug和release时，会对应生成BuildConfig.java文件，默认不打包状态使用的是debug状态。
-问题来了：当你需要调试正式环境时，直接运行的程序需要使用release状态怎么办？
-
-注意：选择debug或者release后，对应BuildConfig.java所属文件夹上会替换成有星号标志的">
+<meta name="twitter:title" content="那些年我所趟过的坑系列之Git配置双账号">
+<meta name="twitter:description" content="提交代码遇到权限问题：
+12345localhost:main wangqiankun$ git push origin HEAD:refs/for/masterUsername for &apos;http://192.xxx.xx.xxx&apos;: wangqiankunPassword for &apos;http://wangqiankun@192.xxx.xx.xxx&apos;:remote: Unauthorizedf">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -68,7 +61,7 @@
   };
 </script>
 
-  <title> Gradle系列之BuildConfig文件 | Qiankun's Blog </title>
+  <title> 那些年我所趟过的坑系列之Git配置双账号 | Qiankun's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -167,7 +160,7 @@
           
           
             
-              Gradle系列之BuildConfig文件
+              那些年我所趟过的坑系列之Git配置双账号
             
           
         </h1>
@@ -176,7 +169,7 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-10-13T18:57:17+08:00" content="2015-10-13">
+          <time itemprop="dateCreated" datetime="2015-10-13T22:15:15+08:00" content="2015-10-13">
             2015-10-13
           </time>
         </span>
@@ -195,11 +188,20 @@
       
 
       
-        <span itemprop="articleBody"><p> 在使用Gradle配置debug和release时，会对应生成BuildConfig.java文件，默认不打包状态使用的是debug状态。</p>
-<p><strong>问题来了：当你需要调试正式环境时，直接运行的程序需要使用release状态怎么办？</strong></p>
-<p><img src="/pic/gradle_buildconfig.gif" alt=""></p>
-<p>注意：选择debug或者release后，对应BuildConfig.java所属文件夹上会替换成有星号标志的</p>
-</span>
+        <span itemprop="articleBody"><p>提交代码遇到权限问题：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">localhost:</span>main wangqiankun<span class="variable">$ </span>git push origin <span class="constant">HEAD</span><span class="symbol">:refs/for/master</span></span><br><span class="line"><span class="constant">Username</span> <span class="keyword">for</span> <span class="string">'http://192.xxx.xx.xxx'</span><span class="symbol">:</span> wangqiankun</span><br><span class="line"><span class="constant">Password</span> <span class="keyword">for</span> <span class="string">'http://wangqiankun@192.xxx.xx.xxx'</span><span class="symbol">:</span></span><br><span class="line"><span class="symbol">remote:</span> <span class="constant">Unauthorized</span></span><br><span class="line"><span class="symbol">fatal:</span> <span class="constant">Authentication</span> failed <span class="keyword">for</span> <span class="string">'http://192.xxx.xx.xxx/biz/mobile/dd-android-agent/'</span></span><br></pre></td></tr></table></figure>
+<p>##错误</p>
+<ol>
+<li>在clone代码时需要选中“clone with commit-msg hook”和“SSH”两个选项<br>拷贝clone代码回车后，如果让你输入账号就是操作不正确，哪怕输入后能down代码</li>
+<li>配置config时需如下输入</li>
+</ol>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hexcolor">#Def</span>ault work user (wangqiankun@zufangit.cn)</span><br><span class="line">Host <span class="number">192</span><span class="class">.xxx</span><span class="class">.xx</span><span class="class">.xxx</span></span><br><span class="line">        User wangqiankun</span><br><span class="line">        HostName <span class="number">192</span><span class="class">.xxx</span><span class="class">.xx</span><span class="class">.xxx</span></span><br><span class="line">        IdentityFile ~/.ssh/id_rsa</span><br><span class="line"><span class="id">#GitHub</span> user (wangqiankun@outloo.com)</span><br><span class="line">Host github<span class="class">.com</span></span><br><span class="line">        User wangqiankun@outlook<span class="class">.com</span></span><br><span class="line">        HostName github<span class="class">.com</span></span><br><span class="line">        IdentityFile ~/.ssh/gitgub_rsa</span><br><span class="line">~</span><br></pre></td></tr></table></figure>
+<p>注意细节：</p>
+<ol>
+<li>Host与HostName需一致，并且“192.xxx.xx.xxx”不可写为“<a href="http://192.xxx.xx.xxx/”" target="_blank" rel="external">http://192.xxx.xx.xxx/”</a></li>
+<li>“~/.ssh/id_rsa”中“id_rsa”文件与账号对应</li>
+</ol>
+<h3 id="BaiBai!">BaiBai!</h3></span>
       
     </div>
 
@@ -216,13 +218,13 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/13/使用merge标签 减少布局嵌套/" rel="prev">使用merge标签 减少布局嵌套</a>
+              <a href="/2015/10/13/AndroidSudio下用butterknife注解/" rel="prev">AndroidSudio下用butterknife注解</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/13/tools/Gradle自动构建/" rel="next">Gradle自动构建</a>
+              <a href="/2015/10/13/tools/Studio使用Gerrit插件/" rel="next">Studio使用Gerrit插件</a>
             
           </div>
         </div>
@@ -333,7 +335,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#BaiBai!"><span class="nav-number">1.</span> <span class="nav-text">BaiBai!</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
