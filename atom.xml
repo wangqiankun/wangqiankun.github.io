@@ -132,11 +132,11 @@
   </entry>
   
   <entry>
-    <title><![CDATA[RxJave小笔记]]></title>
-    <link href="http://wangqiankun.github.io/2015/10/13/RxJave%E5%B0%8F%E7%AC%94%E8%AE%B0/"/>
-    <id>http://wangqiankun.github.io/2015/10/13/RxJave小笔记/</id>
+    <title><![CDATA[RxJava小笔记]]></title>
+    <link href="http://wangqiankun.github.io/2015/10/13/RxJava%E5%B0%8F%E7%AC%94%E8%AE%B0/"/>
+    <id>http://wangqiankun.github.io/2015/10/13/RxJava小笔记/</id>
     <published>2015-10-13T14:29:13.000Z</published>
-    <updated>2015-10-13T14:29:31.000Z</updated>
+    <updated>2015-10-13T15:02:05.000Z</updated>
     <content type="html"><![CDATA[<p>自用，摘抄于<a href="http://blog.csdn.net/lzyzsd/article/category/2767743" target="_blank" rel="external">大头鬼blog</a></p>
 <p>###基本流程<br>一般响应式编程的信息流如下所示：<br>Observable -&gt; Operator 1 -&gt; Operator 2 -&gt; Operator 3 -&gt; Subscriber<br>observable是事件的生产者，subscriber是事件最终的消费者。<br>Operators 即操作符：为了解决对Observable对象的变换的问题。用于在Observable和最终的Subscriber之间修改Observable发出的事件</p>
 <ol>
