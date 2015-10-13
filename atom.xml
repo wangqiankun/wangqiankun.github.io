@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://wangqiankun.github.io/"/>
-  <updated>2015-10-12T08:13:53.000Z</updated>
+  <updated>2015-10-12T11:36:35.000Z</updated>
   <id>http://wangqiankun.github.io/</id>
   
   <author>
@@ -13,6 +13,51 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[test]]></title>
+    <link href="http://wangqiankun.github.io/2015/10/12/test-md/"/>
+    <id>http://wangqiankun.github.io/2015/10/12/test-md/</id>
+    <published>2015-10-12T11:36:35.000Z</published>
+    <updated>2015-10-12T11:36:35.000Z</updated>
+    <content type="html"><![CDATA[<p><img src="/image/headportrait.png" alt=""></p>
+<p>sdfsd<br><img src="/headportrait2.png" alt=""></p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p><img src="/image/headportrait.png" alt=""></p>
+<p>sdfsd<br><img src="/headportrait2.png" alt=""></p>
+]]>
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[testdasfd]]></title>
+    <link href="http://wangqiankun.github.io/2015/10/12/list/testeead/"/>
+    <id>http://wangqiankun.github.io/2015/10/12/list/testeead/</id>
+    <published>2015-10-12T11:21:19.000Z</published>
+    <updated>2015-10-12T11:21:19.000Z</updated>
+    <content type="html"></content>
+    <summary type="html">
+    
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[test2]]></title>
+    <link href="http://wangqiankun.github.io/2015/10/12/test/test-md0/"/>
+    <id>http://wangqiankun.github.io/2015/10/12/test/test-md0/</id>
+    <published>2015-10-12T08:22:11.000Z</published>
+    <updated>2015-10-12T11:18:54.000Z</updated>
+    <content type="html"></content>
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="test" scheme="http://wangqiankun.github.io/tags/test/"/>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Hello World]]></title>
