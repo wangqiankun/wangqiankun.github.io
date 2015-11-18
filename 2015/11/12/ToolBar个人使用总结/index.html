@@ -53,7 +53,7 @@
 &amp;lt;android.support.design.widget.CoordinatorLayout
     xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
     xmlns:tools=&quot;http://sche">
-<meta property="og:updated_time" content="2015-11-18T12:47:45.000Z">
+<meta property="og:updated_time" content="2015-11-18T12:59:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Toolbar个人使用总结">
 <meta name="twitter:description" content="Toolbar的使用过程步骤1-xml中集成布局CoordinatorLayout作用：研究中（其实可以不要）
@@ -238,19 +238,18 @@
         <span class="attribute">app:popupTheme</span>=<span class="value">"@style/AppTheme.PopupOverlay"</span> /&gt;</span>
 
 <span class="tag">&lt;/<span class="title">android.support.design.widget.AppBarLayout</span>&gt;</span>
-</code></pre><h4 id="步骤2-Activity类中集成_Toolbar_toolbar_=_(Toolbar)_findViewById(R-id-toolbar);_setSupportActionBar(toolbar);">步骤2-Activity类中集成    Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);    setSupportActionBar(toolbar);</h4><p>由此Toolbar就已经集成完毕，因为ActionBar不会隐藏，所以实用NoActionBar的主题或者在清单文件 activity节点配置 android:theme=”@style/AppTheme.NoActionBar 等</p>
-<p>###Tips</p>
-<h4 id="content置于Toolbar下方">content置于Toolbar下方</h4><p>在content最外层使用 </p>
+</code></pre><h4 id="步骤2-Activity类中集成">步骤2-Activity类中集成</h4><pre><code>Toolbar toolbar = <span class="list">(<span class="keyword">Toolbar</span>)</span> findViewById<span class="list">(<span class="keyword">R</span>.id.toolbar)</span><span class="comment">;</span>
+setSupportActionBar<span class="list">(<span class="keyword">toolbar</span>)</span><span class="comment">;</span>
+</code></pre><p>由此Toolbar就已经集成完毕，因为ActionBar不会隐藏，所以实用NoActionBar的主题或者在清单文件 activity节点配置 android:theme=”@style/AppTheme.NoActionBar 等</p>
+<h3 id="Tips">Tips</h3><h4 id="content置于Toolbar下方">content置于Toolbar下方</h4><p>在content最外层使用 </p>
 <pre><code><span class="label">app:</span>layout_behavior=<span class="string">"@string/appbar_scrolling_view_behavior"</span>
-</code></pre><p>####设置Toolbar上的一些基础信息</p>
-<pre><code>toolbar.<span class="built_in">set</span>Title(<span class="string">"Title"</span>);            //设置Title
+</code></pre><h4 id="设置Toolbar上的一些基础信息">设置Toolbar上的一些基础信息</h4><pre><code>toolbar.<span class="built_in">set</span>Title(<span class="string">"Title"</span>);            //设置Title
 // 以上均需要在<span class="built_in">set</span>SupportActionBar之前执行，其他的放置位置‘貌似’没有影响
 toolbar.<span class="built_in">set</span>Logo(R.mipmap.ic_launcher);
 toolbar.<span class="built_in">set</span>Subtitle(<span class="string">"Subtitle"</span>); //设置副标题
 toolbar.<span class="built_in">set</span>NavigationIcon(R.mipmap.ic_launcher);//需要在<span class="built_in">set</span>SupportActionBar后执行
 以上功能可以使用 getSupportActionBar().get...（）.<span class="built_in">set</span>...代替（放置<span class="built_in">set</span>SupportActionBar后）
-</code></pre><p>####设置Toolbar上的一些基础信息的点击监听</p>
-<pre><code><span class="comment">//注意设置的位置哦</span>
+</code></pre><h4 id="设置Toolbar上的一些基础信息的点击监听">设置Toolbar上的一些基础信息的点击监听</h4><pre><code><span class="comment">//注意设置的位置哦</span>
 toolbar.setNavigationOnClickListener(<span class="keyword">new</span> View.OnClickListener() {
     <span class="annotation">@Override</span>
     <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>{
@@ -258,8 +257,7 @@ toolbar.setNavigationOnClickListener(<span class="keyword">new</span> View.OnCli
     }
 });
 </code></pre><p>此监听貌似只对NavigationIcon的点击效果有用。</p>
-<p>####设置Toolbar上的Menu（显示在Toobar右侧的部分）</p>
-<p>menu文件在/res/menu/目录下<br>main.xml</p>
+<h4 id="设置Toolbar上的Menu（显示在Toobar右侧的部分）">设置Toolbar上的Menu（显示在Toobar右侧的部分）</h4><p>menu文件在/res/menu/目录下<br>main.xml</p>
 <pre><code><span class="tag">&lt;<span class="title">menu</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span>
     <span class="attribute">xmlns:app</span>=<span class="value">"http://schemas.android.com/apk/res-auto"</span>
     <span class="attribute">xmlns:tools</span>=<span class="value">"http://schemas.android.com/tools"</span>
@@ -353,12 +351,13 @@ toolbar.setNavigationOnClickListener(<span class="keyword">new</span> View.OnCli
     SearchView mSearchView = (SearchView) MenuItemCompat.getActionView(searchItem);
     <span class="comment">//设置搜索框hint内容</span>
     mSearchView.setQueryHint(<span class="string">"QueryHint..."</span>);
-    SearchView.SearchAutoComplete textView = (SearchView.SearchAutoComplete) mSearchView.findViewById(R.id.search_src_text);
+    SearchView.SearchAutoComplete textView = (SearchView.SearchAutoComplete)
+    mSearchView.findViewById(R.id.search_src_text);
     <span class="comment">//设置搜索框中输入文字的颜色</span>
     textView.setTextColor(Color.BLACK);
     <span class="keyword">return</span> <span class="keyword">true</span>;
 }
-</code></pre><p>####设置Toolbar上的分享功能<br>还以main.xml中的搜索功能模块举例</p>
+</code></pre><h4 id="设置Toolbar上的分享功能">设置Toolbar上的分享功能</h4><p>还以main.xml中的搜索功能模块举例</p>
 <pre><code>&lt;<span class="property">item</span>
     android:<span class="property">id</span>=<span class="string">"@+id/nav_share"</span>
     android:icon=<span class="string">"@android:drawable/ic_menu_share"</span>
@@ -377,8 +376,7 @@ toolbar.setNavigationOnClickListener(<span class="keyword">new</span> View.OnCli
     mShareActionProvider.setShareIntent(intent);
     <span class="function"><span class="keyword">return</span> <span class="keyword">super</span>.<span class="title">onCreateOptionsMenu</span><span class="params">(menu)</span></span>;
 }
-</code></pre><p>####设置Toolbar的颜色</p>
-<p>1、 toolbar.setBackgroundColor(Color.BLACK);</p>
+</code></pre><h4 id="设置Toolbar的颜色">设置Toolbar的颜色</h4><p>1、 toolbar.setBackgroundColor(Color.BLACK);</p>
 <p>2、</p>
 <pre><code>&lt;android<span class="class">.support</span><span class="class">.v7</span><span class="class">.widget</span><span class="class">.Toolbar</span>
        android:id=<span class="string">"@+id/toolbar"</span>
@@ -518,7 +516,7 @@ toolbar.setNavigationOnClickListener(<span class="keyword">new</span> View.OnCli
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Toolbar的使用过程"><span class="nav-number">1.</span> <span class="nav-text">Toolbar的使用过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#步骤1-xml中集成"><span class="nav-number">1.1.</span> <span class="nav-text">步骤1-xml中集成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#步骤2-Activity类中集成_Toolbar_toolbar_=_(Toolbar)_findViewById(R-id-toolbar);_setSupportActionBar(toolbar);"><span class="nav-number">1.2.</span> <span class="nav-text">步骤2-Activity类中集成    Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);    setSupportActionBar(toolbar);</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#content置于Toolbar下方"><span class="nav-number">1.3.</span> <span class="nav-text">content置于Toolbar下方</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Toolbar的使用过程"><span class="nav-number">1.</span> <span class="nav-text">Toolbar的使用过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#步骤1-xml中集成"><span class="nav-number">1.1.</span> <span class="nav-text">步骤1-xml中集成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#步骤2-Activity类中集成"><span class="nav-number">1.2.</span> <span class="nav-text">步骤2-Activity类中集成</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Tips"><span class="nav-number">2.</span> <span class="nav-text">Tips</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#content置于Toolbar下方"><span class="nav-number">2.1.</span> <span class="nav-text">content置于Toolbar下方</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置Toolbar上的一些基础信息"><span class="nav-number">2.2.</span> <span class="nav-text">设置Toolbar上的一些基础信息</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置Toolbar上的一些基础信息的点击监听"><span class="nav-number">2.3.</span> <span class="nav-text">设置Toolbar上的一些基础信息的点击监听</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置Toolbar上的Menu（显示在Toobar右侧的部分）"><span class="nav-number">2.4.</span> <span class="nav-text">设置Toolbar上的Menu（显示在Toobar右侧的部分）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置Toolbar上的分享功能"><span class="nav-number">2.5.</span> <span class="nav-text">设置Toolbar上的分享功能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置Toolbar的颜色"><span class="nav-number">2.6.</span> <span class="nav-text">设置Toolbar的颜色</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
