@@ -158,6 +158,327 @@
           
           
             
+              <a class="post-title-link" href="/2015/11/12/ToolBar个人使用总结/" itemprop="url">
+                Toolbar个人使用总结
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-11-12T11:28:04+08:00" content="2015-11-12">
+            2015-11-12
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/11/12/ToolBar个人使用总结/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/12/ToolBar个人使用总结/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><h3 id="Toolbar的使用过程">Toolbar的使用过程</h3><h4 id="步骤1-xml中集成">步骤1-xml中集成</h4><pre><code>布局CoordinatorLayout作用：研究中（其实可以不要）
+
+&lt;android<span class="class">.support</span><span class="class">.design</span><span class="class">.widget</span><span class="class">.CoordinatorLayout</span>
+    xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span>
+    xmlns:tools=<span class="string">"http://schemas.android.com/tools"</span>
+    android:layout_width=<span class="string">"match_parent"</span>
+    android:layout_height=<span class="string">"match_parent"</span>
+    android:fitsSystemWindows=<span class="string">"true"</span>
+    tools:context=<span class="string">".MainActivity"</span>&gt;
+
+    &lt;include layout=<span class="string">"@layout/toolbar"</span> /&gt;
+
+    &lt;include layout=<span class="string">"@layout/content_main"</span> /&gt;
+
+&lt;/android<span class="class">.support</span><span class="class">.design</span><span class="class">.widget</span><span class="class">.CoordinatorLayout</span>&gt;
+</code></pre><p>其中toobar.xml内容为</p>
+<pre><code><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+
+<span class="comment">&lt;!--AppBarLayout 看到有人说可以起到滚动隐藏Toolbar的效果，目前没有实现，暂时放着...--&gt;</span>
+
+<span class="tag">&lt;<span class="title">android.support.design.widget.AppBarLayout</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span>
+    <span class="attribute">xmlns:app</span>=<span class="value">"http://schemas.android.com/apk/res-auto"</span>
+    <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span>
+    <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span>
+    <span class="attribute">android:theme</span>=<span class="value">"@style/AppTheme.AppBarOverlay"</span>&gt;</span>
+
+    <span class="tag">&lt;<span class="title">android.support.v7.widget.Toolbar</span>
+        <span class="attribute">android:id</span>=<span class="value">"@+id/toolbar"</span>
+        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span>
+        <span class="attribute">android:layout_height</span>=<span class="value">"?attr/actionBarSize"</span>
+        <span class="attribute">android:background</span>=<span class="value">"?attr/colorPrimary"</span>
+        <span class="attribute">app:popupTheme</span>=<span class="value">"@style/AppTheme.PopupOverlay"</span> /&gt;</span>
+
+<span class="tag">&lt;/<span class="title">android.support.design.widget.AppBarLayout</span>&gt;</span>
+</code></pre><h4 id="步骤2-Activity类中集成_Toolbar_toolbar_=_(Toolbar)_findViewById(R-id-toolbar);_setSupportActionBar(toolbar);">步骤2-Activity类中集成    Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);    setSupportActionBar(toolbar);</h4><p>由此Toolbar就已经集成完毕，因为ActionBar不会隐藏，所以实用NoActionBar的主题或者在清单文件 activity节点配置 android:theme=”@style/AppTheme.NoActionBar 等</p>
+<p>###Tips</p>
+<h4 id="content置于Toolbar下方">content置于Toolbar下方</h4><p>在content最外层使用 </p>
+<pre><code><span class="label">app:</span>layout_behavior=<span class="string">"@string/appbar_scrolling_view_behavior"</span>
+</code></pre><p>####设置Toolbar上的一些基础信息</p>
+<pre><code>toolbar.<span class="built_in">set</span>Title(<span class="string">"Title"</span>);            //设置Title
+// 以上均需要在<span class="built_in">set</span>SupportActionBar之前执行，其他的放置位置‘貌似’没有影响
+toolbar.<span class="built_in">set</span>Logo(R.mipmap.ic_launcher);
+toolbar.<span class="built_in">set</span>Subtitle(<span class="string">"Subtitle"</span>); //设置副标题
+toolbar.<span class="built_in">set</span>NavigationIcon(R.mipmap.ic_launcher);//需要在<span class="built_in">set</span>SupportActionBar后执行
+以上功能可以使用 getSupportActionBar().get...（）.<span class="built_in">set</span>...代替（放置<span class="built_in">set</span>SupportActionBar后）
+</code></pre><p>####设置Toolbar上的一些基础信息的点击监听</p>
+<pre><code><span class="comment">//注意设置的位置哦</span>
+toolbar.setNavigationOnClickListener(<span class="keyword">new</span> View.OnClickListener() {
+    <span class="annotation">@Override</span>
+    <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onClick</span><span class="params">(View v)</span> </span>{
+        Log.d(<span class="string">"toolbar"</span>, <span class="string">"setNavigationOnClickListener"</span>);
+    }
+});
+</code></pre><p>此监听貌似只对NavigationIcon的点击效果有用。</p>
+<p>####设置Toolbar上的Menu（显示在Toobar右侧的部分）</p>
+<p>menu文件在/res/menu/目录下<br>main.xml</p>
+<pre><code><span class="tag">&lt;<span class="title">menu</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span>
+    <span class="attribute">xmlns:app</span>=<span class="value">"http://schemas.android.com/apk/res-auto"</span>
+    <span class="attribute">xmlns:tools</span>=<span class="value">"http://schemas.android.com/tools"</span>
+    <span class="attribute">tools:context</span>=<span class="value">".MainActivity"</span>&gt;</span>
+
+    <span class="comment">&lt;!-- app:showAsAction
+     always：总是显示在界面上
+     never：不显示在界面上，只让出现在右边的三个点中
+     ifRoom：如果有位置才显示，不然就出现在右边的三个点中
+     collapseActionView:占用尽量少的位置--&gt;</span>
+
+    <span class="tag">&lt;<span class="title">item</span>
+        <span class="attribute">android:id</span>=<span class="value">"@+id/action_settings"</span>
+        <span class="attribute">android:orderInCategory</span>=<span class="value">"100"</span>
+        <span class="attribute">android:title</span>=<span class="value">"@string/action_settings"</span>
+        <span class="attribute">app:showAsAction</span>=<span class="value">"never"</span> /&gt;</span>
+    <span class="tag">&lt;<span class="title">item</span>
+        <span class="attribute">android:id</span>=<span class="value">"@+id/action_settings1"</span>
+        <span class="attribute">android:orderInCategory</span>=<span class="value">"100"</span>
+        <span class="attribute">android:title</span>=<span class="value">"@string/action_settings"</span>
+        <span class="attribute">app:showAsAction</span>=<span class="value">"never"</span> /&gt;</span>
+
+    <span class="comment">&lt;!-- app:actionViewClass="android.support.v7.widget.SearchView
+        设置过后，点击此按钮可以在Toolbar上形成一个搜索框--&gt;</span>
+    <span class="comment">&lt;!--showAsAction 中有 collapseActionView时，后面的三个点不会消失 --&gt;</span>
+    <span class="tag">&lt;<span class="title">item</span>
+        <span class="attribute">android:id</span>=<span class="value">"@+id/search"</span>
+        <span class="attribute">android:icon</span>=<span class="value">"@android:drawable/ic_menu_search"</span>
+        <span class="attribute">android:title</span>=<span class="value">"Search"</span>
+        <span class="attribute">app:actionViewClass</span>=<span class="value">"android.support.v7.widget.SearchView"</span>
+        <span class="attribute">app:showAsAction</span>=<span class="value">"ifRoom|collapseActionView"</span> /&gt;</span>
+
+    <span class="comment">&lt;!--android.support.v7.widget.ShareActionProvider 分享的效果--&gt;</span>
+    <span class="tag">&lt;<span class="title">item</span>
+        <span class="attribute">android:id</span>=<span class="value">"@+id/nav_share"</span>
+        <span class="attribute">android:icon</span>=<span class="value">"@android:drawable/ic_menu_share"</span>
+        <span class="attribute">app:actionProviderClass</span>=<span class="value">"android.support.v7.widget.ShareActionProvider"</span>
+        <span class="attribute">android:title</span>=<span class="value">"Share"</span>
+        <span class="attribute">app:showAsAction</span>=<span class="value">"ifRoom"</span> /&gt;</span>
+
+<span class="tag">&lt;/<span class="title">menu</span>&gt;</span>
+</code></pre><p>Menu的点击事件监听：已知有两种实现方式</p>
+<p>第一种方式：</p>
+<pre><code>toolbar.setOnMenuItemClickListener(<span class="keyword">new</span> Toolbar.OnMenuItemClickListener() {
+    <span class="annotation">@Override</span>
+    <span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">onMenuItemClick</span><span class="params">(MenuItem item)</span> </span>{
+        <span class="keyword">switch</span> (item.getItemId()){
+            <span class="keyword">case</span> R.id.action_settings:
+                Log.d(<span class="string">"toolbar"</span>,<span class="string">"action_settings"</span>);
+                <span class="keyword">break</span>;
+            <span class="keyword">case</span> R.id.action_settings1:
+                Log.d(<span class="string">"toolbar"</span>,<span class="string">"action_settings1"</span>);
+                <span class="keyword">break</span>;
+        }
+        <span class="keyword">return</span> <span class="keyword">false</span>;
+    }
+});
+</code></pre><p>第二种方式：</p>
+<pre><code><span class="annotation">@Override</span>
+<span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">onOptionsItemSelected</span><span class="params">(MenuItem item)</span> </span>{
+    <span class="comment">// Handle action bar item clicks here. The action bar will</span>
+    <span class="comment">// automatically handle clicks on the Home/Up button, so long</span>
+    <span class="comment">// as you specify a parent activity in AndroidManifest.xml.</span>
+    <span class="keyword">int</span> id = item.getItemId();
+
+    <span class="comment">//noinspection SimplifiableIfStatement</span>
+    <span class="keyword">if</span> (id == R.id.action_settings) {
+        Log.d(<span class="string">"toolbar"</span>,<span class="string">"action_settings2"</span>);
+        <span class="keyword">return</span> <span class="keyword">false</span>;
+    }
+    <span class="keyword">if</span> (id == R.id.action_settings1) {
+        Log.d(<span class="string">"toolbar"</span>,<span class="string">"action_settings12"</span>);
+        <span class="keyword">return</span> <span class="keyword">false</span>;
+    }
+
+    <span class="function"><span class="keyword">return</span> <span class="keyword">super</span>.<span class="title">onOptionsItemSelected</span><span class="params">(item)</span></span>;
+}
+</code></pre><p>####设置Toolbar上的搜索功能<br>以main.xml中的搜索功能模块举例</p>
+<pre><code>&lt;<span class="property">item</span>
+    android:<span class="property">id</span>=<span class="string">"@+id/search"</span>
+    android:icon=<span class="string">"@android:drawable/ic_menu_search"</span>
+    android:title=<span class="string">"Search"</span>
+    app:actionViewClass=<span class="string">"android.support.v7.widget.SearchView"</span>
+    app:showAsAction=<span class="string">"ifRoom|collapseActionView"</span> /&gt;
+</code></pre><p>在Activity中实现以下方法进行对搜索框的一些操作</p>
+<pre><code><span class="annotation">@Override</span>
+<span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">onCreateOptionsMenu</span><span class="params">(Menu menu)</span> </span>{
+    getMenuInflater().inflate(R.menu.main, menu);
+
+    MenuItem searchItem = menu.findItem(R.id.search);
+    SearchView mSearchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+    <span class="comment">//设置搜索框hint内容</span>
+    mSearchView.setQueryHint(<span class="string">"QueryHint..."</span>);
+    SearchView.SearchAutoComplete textView = (SearchView.SearchAutoComplete) mSearchView.findViewById(R.id.search_src_text);
+    <span class="comment">//设置搜索框中输入文字的颜色</span>
+    textView.setTextColor(Color.BLACK);
+    <span class="keyword">return</span> <span class="keyword">true</span>;
+}
+</code></pre><p>####设置Toolbar上的分享功能<br>还以main.xml中的搜索功能模块举例</p>
+<pre><code>&lt;<span class="property">item</span>
+    android:<span class="property">id</span>=<span class="string">"@+id/nav_share"</span>
+    android:icon=<span class="string">"@android:drawable/ic_menu_share"</span>
+    app:actionProviderClass=<span class="string">"android.support.v7.widget.ShareActionProvider"</span>
+    android:title=<span class="string">"Share"</span>
+    app:showAsAction=<span class="string">"ifRoom"</span> 
+</code></pre><p>在Activity中实现以下方法进行对分享按钮的操作，点击分享按钮后，会弹出系统匹配出的应用列表</p>
+<pre><code><span class="annotation">@Override</span>
+<span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">onCreateOptionsMenu</span><span class="params">(Menu menu)</span> </span>{
+    getMenuInflater().inflate(R.menu.main, menu);
+
+    ShareActionProvider mShareActionProvider = (ShareActionProvider)
+    MenuItemCompat.getActionProvider(menu.findItem(R.id.action_share));
+    Intent intent = <span class="keyword">new</span> Intent(Intent.ACTION_SEND);
+    intent.setType(<span class="string">"text/*"</span>);
+    mShareActionProvider.setShareIntent(intent);
+    <span class="function"><span class="keyword">return</span> <span class="keyword">super</span>.<span class="title">onCreateOptionsMenu</span><span class="params">(menu)</span></span>;
+}
+</code></pre><p>####设置Toolbar的颜色</p>
+<p>1、 toolbar.setBackgroundColor(Color.BLACK);</p>
+<p>2、</p>
+<pre><code>&lt;android<span class="class">.support</span><span class="class">.v7</span><span class="class">.widget</span><span class="class">.Toolbar</span>
+       android:id=<span class="string">"@+id/toolbar"</span>
+       android:layout_width=<span class="string">"match_parent"</span>
+       android:layout_height=<span class="string">"?attr/actionBarSize"</span>
+       android:<span class="attribute">background</span>=<span class="string">"?attr/colorPrimary"</span>
+       app:popupTheme=<span class="string">"@style/AppTheme.PopupOverlay"</span> /&gt;
+</code></pre><p> toolbar.setBackground（）还可以设置图片额</p>
+<p> 当然，状态栏也要跟着变换。这个稍后补充…</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/11/12/RecyclerView使用-md/" itemprop="url">
+                RecyclerView使用
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-11-12T11:28:04+08:00" content="2015-11-12">
+            2015-11-12
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/11/12/RecyclerView使用-md/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/12/RecyclerView使用-md/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p> 全名 android.support.v7.widget.RecyclerView</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/10/13/tools/Android Studio快捷键 -- OS X 10.5+/" itemprop="url">
                 Android Studio快捷键 -- OS X 10.5+
               </a>
@@ -896,160 +1217,6 @@ retrolambda {
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/10/13/tools/Studio使用Gerrit插件/" itemprop="url">
-                Studio使用Gerrit插件
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-10-13T22:13:03+08:00" content="2015-10-13">
-            2015-10-13
-          </time>
-        </span>
-
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/10/13/tools/Studio使用Gerrit插件/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/13/tools/Studio使用Gerrit插件/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><ol>
-<li>搜索安装Gerrit插件</li>
-<li>在菜单中设置URL和Git用户名和密码<br> <img src="/pic/gerrit1.png" alt=""></li>
-<li>在AS的主界面就能看到详细信息了<br> <img src="/pic/gerrit2.png" alt=""></li>
-</ol>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/10/13/tools/git入门/" itemprop="url">
-                git入门
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-10-13T22:12:50+08:00" content="2015-10-13">
-            2015-10-13
-          </time>
-        </span>
-
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/10/13/tools/git入门/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/13/tools/git入门/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>###常用命令</p>
-<ol>
-<li>从服务器down代码  -&gt;git clone</li>
-<li>查看提交纪录  -&gt;git log</li>
-<li>添加某个修改的文件  -&gt;git add 修改的文件</li>
-<li>把不想提交的文件放入.gitignore中  -&gt;不知道</li>
-<li>add全部修改过的文件  -&gt;git commit -a或git commit —all</li>
-<li>更新代码  -&gt;git pull -r（r表示rebase）</li>
-<li>本地提交代码  -&gt;git commit -m “这里是备注”</li>
-<li>向服务器提交代码  -&gt;git push（未确认）</li>
-<li>把修改提交到gerrit中repo的master分支上（如果不是master分支，refs/for/分支名） -&gt;git push origin HEAD:refs/for/master</li>
-<li>本地纪录提交审核不通过的代码（git add 修改的文件）  -&gt;git commit —amend<br>11status</li>
-</ol>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1088,7 +1255,7 @@ retrolambda {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
