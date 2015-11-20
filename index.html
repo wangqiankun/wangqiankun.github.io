@@ -393,8 +393,8 @@ imageView.setOnClickListener(<span class="keyword">new</span> View.OnClickListen
           
           
             
-              <a class="post-title-link" href="/2015/11/20/Toolbar个人使用总结/" itemprop="url">
-                Toolbar个人使用总结
+              <a class="post-title-link" href="/2015/11/20/Metarial Design样式EditText/" itemprop="url">
+                Metarial Design样式EditText的实现
               </a>
             
           
@@ -404,7 +404,7 @@ imageView.setOnClickListener(<span class="keyword">new</span> View.OnClickListen
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-11-20T12:26:26+08:00" content="2015-11-20">
+          <time itemprop="dateCreated" datetime="2015-11-20T11:04:52+08:00" content="2015-11-20">
             2015-11-20
           </time>
         </span>
@@ -415,8 +415,137 @@ imageView.setOnClickListener(<span class="keyword">new</span> View.OnClickListen
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/11/20/Toolbar个人使用总结/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/20/Toolbar个人使用总结/" itemprop="commentsCount"></span>
+              <a href="/2015/11/20/Metarial Design样式EditText/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/20/Metarial Design样式EditText/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>样式如图<br><img src="/pic/md_edittext.png" width="160" height=""></p>
+<p>实现比较简单，拿出一个EditText来举例<br>第一步：在xml中，注意EditText外部套了TextInputLayout布局</p>
+<blockquote>
+<p>其中EditText的hint内容，会在点击EditText后移到其左上方</p>
+</blockquote>
+<pre><code>&lt;android<span class="class">.support</span><span class="class">.design</span><span class="class">.widget</span><span class="class">.TextInputLayout</span>
+    android:id=<span class="string">"@+id/input_layout_name"</span>
+    android:layout_width=<span class="string">"match_parent"</span>
+    android:layout_height=<span class="string">"wrap_content"</span>&gt;
+
+    &lt;EditText
+        android:id=<span class="string">"@+id/input_name"</span>
+        android:layout_width=<span class="string">"match_parent"</span>
+        android:layout_height=<span class="string">"wrap_content"</span>
+        android:singleLine=<span class="string">"true"</span>
+        android:hint=<span class="string">"@string/hint_name"</span> /&gt;
+&lt;/android<span class="class">.support</span><span class="class">.design</span><span class="class">.widget</span><span class="class">.TextInputLayout</span>&gt;
+</code></pre><p>第二步：代码中实现校验提示等功能</p>
+<blockquote>
+<p>在校验方法中，inputLayoutName.setError(“”)，set内容在EditText下方显示</p>
+</blockquote>
+<pre><code>TextInputLayout inputLayoutName = (TextInputLayout) findViewById(R.id.input_layout_name);
+EditText inputName = (EditText) findViewById(R.id.input_name);
+
+<span class="keyword">private</span> <span class="function"><span class="keyword">boolean</span> <span class="title">isNameValid</span><span class="params">()</span> </span>{
+    <span class="keyword">if</span> (inputName.getText().toString().trim().isEmpty()) {
+        inputLayoutName.setError(getString(R.string.err_msg_name));
+        requestFocus(inputName);
+        <span class="keyword">return</span> <span class="keyword">false</span>;
+    } <span class="keyword">else</span> {
+        inputLayoutName.setErrorEnabled(<span class="keyword">false</span>);
+    }
+
+    <span class="keyword">return</span> <span class="keyword">true</span>;
+}
+
+
+inputName.addTextChangedListener(<span class="keyword">new</span> MyTextWatcher(inputName));
+
+<span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">MyTextWatcher</span> <span class="keyword">implements</span> <span class="title">TextWatcher</span> </span>{
+
+   <span class="keyword">private</span> View view;
+
+   <span class="function"><span class="keyword">private</span> <span class="title">MyTextWatcher</span><span class="params">(View view)</span> </span>{
+       <span class="keyword">this</span>.view = view;
+   }
+
+   <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">beforeTextChanged</span><span class="params">(CharSequence charSequence, <span class="keyword">int</span> i, <span class="keyword">int</span> i1, <span class="keyword">int</span> i2)</span> </span>{
+   }
+
+   <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onTextChanged</span><span class="params">(CharSequence charSequence, <span class="keyword">int</span> i, <span class="keyword">int</span> i1, <span class="keyword">int</span> i2)</span> </span>{
+   }
+
+   <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">afterTextChanged</span><span class="params">(Editable editable)</span> </span>{
+       <span class="keyword">switch</span> (view.getId()) {
+           <span class="keyword">case</span> R.id.input_name:
+               isNameValid();
+               <span class="keyword">break</span>;
+       }
+   }
+}
+</code></pre></span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/11/12/Toolbar个人使用总结/" itemprop="url">
+                Toolbar个人使用总结
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-11-12T12:26:26+08:00" content="2015-11-12">
+            2015-11-12
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/11/12/Toolbar个人使用总结/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/12/Toolbar个人使用总结/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -615,135 +744,6 @@ toolbar.setNavigationOnClickListener(<span class="keyword">new</span> View.OnCli
 </code></pre><p> toolbar.setBackground（）还可以设置图片额</p>
 <p> 当然，状态栏也要跟着变换。这个稍后补充…</p>
 </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/11/20/Metarial Design样式EditText/" itemprop="url">
-                Metarial Design样式EditText的实现
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-11-20T11:04:52+08:00" content="2015-11-20">
-            2015-11-20
-          </time>
-        </span>
-
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/11/20/Metarial Design样式EditText/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/20/Metarial Design样式EditText/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>样式如图<br><img src="/pic/md_edittext.png" width="160" height=""></p>
-<p>实现比较简单，拿出一个EditText来举例<br>第一步：在xml中，注意EditText外部套了TextInputLayout布局</p>
-<blockquote>
-<p>其中EditText的hint内容，会在点击EditText后移到其左上方</p>
-</blockquote>
-<pre><code>&lt;android<span class="class">.support</span><span class="class">.design</span><span class="class">.widget</span><span class="class">.TextInputLayout</span>
-    android:id=<span class="string">"@+id/input_layout_name"</span>
-    android:layout_width=<span class="string">"match_parent"</span>
-    android:layout_height=<span class="string">"wrap_content"</span>&gt;
-
-    &lt;EditText
-        android:id=<span class="string">"@+id/input_name"</span>
-        android:layout_width=<span class="string">"match_parent"</span>
-        android:layout_height=<span class="string">"wrap_content"</span>
-        android:singleLine=<span class="string">"true"</span>
-        android:hint=<span class="string">"@string/hint_name"</span> /&gt;
-&lt;/android<span class="class">.support</span><span class="class">.design</span><span class="class">.widget</span><span class="class">.TextInputLayout</span>&gt;
-</code></pre><p>第二步：代码中实现校验提示等功能</p>
-<blockquote>
-<p>在校验方法中，inputLayoutName.setError(“”)，set内容在EditText下方显示</p>
-</blockquote>
-<pre><code>TextInputLayout inputLayoutName = (TextInputLayout) findViewById(R.id.input_layout_name);
-EditText inputName = (EditText) findViewById(R.id.input_name);
-
-<span class="keyword">private</span> <span class="function"><span class="keyword">boolean</span> <span class="title">isNameValid</span><span class="params">()</span> </span>{
-    <span class="keyword">if</span> (inputName.getText().toString().trim().isEmpty()) {
-        inputLayoutName.setError(getString(R.string.err_msg_name));
-        requestFocus(inputName);
-        <span class="keyword">return</span> <span class="keyword">false</span>;
-    } <span class="keyword">else</span> {
-        inputLayoutName.setErrorEnabled(<span class="keyword">false</span>);
-    }
-
-    <span class="keyword">return</span> <span class="keyword">true</span>;
-}
-
-
-inputName.addTextChangedListener(<span class="keyword">new</span> MyTextWatcher(inputName));
-
-<span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">MyTextWatcher</span> <span class="keyword">implements</span> <span class="title">TextWatcher</span> </span>{
-
-   <span class="keyword">private</span> View view;
-
-   <span class="function"><span class="keyword">private</span> <span class="title">MyTextWatcher</span><span class="params">(View view)</span> </span>{
-       <span class="keyword">this</span>.view = view;
-   }
-
-   <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">beforeTextChanged</span><span class="params">(CharSequence charSequence, <span class="keyword">int</span> i, <span class="keyword">int</span> i1, <span class="keyword">int</span> i2)</span> </span>{
-   }
-
-   <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onTextChanged</span><span class="params">(CharSequence charSequence, <span class="keyword">int</span> i, <span class="keyword">int</span> i1, <span class="keyword">int</span> i2)</span> </span>{
-   }
-
-   <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">afterTextChanged</span><span class="params">(Editable editable)</span> </span>{
-       <span class="keyword">switch</span> (view.getId()) {
-           <span class="keyword">case</span> R.id.input_name:
-               isNameValid();
-               <span class="keyword">break</span>;
-       }
-   }
-}
-</code></pre></span>
         
       
     </div>
