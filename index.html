@@ -158,6 +158,241 @@
           
           
             
+              <a class="post-title-link" href="/2015/11/20/MaterialDesign跳转动画效果实现/" itemprop="url">
+                MaterialDesign跳转动画效果实现
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-11-20T15:43:54+08:00" content="2015-11-20">
+            2015-11-20
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/11/20/MaterialDesign跳转动画效果实现/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/20/MaterialDesign跳转动画效果实现/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>依旧先上效果<img src="/pic/md_jump.gif" width="160" height=""></p>
+<p>在点击Activity1中的图片，跳转至Activity2。系统会根据两个Activity中图片的大小和位置，动态展现动画。</p>
+<p>图中两个不同图片能看出google些许设计思路（同一个图片效果会更好）</p>
+<p>上xml</p>
+<p>Activity1中的</p>
+<pre><code>&lt;ImageView
+       android:<span class="property">id</span>=<span class="string">"@+id/imageView"</span>
+       android:layout_width=<span class="string">"wrap_content"</span>
+       android:layout_height=<span class="string">"wrap_content"</span>
+       android:clickable=<span class="string">"true"</span>
+       android:elevation=<span class="string">"8dp"</span>
+       android:src=<span class="string">"@mipmap/ic_launcher"</span>
+       android:transitionName=<span class="string">"transition_album_cover"</span> /&gt;
+</code></pre><p>Activity2中的</p>
+<pre><code><span class="tag">&lt;<span class="title">ImageView</span>
+     <span class="attribute">android:layout_width</span>=<span class="value">"wrap_content"</span>
+     <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span>
+     <span class="attribute">android:src</span>=<span class="value">"@mipmap/me"</span>
+     <span class="attribute">android:transitionName</span>=<span class="value">"transition_album_cover"</span>
+     <span class="attribute">tools:targetApi</span>=<span class="value">"honeycomb"</span> /&gt;</span>
+</code></pre><p>其中在ImageView主要的设置为<code>android:transitionName=&quot;transition_album_cover&quot;</code><br>两个View中的android:transitionName需一致</p>
+<p>接下来上Activity间跳转关键代码</p>
+<pre><code>imageView = (ImageView) findViewById(R.id.imageView);
+imageView.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() {
+    @Override
+    <span class="keyword">public</span> <span class="keyword">void</span> onClick(View v) {
+
+
+        Intent intent = <span class="keyword">new</span> Intent(Activity1.<span class="keyword">this</span>, Activity2.<span class="keyword">class</span>);
+        String transitionName = <span class="string">"transition_album_cover"</span>;
+        ActivityOptionsCompat <span class="keyword">options</span> =
+                ActivityOptionsCompat.makeSceneTransitionAnimation(Activity1.<span class="keyword">this</span>,
+                        imageView,          <span class="comment">// The view which starts the transition</span>
+                        transitionName      <span class="comment">// The transitionName of the view we’re transitioning to</span>
+                );
+        ActivityCompat.startActivity(Activity2.<span class="keyword">this</span>, intent, <span class="keyword">options</span>.toBundle());
+    }
+});
+</code></pre><p>其中参数transitionName要与xml中View的android:transitionName值对应</p>
+<p>就酱~</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/11/20/Toolbar的滚动效果/" itemprop="url">
+                Toolbar的滚动效果
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-11-20T14:57:07+08:00" content="2015-11-20">
+            2015-11-20
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/11/20/Toolbar的滚动效果/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/20/Toolbar的滚动效果/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>效果不错，拿出单发个。如图<br><img src="/pic/md_scroll.gif" width="160" height=""></p>
+<p>整个Toolbar的背景是一个图片，当向上滚动后，图片逐渐消失，Toolbar背景变成默认效果，Title也会动态的改变字体大小，以适应变小后的效果</p>
+<p>图中界面可以分为两个部分，一个为Toolbar，展开时设置的为200dp，另一个为Toolbar下的主要内容</p>
+<p>看下xml中的根布局</p>
+<pre><code><span class="tag">&lt;<span class="title">android.support.design.widget.CoordinatorLayout</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span>
+    <span class="attribute">xmlns:app</span>=<span class="value">"http://schemas.android.com/apk/res-auto"</span>
+    <span class="attribute">xmlns:tools</span>=<span class="value">"http://schemas.android.com/tools"</span>
+    <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span>
+    <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span>
+    <span class="attribute">android:fitsSystemWindows</span>=<span class="value">"true"</span>
+    <span class="attribute">tools:context</span>=<span class="value">".MainActivity"</span>&gt;</span>
+
+    <span class="comment">&lt;!--第一部分的Toolbar--&gt;</span>
+    <span class="tag">&lt;<span class="title">include</span> <span class="attribute">layout</span>=<span class="value">"@layout/toolbar"</span> /&gt;</span>
+
+    <span class="comment">&lt;!--第二部分为Toolbar下的主要内容--&gt;</span>
+    <span class="tag">&lt;<span class="title">android.support.v4.widget.NestedScrollView</span>
+        <span class="attribute">android:id</span>=<span class="value">"@+id/item_detail_container"</span>
+        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span>
+        <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span>
+        <span class="attribute">app:layout_behavior</span>=<span class="value">"@string/appbar_scrolling_view_behavior"</span>&gt;</span>
+
+        <span class="tag">&lt;<span class="title">include</span> <span class="attribute">layout</span>=<span class="value">"@layout/content_main"</span> /&gt;</span>
+
+    <span class="tag">&lt;/<span class="title">android.support.v4.widget.NestedScrollView</span>&gt;</span>
+
+<span class="tag">&lt;/<span class="title">android.support.design.widget.CoordinatorLayout</span>&gt;</span>
+</code></pre><p>第二部分必须要有滚动，才会有上图中的效果，所以在<code>content_main</code>外套了一层<code>android.support.v4.widget.NestedScrollView</code></p>
+<p>其中toolbar的布局如下</p>
+<pre><code>&lt;android<span class="class">.support</span><span class="class">.design</span><span class="class">.widget</span><span class="class">.AppBarLayout</span> xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span>
+    xmlns:app=<span class="string">"http://schemas.android.com/apk/res-auto"</span>
+    android:id=<span class="string">"@+id/app_bar"</span>
+    android:layout_width=<span class="string">"match_parent"</span>
+    android:layout_height=<span class="string">"200dp"</span>
+    android:fitsSystemWindows=<span class="string">"true"</span>
+    android:theme=<span class="string">"@style/ThemeOverlay.AppCompat.Dark.ActionBar"</span>&gt;
+
+    &lt;android<span class="class">.support</span><span class="class">.design</span><span class="class">.widget</span><span class="class">.CollapsingToolbarLayout</span>
+        android:id=<span class="string">"@+id/toolbar_layout"</span>
+        android:layout_width=<span class="string">"match_parent"</span>
+        android:layout_height=<span class="string">"match_parent"</span>
+        android:fitsSystemWindows=<span class="string">"true"</span>
+        app:contentScrim=<span class="string">"?attr/colorPrimary"</span>
+        android:<span class="attribute">background</span>=<span class="string">"@mipmap/ic_launcher"</span>
+        app:layout_scrollFlags=<span class="string">"scroll|exitUntilCollapsed"</span>
+        app:toolbarId=<span class="string">"@+id/toolbar"</span>&gt;
+
+        &lt;android<span class="class">.support</span><span class="class">.v7</span><span class="class">.widget</span><span class="class">.Toolbar</span>
+            android:id=<span class="string">"@+id/toolbar"</span>
+            android:layout_width=<span class="string">"match_parent"</span>
+            android:layout_height=<span class="string">"?attr/actionBarSize"</span>
+            app:layout_collapseMode=<span class="string">"pin"</span>
+            app:popupTheme=<span class="string">"@style/ThemeOverlay.AppCompat.Light"</span> /&gt;
+
+    &lt;/android<span class="class">.support</span><span class="class">.design</span><span class="class">.widget</span><span class="class">.CollapsingToolbarLayout</span>&gt;
+
+&lt;/android<span class="class">.support</span><span class="class">.design</span><span class="class">.widget</span><span class="class">.AppBarLayout</span>&gt;
+</code></pre><p>向上滚动前的高度由<code>android:layout_height=&quot;200dp&quot;</code>控制，此语句放置在最外层的<code>android.support.design.widget.AppBarLayout</code>和放置在里层的<code>android.support.design.widget.CollapsingToolbarLayout</code>效果一致</p>
+<p>不同的是设置背景图片<code>android:background=&quot;@mipmap/ic_launcher&quot;</code>，如果放在里层，png图片中的空白会被主配色代替，放在外层则不会</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/11/20/Toolbar个人使用总结/" itemprop="url">
                 Toolbar个人使用总结
               </a>
@@ -1087,183 +1322,6 @@ retrolambda {
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/10/13/Button的点击效果和Clickable效果/" itemprop="url">
-                Button的点击效果和Clickable效果
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-10-13T22:25:45+08:00" content="2015-10-13">
-            2015-10-13
-          </time>
-        </span>
-
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/10/13/Button的点击效果和Clickable效果/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/13/Button的点击效果和Clickable效果/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>由于产品需求，button的点击状态、Clickable状态都要有不同的显示效果<br>研究Selector半天也没有找到可以使不同状态同时展示<br>于是，就迂回用笨方法搞定</p>
-<ul>
-<li>1）自定义一个集成Button的类,重写setClickable状态，在两种状态设置不同背景色以及TextColor</li>
-</ul>
-<pre><code><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BtnBottom</span> <span class="keyword">extends</span> <span class="title">Button</span> </span>{
-
-    <span class="function"><span class="keyword">public</span> <span class="title">BtnBottom</span><span class="params">(Context context)</span> </span>{
-        <span class="keyword">super</span>(context);
-    }
-
-    <span class="function"><span class="keyword">public</span> <span class="title">BtnBottom</span><span class="params">(Context context, AttributeSet attrs)</span> </span>{
-        <span class="keyword">super</span>(context, attrs);
-    }
-
-    <span class="annotation">@Override</span>
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setClickable</span><span class="params">(<span class="keyword">boolean</span> clickable)</span> </span>{
-        <span class="keyword">super</span>.setClickable(clickable);
-        <span class="keyword">if</span> (clickable) {
-            <span class="keyword">this</span>.setBackgroundResource(R.drawable.bg_btn_bottom_normal);
-            <span class="keyword">this</span>.setTextColor(getResources().getColor(R.color.text_fff));
-        } <span class="keyword">else</span> {
-            <span class="keyword">this</span>.setBackgroundColor(getResources().getColor(R.color.btn_f1f1f2));
-            <span class="keyword">this</span>.setTextColor(getResources().getColor(R.color.text_d7d7d8));
-        }
-    }
-}
-</code></pre><ul>
-<li>2）因为需要点击效果，所以在clickable为true时，设置背景色为selector</li>
-</ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">selector</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">item</span> <span class="attribute">android:drawable</span>=<span class="value">"@color/btn_b311213a"</span> <span class="attribute">android:state_pressed</span>=<span class="value">"true"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">item</span> <span class="attribute">android:drawable</span>=<span class="value">"@color/btn_b311213a"</span> <span class="attribute">android:state_focused</span>=<span class="value">"true"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">item</span> <span class="attribute">android:drawable</span>=<span class="value">"@color/btn_11213a"</span>  /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">selector</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>心得：selector 名为选择器，也就是说遇到对应的的item就会使用，可能之前顺序排列没做好，<br>或者可以在seletor中嵌套seletor？需待实验下</p>
-</blockquote>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/10/13/AndroidSudio下用butterknife注解/" itemprop="url">
-                AndroidSudio下用butterknife注解
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-10-13T22:17:58+08:00" content="2015-10-13">
-            2015-10-13
-          </time>
-        </span>
-
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/10/13/AndroidSudio下用butterknife注解/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/13/AndroidSudio下用butterknife注解/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><ol>
-<li>在gradle中引用 compile ‘compile ‘com.jakewharton:butterknife:7.0.1’’ 这个库<br>最新版本<a href="https://github.com/JakeWharton/butterknife" target="_blank" rel="external">点击这里查看</a></li>
-<li>在插件搜butterknife-zelezny，然后安装</li>
-<li>按<a href="https://github.com/avast/android-butterknife-zelezny" target="_blank" rel="external">这里</a>的动图提示的快捷键来就行了</li>
-</ol>
-<blockquote>
-<p>注意：使用快捷键的时候，需要把鼠标放在layout的资源文件名上。</p>
-</blockquote>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1302,7 +1360,7 @@ retrolambda {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1316,7 +1374,7 @@ retrolambda {
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

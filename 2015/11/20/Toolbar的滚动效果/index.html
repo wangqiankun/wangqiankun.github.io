@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="Tools," />
+  <meta name="keywords" content="Hexo,next" />
 
 
 
@@ -39,24 +39,29 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="搜索安装Gerrit插件
-在菜单中设置URL和Git用户名和密码 
-在AS的主界面就能看到详细信息了">
+<meta name="description" content="效果不错，拿出单发个。如图
+整个Toolbar的背景是一个图片，当向上滚动后，图片逐渐消失，Toolbar背景变成默认效果，Title也会动态的改变字体大小，以适应变小后的效果
+图中界面可以分为两个部分，一个为Toolbar，展开时设置的为200dp，另一个为Toolbar下的主要内容
+看下xml中的根布局
+&amp;lt;android.support.design.widget.Coordinator">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Studio使用Gerrit插件">
-<meta property="og:url" content="http://wangqiankun.github.io/2015/10/13/tools/Studio使用Gerrit插件/index.html">
+<meta property="og:title" content="Toolbar的滚动效果">
+<meta property="og:url" content="http://wangqiankun.github.io/2015/11/20/Toolbar的滚动效果/index.html">
 <meta property="og:site_name" content="Qiankun's Blog">
-<meta property="og:description" content="搜索安装Gerrit插件
-在菜单中设置URL和Git用户名和密码 
-在AS的主界面就能看到详细信息了">
-<meta property="og:image" content="http://wangqiankun.github.io/pic/gerrit1.png">
-<meta property="og:image" content="http://wangqiankun.github.io/pic/gerrit2.png">
-<meta property="og:updated_time" content="2015-10-13T14:51:39.000Z">
+<meta property="og:description" content="效果不错，拿出单发个。如图
+整个Toolbar的背景是一个图片，当向上滚动后，图片逐渐消失，Toolbar背景变成默认效果，Title也会动态的改变字体大小，以适应变小后的效果
+图中界面可以分为两个部分，一个为Toolbar，展开时设置的为200dp，另一个为Toolbar下的主要内容
+看下xml中的根布局
+&amp;lt;android.support.design.widget.Coordinator">
+<meta property="og:image" content="http://wangqiankun.github.io/pic/md_scroll.gif">
+<meta property="og:updated_time" content="2015-11-20T07:36:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Studio使用Gerrit插件">
-<meta name="twitter:description" content="搜索安装Gerrit插件
-在菜单中设置URL和Git用户名和密码 
-在AS的主界面就能看到详细信息了">
+<meta name="twitter:title" content="Toolbar的滚动效果">
+<meta name="twitter:description" content="效果不错，拿出单发个。如图
+整个Toolbar的背景是一个图片，当向上滚动后，图片逐渐消失，Toolbar背景变成默认效果，Title也会动态的改变字体大小，以适应变小后的效果
+图中界面可以分为两个部分，一个为Toolbar，展开时设置的为200dp，另一个为Toolbar下的主要内容
+看下xml中的根布局
+&amp;lt;android.support.design.widget.Coordinator">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -66,7 +71,7 @@
   };
 </script>
 
-  <title> Studio使用Gerrit插件 | Qiankun's Blog </title>
+  <title> Toolbar的滚动效果 | Qiankun's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -165,7 +170,7 @@
           
           
             
-              Studio使用Gerrit插件
+              Toolbar的滚动效果
             
           
         </h1>
@@ -174,8 +179,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-10-13T22:13:03+08:00" content="2015-10-13">
-            2015-10-13
+          <time itemprop="dateCreated" datetime="2015-11-20T14:57:07+08:00" content="2015-11-20">
+            2015-11-20
           </time>
         </span>
 
@@ -185,8 +190,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/10/13/tools/Studio使用Gerrit插件/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/13/tools/Studio使用Gerrit插件/" itemprop="commentsCount"></span>
+              <a href="/2015/11/20/Toolbar的滚动效果/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/20/Toolbar的滚动效果/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -200,35 +205,83 @@
       
 
       
-        <span itemprop="articleBody"><ol>
-<li>搜索安装Gerrit插件</li>
-<li>在菜单中设置URL和Git用户名和密码<br> <img src="/pic/gerrit1.png" alt=""></li>
-<li>在AS的主界面就能看到详细信息了<br> <img src="/pic/gerrit2.png" alt=""></li>
-</ol>
+        <span itemprop="articleBody"><p>效果不错，拿出单发个。如图<br><img src="/pic/md_scroll.gif" width="160" height=""></p>
+<p>整个Toolbar的背景是一个图片，当向上滚动后，图片逐渐消失，Toolbar背景变成默认效果，Title也会动态的改变字体大小，以适应变小后的效果</p>
+<p>图中界面可以分为两个部分，一个为Toolbar，展开时设置的为200dp，另一个为Toolbar下的主要内容</p>
+<p>看下xml中的根布局</p>
+<pre><code><span class="tag">&lt;<span class="title">android.support.design.widget.CoordinatorLayout</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span>
+    <span class="attribute">xmlns:app</span>=<span class="value">"http://schemas.android.com/apk/res-auto"</span>
+    <span class="attribute">xmlns:tools</span>=<span class="value">"http://schemas.android.com/tools"</span>
+    <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span>
+    <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span>
+    <span class="attribute">android:fitsSystemWindows</span>=<span class="value">"true"</span>
+    <span class="attribute">tools:context</span>=<span class="value">".MainActivity"</span>&gt;</span>
+
+    <span class="comment">&lt;!--第一部分的Toolbar--&gt;</span>
+    <span class="tag">&lt;<span class="title">include</span> <span class="attribute">layout</span>=<span class="value">"@layout/toolbar"</span> /&gt;</span>
+
+    <span class="comment">&lt;!--第二部分为Toolbar下的主要内容--&gt;</span>
+    <span class="tag">&lt;<span class="title">android.support.v4.widget.NestedScrollView</span>
+        <span class="attribute">android:id</span>=<span class="value">"@+id/item_detail_container"</span>
+        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span>
+        <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span>
+        <span class="attribute">app:layout_behavior</span>=<span class="value">"@string/appbar_scrolling_view_behavior"</span>&gt;</span>
+
+        <span class="tag">&lt;<span class="title">include</span> <span class="attribute">layout</span>=<span class="value">"@layout/content_main"</span> /&gt;</span>
+
+    <span class="tag">&lt;/<span class="title">android.support.v4.widget.NestedScrollView</span>&gt;</span>
+
+<span class="tag">&lt;/<span class="title">android.support.design.widget.CoordinatorLayout</span>&gt;</span>
+</code></pre><p>第二部分必须要有滚动，才会有上图中的效果，所以在<code>content_main</code>外套了一层<code>android.support.v4.widget.NestedScrollView</code></p>
+<p>其中toolbar的布局如下</p>
+<pre><code>&lt;android<span class="class">.support</span><span class="class">.design</span><span class="class">.widget</span><span class="class">.AppBarLayout</span> xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span>
+    xmlns:app=<span class="string">"http://schemas.android.com/apk/res-auto"</span>
+    android:id=<span class="string">"@+id/app_bar"</span>
+    android:layout_width=<span class="string">"match_parent"</span>
+    android:layout_height=<span class="string">"200dp"</span>
+    android:fitsSystemWindows=<span class="string">"true"</span>
+    android:theme=<span class="string">"@style/ThemeOverlay.AppCompat.Dark.ActionBar"</span>&gt;
+
+    &lt;android<span class="class">.support</span><span class="class">.design</span><span class="class">.widget</span><span class="class">.CollapsingToolbarLayout</span>
+        android:id=<span class="string">"@+id/toolbar_layout"</span>
+        android:layout_width=<span class="string">"match_parent"</span>
+        android:layout_height=<span class="string">"match_parent"</span>
+        android:fitsSystemWindows=<span class="string">"true"</span>
+        app:contentScrim=<span class="string">"?attr/colorPrimary"</span>
+        android:<span class="attribute">background</span>=<span class="string">"@mipmap/ic_launcher"</span>
+        app:layout_scrollFlags=<span class="string">"scroll|exitUntilCollapsed"</span>
+        app:toolbarId=<span class="string">"@+id/toolbar"</span>&gt;
+
+        &lt;android<span class="class">.support</span><span class="class">.v7</span><span class="class">.widget</span><span class="class">.Toolbar</span>
+            android:id=<span class="string">"@+id/toolbar"</span>
+            android:layout_width=<span class="string">"match_parent"</span>
+            android:layout_height=<span class="string">"?attr/actionBarSize"</span>
+            app:layout_collapseMode=<span class="string">"pin"</span>
+            app:popupTheme=<span class="string">"@style/ThemeOverlay.AppCompat.Light"</span> /&gt;
+
+    &lt;/android<span class="class">.support</span><span class="class">.design</span><span class="class">.widget</span><span class="class">.CollapsingToolbarLayout</span>&gt;
+
+&lt;/android<span class="class">.support</span><span class="class">.design</span><span class="class">.widget</span><span class="class">.AppBarLayout</span>&gt;
+</code></pre><p>向上滚动前的高度由<code>android:layout_height=&quot;200dp&quot;</code>控制，此语句放置在最外层的<code>android.support.design.widget.AppBarLayout</code>和放置在里层的<code>android.support.design.widget.CollapsingToolbarLayout</code>效果一致</p>
+<p>不同的是设置背景图片<code>android:background=&quot;@mipmap/ic_launcher&quot;</code>，如果放在里层，png图片中的空白会被主配色代替，放在外层则不会</p>
 </span>
       
     </div>
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Tools/" rel="tag">#Tools</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/13/tools/那些年我所趟过的坑系列之Git配置双账号/" rel="prev">那些年我所趟过的坑系列之Git配置双账号</a>
+              <a href="/2015/11/20/MaterialDesign跳转动画效果实现/" rel="prev">MaterialDesign跳转动画效果实现</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/13/tools/git入门/" rel="next">git入门</a>
+              <a href="/2015/11/20/Toolbar个人使用总结/" rel="next">Toolbar个人使用总结</a>
             
           </div>
         </div>
@@ -253,8 +306,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/10/13/tools/Studio使用Gerrit插件/"
-                   data-title="Studio使用Gerrit插件" data-url="http://wangqiankun.github.io/2015/10/13/tools/Studio使用Gerrit插件/">
+              <div class="ds-thread" data-thread-key="2015/11/20/Toolbar的滚动效果/"
+                   data-title="Toolbar的滚动效果" data-url="http://wangqiankun.github.io/2015/11/20/Toolbar的滚动效果/">
               </div>
             
           </div>

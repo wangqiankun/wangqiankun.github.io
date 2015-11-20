@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="Tools," />
+  <meta name="keywords" content="Android,MaterialDesign," />
 
 
 
@@ -39,24 +39,38 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="搜索安装Gerrit插件
-在菜单中设置URL和Git用户名和密码 
-在AS的主界面就能看到详细信息了">
+<meta name="description" content="依旧先上效果
+在点击Activity1中的图片，跳转至Activity2。系统会根据两个Activity中图片的大小和位置，动态展现动画。
+图中两个不同图片能看出google些许设计思路（同一个图片效果会更好）
+上xml
+Activity1中的
+&amp;lt;ImageView
+       android:id=&quot;@+id/imageView&quot;
+       android:layout_width=">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Studio使用Gerrit插件">
-<meta property="og:url" content="http://wangqiankun.github.io/2015/10/13/tools/Studio使用Gerrit插件/index.html">
+<meta property="og:title" content="MaterialDesign跳转动画效果实现">
+<meta property="og:url" content="http://wangqiankun.github.io/2015/11/20/MaterialDesign跳转动画效果实现/index.html">
 <meta property="og:site_name" content="Qiankun's Blog">
-<meta property="og:description" content="搜索安装Gerrit插件
-在菜单中设置URL和Git用户名和密码 
-在AS的主界面就能看到详细信息了">
-<meta property="og:image" content="http://wangqiankun.github.io/pic/gerrit1.png">
-<meta property="og:image" content="http://wangqiankun.github.io/pic/gerrit2.png">
-<meta property="og:updated_time" content="2015-10-13T14:51:39.000Z">
+<meta property="og:description" content="依旧先上效果
+在点击Activity1中的图片，跳转至Activity2。系统会根据两个Activity中图片的大小和位置，动态展现动画。
+图中两个不同图片能看出google些许设计思路（同一个图片效果会更好）
+上xml
+Activity1中的
+&amp;lt;ImageView
+       android:id=&quot;@+id/imageView&quot;
+       android:layout_width=">
+<meta property="og:image" content="http://wangqiankun.github.io/pic/md_jump.gif">
+<meta property="og:updated_time" content="2015-11-20T08:10:29.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Studio使用Gerrit插件">
-<meta name="twitter:description" content="搜索安装Gerrit插件
-在菜单中设置URL和Git用户名和密码 
-在AS的主界面就能看到详细信息了">
+<meta name="twitter:title" content="MaterialDesign跳转动画效果实现">
+<meta name="twitter:description" content="依旧先上效果
+在点击Activity1中的图片，跳转至Activity2。系统会根据两个Activity中图片的大小和位置，动态展现动画。
+图中两个不同图片能看出google些许设计思路（同一个图片效果会更好）
+上xml
+Activity1中的
+&amp;lt;ImageView
+       android:id=&quot;@+id/imageView&quot;
+       android:layout_width=">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -66,7 +80,7 @@
   };
 </script>
 
-  <title> Studio使用Gerrit插件 | Qiankun's Blog </title>
+  <title> MaterialDesign跳转动画效果实现 | Qiankun's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -165,7 +179,7 @@
           
           
             
-              Studio使用Gerrit插件
+              MaterialDesign跳转动画效果实现
             
           
         </h1>
@@ -174,8 +188,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-10-13T22:13:03+08:00" content="2015-10-13">
-            2015-10-13
+          <time itemprop="dateCreated" datetime="2015-11-20T15:43:54+08:00" content="2015-11-20">
+            2015-11-20
           </time>
         </span>
 
@@ -185,8 +199,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/10/13/tools/Studio使用Gerrit插件/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/13/tools/Studio使用Gerrit插件/" itemprop="commentsCount"></span>
+              <a href="/2015/11/20/MaterialDesign跳转动画效果实现/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/20/MaterialDesign跳转动画效果实现/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -200,11 +214,46 @@
       
 
       
-        <span itemprop="articleBody"><ol>
-<li>搜索安装Gerrit插件</li>
-<li>在菜单中设置URL和Git用户名和密码<br> <img src="/pic/gerrit1.png" alt=""></li>
-<li>在AS的主界面就能看到详细信息了<br> <img src="/pic/gerrit2.png" alt=""></li>
-</ol>
+        <span itemprop="articleBody"><p>依旧先上效果<img src="/pic/md_jump.gif" width="160" height=""></p>
+<p>在点击Activity1中的图片，跳转至Activity2。系统会根据两个Activity中图片的大小和位置，动态展现动画。</p>
+<p>图中两个不同图片能看出google些许设计思路（同一个图片效果会更好）</p>
+<p>上xml</p>
+<p>Activity1中的</p>
+<pre><code>&lt;ImageView
+       android:<span class="property">id</span>=<span class="string">"@+id/imageView"</span>
+       android:layout_width=<span class="string">"wrap_content"</span>
+       android:layout_height=<span class="string">"wrap_content"</span>
+       android:clickable=<span class="string">"true"</span>
+       android:elevation=<span class="string">"8dp"</span>
+       android:src=<span class="string">"@mipmap/ic_launcher"</span>
+       android:transitionName=<span class="string">"transition_album_cover"</span> /&gt;
+</code></pre><p>Activity2中的</p>
+<pre><code><span class="tag">&lt;<span class="title">ImageView</span>
+     <span class="attribute">android:layout_width</span>=<span class="value">"wrap_content"</span>
+     <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span>
+     <span class="attribute">android:src</span>=<span class="value">"@mipmap/me"</span>
+     <span class="attribute">android:transitionName</span>=<span class="value">"transition_album_cover"</span>
+     <span class="attribute">tools:targetApi</span>=<span class="value">"honeycomb"</span> /&gt;</span>
+</code></pre><p>其中在ImageView主要的设置为<code>android:transitionName=&quot;transition_album_cover&quot;</code><br>两个View中的android:transitionName需一致</p>
+<p>接下来上Activity间跳转关键代码</p>
+<pre><code>imageView = (ImageView) findViewById(R.id.imageView);
+imageView.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() {
+    @Override
+    <span class="keyword">public</span> <span class="keyword">void</span> onClick(View v) {
+
+
+        Intent intent = <span class="keyword">new</span> Intent(Activity1.<span class="keyword">this</span>, Activity2.<span class="keyword">class</span>);
+        String transitionName = <span class="string">"transition_album_cover"</span>;
+        ActivityOptionsCompat <span class="keyword">options</span> =
+                ActivityOptionsCompat.makeSceneTransitionAnimation(Activity1.<span class="keyword">this</span>,
+                        imageView,          <span class="comment">// The view which starts the transition</span>
+                        transitionName      <span class="comment">// The transitionName of the view we’re transitioning to</span>
+                );
+        ActivityCompat.startActivity(Activity2.<span class="keyword">this</span>, intent, <span class="keyword">options</span>.toBundle());
+    }
+});
+</code></pre><p>其中参数transitionName要与xml中View的android:transitionName值对应</p>
+<p>就酱~</p>
 </span>
       
     </div>
@@ -213,7 +262,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Tools/" rel="tag">#Tools</a>
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+            <a href="/tags/MaterialDesign/" rel="tag">#MaterialDesign</a>
           
         </div>
       
@@ -222,13 +273,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/13/tools/那些年我所趟过的坑系列之Git配置双账号/" rel="prev">那些年我所趟过的坑系列之Git配置双账号</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/13/tools/git入门/" rel="next">git入门</a>
+              <a href="/2015/11/20/Toolbar的滚动效果/" rel="next">Toolbar的滚动效果</a>
             
           </div>
         </div>
@@ -253,8 +302,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/10/13/tools/Studio使用Gerrit插件/"
-                   data-title="Studio使用Gerrit插件" data-url="http://wangqiankun.github.io/2015/10/13/tools/Studio使用Gerrit插件/">
+              <div class="ds-thread" data-thread-key="2015/11/20/MaterialDesign跳转动画效果实现/"
+                   data-title="MaterialDesign跳转动画效果实现" data-url="http://wangqiankun.github.io/2015/11/20/MaterialDesign跳转动画效果实现/">
               </div>
             
           </div>

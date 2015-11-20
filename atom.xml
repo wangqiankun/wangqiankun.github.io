@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://wangqiankun.github.io/"/>
-  <updated>2015-11-20T04:27:00.000Z</updated>
+  <updated>2015-11-20T08:10:29.000Z</updated>
   <id>http://wangqiankun.github.io/</id>
   
   <author>
@@ -13,6 +13,138 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[MaterialDesign跳转动画效果实现]]></title>
+    <link href="http://wangqiankun.github.io/2015/11/20/MaterialDesign%E8%B7%B3%E8%BD%AC%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/"/>
+    <id>http://wangqiankun.github.io/2015/11/20/MaterialDesign跳转动画效果实现/</id>
+    <published>2015-11-20T07:43:54.000Z</published>
+    <updated>2015-11-20T08:10:29.000Z</updated>
+    <content type="html"><![CDATA[<p>依旧先上效果<img src="/pic/md_jump.gif" width="160" height=""></p>
+<p>在点击Activity1中的图片，跳转至Activity2。系统会根据两个Activity中图片的大小和位置，动态展现动画。</p>
+<p>图中两个不同图片能看出google些许设计思路（同一个图片效果会更好）</p>
+<p>上xml</p>
+<p>Activity1中的</p>
+<pre><code>&lt;ImageView
+       android:<span class="property">id</span>=<span class="string">"@+id/imageView"</span>
+       android:layout_width=<span class="string">"wrap_content"</span>
+       android:layout_height=<span class="string">"wrap_content"</span>
+       android:clickable=<span class="string">"true"</span>
+       android:elevation=<span class="string">"8dp"</span>
+       android:src=<span class="string">"@mipmap/ic_launcher"</span>
+       android:transitionName=<span class="string">"transition_album_cover"</span> /&gt;
+</code></pre><p>Activity2中的</p>
+<pre><code><span class="tag">&lt;<span class="title">ImageView</span>
+     <span class="attribute">android:layout_width</span>=<span class="value">"wrap_content"</span>
+     <span class="attribute">android:layout_height</span>=<span class="value">"wrap_content"</span>
+     <span class="attribute">android:src</span>=<span class="value">"@mipmap/me"</span>
+     <span class="attribute">android:transitionName</span>=<span class="value">"transition_album_cover"</span>
+     <span class="attribute">tools:targetApi</span>=<span class="value">"honeycomb"</span> /&gt;</span>
+</code></pre><p>其中在ImageView主要的设置为<code>android:transitionName=&quot;transition_album_cover&quot;</code><br>两个View中的android:transitionName需一致</p>
+<p>接下来上Activity间跳转关键代码</p>
+<pre><code>imageView = (ImageView) findViewById(R.id.imageView);
+imageView.setOnClickListener(<span class="keyword">new</span> View.OnClickListener() {
+    @Override
+    <span class="keyword">public</span> <span class="keyword">void</span> onClick(View v) {
+
+
+        Intent intent = <span class="keyword">new</span> Intent(Activity1.<span class="keyword">this</span>, Activity2.<span class="keyword">class</span>);
+        String transitionName = <span class="string">"transition_album_cover"</span>;
+        ActivityOptionsCompat <span class="keyword">options</span> =
+                ActivityOptionsCompat.makeSceneTransitionAnimation(Activity1.<span class="keyword">this</span>,
+                        imageView,          <span class="comment">// The view which starts the transition</span>
+                        transitionName      <span class="comment">// The transitionName of the view we’re transitioning to</span>
+                );
+        ActivityCompat.startActivity(Activity2.<span class="keyword">this</span>, intent, <span class="keyword">options</span>.toBundle());
+    }
+});
+</code></pre><p>其中参数transitionName要与xml中View的android:transitionName值对应</p>
+<p>就酱~</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>依旧先上效果<img src="/pic/md_jump.gif" width="160" height=""></p>
+<p>在点击Activity1中的图片，跳转至Activity2。系统会根据两个Activity中图片的大小和位置，动态展现动画。</p>
+<p>图中两]]>
+    </summary>
+    
+      <category term="Android" scheme="http://wangqiankun.github.io/tags/Android/"/>
+    
+      <category term="MaterialDesign" scheme="http://wangqiankun.github.io/tags/MaterialDesign/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Toolbar的滚动效果]]></title>
+    <link href="http://wangqiankun.github.io/2015/11/20/Toolbar%E7%9A%84%E6%BB%9A%E5%8A%A8%E6%95%88%E6%9E%9C/"/>
+    <id>http://wangqiankun.github.io/2015/11/20/Toolbar的滚动效果/</id>
+    <published>2015-11-20T06:57:07.000Z</published>
+    <updated>2015-11-20T07:36:04.000Z</updated>
+    <content type="html"><![CDATA[<p>效果不错，拿出单发个。如图<br><img src="/pic/md_scroll.gif" width="160" height=""></p>
+<p>整个Toolbar的背景是一个图片，当向上滚动后，图片逐渐消失，Toolbar背景变成默认效果，Title也会动态的改变字体大小，以适应变小后的效果</p>
+<p>图中界面可以分为两个部分，一个为Toolbar，展开时设置的为200dp，另一个为Toolbar下的主要内容</p>
+<p>看下xml中的根布局</p>
+<pre><code><span class="tag">&lt;<span class="title">android.support.design.widget.CoordinatorLayout</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span>
+    <span class="attribute">xmlns:app</span>=<span class="value">"http://schemas.android.com/apk/res-auto"</span>
+    <span class="attribute">xmlns:tools</span>=<span class="value">"http://schemas.android.com/tools"</span>
+    <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span>
+    <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span>
+    <span class="attribute">android:fitsSystemWindows</span>=<span class="value">"true"</span>
+    <span class="attribute">tools:context</span>=<span class="value">".MainActivity"</span>&gt;</span>
+
+    <span class="comment">&lt;!--第一部分的Toolbar--&gt;</span>
+    <span class="tag">&lt;<span class="title">include</span> <span class="attribute">layout</span>=<span class="value">"@layout/toolbar"</span> /&gt;</span>
+
+    <span class="comment">&lt;!--第二部分为Toolbar下的主要内容--&gt;</span>
+    <span class="tag">&lt;<span class="title">android.support.v4.widget.NestedScrollView</span>
+        <span class="attribute">android:id</span>=<span class="value">"@+id/item_detail_container"</span>
+        <span class="attribute">android:layout_width</span>=<span class="value">"match_parent"</span>
+        <span class="attribute">android:layout_height</span>=<span class="value">"match_parent"</span>
+        <span class="attribute">app:layout_behavior</span>=<span class="value">"@string/appbar_scrolling_view_behavior"</span>&gt;</span>
+
+        <span class="tag">&lt;<span class="title">include</span> <span class="attribute">layout</span>=<span class="value">"@layout/content_main"</span> /&gt;</span>
+
+    <span class="tag">&lt;/<span class="title">android.support.v4.widget.NestedScrollView</span>&gt;</span>
+
+<span class="tag">&lt;/<span class="title">android.support.design.widget.CoordinatorLayout</span>&gt;</span>
+</code></pre><p>第二部分必须要有滚动，才会有上图中的效果，所以在<code>content_main</code>外套了一层<code>android.support.v4.widget.NestedScrollView</code></p>
+<p>其中toolbar的布局如下</p>
+<pre><code>&lt;android<span class="class">.support</span><span class="class">.design</span><span class="class">.widget</span><span class="class">.AppBarLayout</span> xmlns:android=<span class="string">"http://schemas.android.com/apk/res/android"</span>
+    xmlns:app=<span class="string">"http://schemas.android.com/apk/res-auto"</span>
+    android:id=<span class="string">"@+id/app_bar"</span>
+    android:layout_width=<span class="string">"match_parent"</span>
+    android:layout_height=<span class="string">"200dp"</span>
+    android:fitsSystemWindows=<span class="string">"true"</span>
+    android:theme=<span class="string">"@style/ThemeOverlay.AppCompat.Dark.ActionBar"</span>&gt;
+
+    &lt;android<span class="class">.support</span><span class="class">.design</span><span class="class">.widget</span><span class="class">.CollapsingToolbarLayout</span>
+        android:id=<span class="string">"@+id/toolbar_layout"</span>
+        android:layout_width=<span class="string">"match_parent"</span>
+        android:layout_height=<span class="string">"match_parent"</span>
+        android:fitsSystemWindows=<span class="string">"true"</span>
+        app:contentScrim=<span class="string">"?attr/colorPrimary"</span>
+        android:<span class="attribute">background</span>=<span class="string">"@mipmap/ic_launcher"</span>
+        app:layout_scrollFlags=<span class="string">"scroll|exitUntilCollapsed"</span>
+        app:toolbarId=<span class="string">"@+id/toolbar"</span>&gt;
+
+        &lt;android<span class="class">.support</span><span class="class">.v7</span><span class="class">.widget</span><span class="class">.Toolbar</span>
+            android:id=<span class="string">"@+id/toolbar"</span>
+            android:layout_width=<span class="string">"match_parent"</span>
+            android:layout_height=<span class="string">"?attr/actionBarSize"</span>
+            app:layout_collapseMode=<span class="string">"pin"</span>
+            app:popupTheme=<span class="string">"@style/ThemeOverlay.AppCompat.Light"</span> /&gt;
+
+    &lt;/android<span class="class">.support</span><span class="class">.design</span><span class="class">.widget</span><span class="class">.CollapsingToolbarLayout</span>&gt;
+
+&lt;/android<span class="class">.support</span><span class="class">.design</span><span class="class">.widget</span><span class="class">.AppBarLayout</span>&gt;
+</code></pre><p>向上滚动前的高度由<code>android:layout_height=&quot;200dp&quot;</code>控制，此语句放置在最外层的<code>android.support.design.widget.AppBarLayout</code>和放置在里层的<code>android.support.design.widget.CollapsingToolbarLayout</code>效果一致</p>
+<p>不同的是设置背景图片<code>android:background=&quot;@mipmap/ic_launcher&quot;</code>，如果放在里层，png图片中的空白会被主配色代替，放在外层则不会</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>效果不错，拿出单发个。如图<br><img src="/pic/md_scroll.gif" width="160" height=""></p>
+<p>整个Toolbar的背景是一个图片，当向上滚动后，图片逐渐消失，Toolbar背景变成默认效果，Title也会动态的改变]]>
+    </summary>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[Toolbar个人使用总结]]></title>
