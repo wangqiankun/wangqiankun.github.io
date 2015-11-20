@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="Tools," />
+  <meta name="keywords" content="Hexo,next" />
 
 
 
@@ -39,19 +39,35 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="提交代码遇到权限问题：
-12345localhost:main wangqiankun$ git push origin HEAD:refs/for/masterUsername for &apos;http://192.xxx.xx.xxx&apos;: wangqiankunPassword for &apos;http://wangqiankun@192.xxx.xx.xxx&apos;:remote: Unauthorizedf">
+<meta name="description" content="样式如图
+实现比较简单，拿出一个EditText来举例第一步：在xml中，注意EditText外部套了TextInputLayout布局
+
+其中EditText的hint内容，会在点击EditText后移到其左上方
+
+&amp;lt;android.support.design.widget.TextInputLayout
+    android:id=&quot;@+id/input_layout_name&quot;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="那些年我所趟过的坑系列之Git配置双账号">
-<meta property="og:url" content="http://wangqiankun.github.io/2015/10/13/tools/那些年我所趟过的坑系列之Git配置双账号/index.html">
+<meta property="og:title" content="Metarial Design样式EditText的实现">
+<meta property="og:url" content="http://wangqiankun.github.io/2015/11/20/Metarial Design样式EditText/index.html">
 <meta property="og:site_name" content="Qiankun's Blog">
-<meta property="og:description" content="提交代码遇到权限问题：
-12345localhost:main wangqiankun$ git push origin HEAD:refs/for/masterUsername for &apos;http://192.xxx.xx.xxx&apos;: wangqiankunPassword for &apos;http://wangqiankun@192.xxx.xx.xxx&apos;:remote: Unauthorizedf">
-<meta property="og:updated_time" content="2015-10-13T14:16:59.000Z">
+<meta property="og:description" content="样式如图
+实现比较简单，拿出一个EditText来举例第一步：在xml中，注意EditText外部套了TextInputLayout布局
+
+其中EditText的hint内容，会在点击EditText后移到其左上方
+
+&amp;lt;android.support.design.widget.TextInputLayout
+    android:id=&quot;@+id/input_layout_name&quot;">
+<meta property="og:image" content="http://wangqiankun.github.io/pic/md_edittext.png">
+<meta property="og:updated_time" content="2015-11-20T04:04:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="那些年我所趟过的坑系列之Git配置双账号">
-<meta name="twitter:description" content="提交代码遇到权限问题：
-12345localhost:main wangqiankun$ git push origin HEAD:refs/for/masterUsername for &apos;http://192.xxx.xx.xxx&apos;: wangqiankunPassword for &apos;http://wangqiankun@192.xxx.xx.xxx&apos;:remote: Unauthorizedf">
+<meta name="twitter:title" content="Metarial Design样式EditText的实现">
+<meta name="twitter:description" content="样式如图
+实现比较简单，拿出一个EditText来举例第一步：在xml中，注意EditText外部套了TextInputLayout布局
+
+其中EditText的hint内容，会在点击EditText后移到其左上方
+
+&amp;lt;android.support.design.widget.TextInputLayout
+    android:id=&quot;@+id/input_layout_name&quot;">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -61,7 +77,7 @@
   };
 </script>
 
-  <title> 那些年我所趟过的坑系列之Git配置双账号 | Qiankun's Blog </title>
+  <title> Metarial Design样式EditText的实现 | Qiankun's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -160,7 +176,7 @@
           
           
             
-              那些年我所趟过的坑系列之Git配置双账号
+              Metarial Design样式EditText的实现
             
           
         </h1>
@@ -169,8 +185,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-10-13T22:15:15+08:00" content="2015-10-13">
-            2015-10-13
+          <time itemprop="dateCreated" datetime="2015-11-20T11:04:52+08:00" content="2015-11-20">
+            2015-11-20
           </time>
         </span>
 
@@ -180,8 +196,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/10/13/tools/那些年我所趟过的坑系列之Git配置双账号/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/13/tools/那些年我所趟过的坑系列之Git配置双账号/" itemprop="commentsCount"></span>
+              <a href="/2015/11/20/Metarial Design样式EditText/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/20/Metarial Design样式EditText/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -195,43 +211,83 @@
       
 
       
-        <span itemprop="articleBody"><p>提交代码遇到权限问题：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">localhost:</span>main wangqiankun<span class="variable">$ </span>git push origin <span class="constant">HEAD</span><span class="symbol">:refs/for/master</span></span><br><span class="line"><span class="constant">Username</span> <span class="keyword">for</span> <span class="string">'http://192.xxx.xx.xxx'</span><span class="symbol">:</span> wangqiankun</span><br><span class="line"><span class="constant">Password</span> <span class="keyword">for</span> <span class="string">'http://wangqiankun@192.xxx.xx.xxx'</span><span class="symbol">:</span></span><br><span class="line"><span class="symbol">remote:</span> <span class="constant">Unauthorized</span></span><br><span class="line"><span class="symbol">fatal:</span> <span class="constant">Authentication</span> failed <span class="keyword">for</span> <span class="string">'http://192.xxx.xx.xxx/biz/mobile/dd-android-agent/'</span></span><br></pre></td></tr></table></figure>
-<p>##错误</p>
-<ol>
-<li>在clone代码时需要选中“clone with commit-msg hook”和“SSH”两个选项<br>拷贝clone代码回车后，如果让你输入账号就是操作不正确，哪怕输入后能down代码</li>
-<li>配置config时需如下输入</li>
-</ol>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hexcolor">#Def</span>ault work user (wangqiankun@zufangit.cn)</span><br><span class="line">Host <span class="number">192</span><span class="class">.xxx</span><span class="class">.xx</span><span class="class">.xxx</span></span><br><span class="line">        User wangqiankun</span><br><span class="line">        HostName <span class="number">192</span><span class="class">.xxx</span><span class="class">.xx</span><span class="class">.xxx</span></span><br><span class="line">        IdentityFile ~/.ssh/id_rsa</span><br><span class="line"><span class="id">#GitHub</span> user (wangqiankun@outloo.com)</span><br><span class="line">Host github<span class="class">.com</span></span><br><span class="line">        User wangqiankun@outlook<span class="class">.com</span></span><br><span class="line">        HostName github<span class="class">.com</span></span><br><span class="line">        IdentityFile ~/.ssh/gitgub_rsa</span><br><span class="line">~</span><br></pre></td></tr></table></figure>
-<p>注意细节：</p>
-<ol>
-<li>Host与HostName需一致，并且“192.xxx.xx.xxx”不可写为“<a href="http://192.xxx.xx.xxx/”" target="_blank" rel="external">http://192.xxx.xx.xxx/”</a></li>
-<li>“~/.ssh/id_rsa”中“id_rsa”文件与账号对应</li>
-</ol>
-<h3 id="BaiBai!">BaiBai!</h3></span>
+        <span itemprop="articleBody"><p>样式如图<br><img src="/pic/md_edittext.png" width="160" height=""></p>
+<p>实现比较简单，拿出一个EditText来举例<br>第一步：在xml中，注意EditText外部套了TextInputLayout布局</p>
+<blockquote>
+<p>其中EditText的hint内容，会在点击EditText后移到其左上方</p>
+</blockquote>
+<pre><code>&lt;android<span class="class">.support</span><span class="class">.design</span><span class="class">.widget</span><span class="class">.TextInputLayout</span>
+    android:id=<span class="string">"@+id/input_layout_name"</span>
+    android:layout_width=<span class="string">"match_parent"</span>
+    android:layout_height=<span class="string">"wrap_content"</span>&gt;
+
+    &lt;EditText
+        android:id=<span class="string">"@+id/input_name"</span>
+        android:layout_width=<span class="string">"match_parent"</span>
+        android:layout_height=<span class="string">"wrap_content"</span>
+        android:singleLine=<span class="string">"true"</span>
+        android:hint=<span class="string">"@string/hint_name"</span> /&gt;
+&lt;/android<span class="class">.support</span><span class="class">.design</span><span class="class">.widget</span><span class="class">.TextInputLayout</span>&gt;
+</code></pre><p>第二步：代码中实现校验提示等功能</p>
+<blockquote>
+<p>在校验方法中，inputLayoutName.setError(“”)，set内容在EditText下方显示</p>
+</blockquote>
+<pre><code>TextInputLayout inputLayoutName = (TextInputLayout) findViewById(R.id.input_layout_name);
+EditText inputName = (EditText) findViewById(R.id.input_name);
+
+<span class="keyword">private</span> <span class="function"><span class="keyword">boolean</span> <span class="title">isNameValid</span><span class="params">()</span> </span>{
+    <span class="keyword">if</span> (inputName.getText().toString().trim().isEmpty()) {
+        inputLayoutName.setError(getString(R.string.err_msg_name));
+        requestFocus(inputName);
+        <span class="keyword">return</span> <span class="keyword">false</span>;
+    } <span class="keyword">else</span> {
+        inputLayoutName.setErrorEnabled(<span class="keyword">false</span>);
+    }
+
+    <span class="keyword">return</span> <span class="keyword">true</span>;
+}
+
+
+inputName.addTextChangedListener(<span class="keyword">new</span> MyTextWatcher(inputName));
+
+<span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">MyTextWatcher</span> <span class="keyword">implements</span> <span class="title">TextWatcher</span> </span>{
+
+   <span class="keyword">private</span> View view;
+
+   <span class="function"><span class="keyword">private</span> <span class="title">MyTextWatcher</span><span class="params">(View view)</span> </span>{
+       <span class="keyword">this</span>.view = view;
+   }
+
+   <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">beforeTextChanged</span><span class="params">(CharSequence charSequence, <span class="keyword">int</span> i, <span class="keyword">int</span> i1, <span class="keyword">int</span> i2)</span> </span>{
+   }
+
+   <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onTextChanged</span><span class="params">(CharSequence charSequence, <span class="keyword">int</span> i, <span class="keyword">int</span> i1, <span class="keyword">int</span> i2)</span> </span>{
+   }
+
+   <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">afterTextChanged</span><span class="params">(Editable editable)</span> </span>{
+       <span class="keyword">switch</span> (view.getId()) {
+           <span class="keyword">case</span> R.id.input_name:
+               isNameValid();
+               <span class="keyword">break</span>;
+       }
+   }
+}
+</code></pre></span>
       
     </div>
 
     <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Tools/" rel="tag">#Tools</a>
-          
-        </div>
       
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/13/AndroidSudio下用butterknife注解/" rel="prev">AndroidSudio下用butterknife注解</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/13/tools/Studio使用Gerrit插件/" rel="next">Studio使用Gerrit插件</a>
+              <a href="/2015/11/12/RecyclerView使用-md/" rel="next">RecyclerView使用</a>
             
           </div>
         </div>
@@ -256,8 +312,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/10/13/tools/那些年我所趟过的坑系列之Git配置双账号/"
-                   data-title="那些年我所趟过的坑系列之Git配置双账号" data-url="http://wangqiankun.github.io/2015/10/13/tools/那些年我所趟过的坑系列之Git配置双账号/">
+              <div class="ds-thread" data-thread-key="2015/11/20/Metarial Design样式EditText/"
+                   data-title="Metarial Design样式EditText的实现" data-url="http://wangqiankun.github.io/2015/11/20/Metarial Design样式EditText/">
               </div>
             
           </div>
@@ -346,7 +402,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#BaiBai!"><span class="nav-number">1.</span> <span class="nav-text">BaiBai!</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

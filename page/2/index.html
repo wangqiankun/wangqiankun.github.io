@@ -158,6 +158,87 @@
           
           
             
+              <a class="post-title-link" href="/2015/10/13/tools/那些年我所趟过的坑系列之Git配置双账号/" itemprop="url">
+                那些年我所趟过的坑系列之Git配置双账号
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-10-13T22:15:15+08:00" content="2015-10-13">
+            2015-10-13
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/10/13/tools/那些年我所趟过的坑系列之Git配置双账号/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/13/tools/那些年我所趟过的坑系列之Git配置双账号/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>提交代码遇到权限问题：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">localhost:</span>main wangqiankun<span class="variable">$ </span>git push origin <span class="constant">HEAD</span><span class="symbol">:refs/for/master</span></span><br><span class="line"><span class="constant">Username</span> <span class="keyword">for</span> <span class="string">'http://192.xxx.xx.xxx'</span><span class="symbol">:</span> wangqiankun</span><br><span class="line"><span class="constant">Password</span> <span class="keyword">for</span> <span class="string">'http://wangqiankun@192.xxx.xx.xxx'</span><span class="symbol">:</span></span><br><span class="line"><span class="symbol">remote:</span> <span class="constant">Unauthorized</span></span><br><span class="line"><span class="symbol">fatal:</span> <span class="constant">Authentication</span> failed <span class="keyword">for</span> <span class="string">'http://192.xxx.xx.xxx/biz/mobile/dd-android-agent/'</span></span><br></pre></td></tr></table></figure>
+<p>##错误</p>
+<ol>
+<li>在clone代码时需要选中“clone with commit-msg hook”和“SSH”两个选项<br>拷贝clone代码回车后，如果让你输入账号就是操作不正确，哪怕输入后能down代码</li>
+<li>配置config时需如下输入</li>
+</ol>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hexcolor">#Def</span>ault work user (wangqiankun@zufangit.cn)</span><br><span class="line">Host <span class="number">192</span><span class="class">.xxx</span><span class="class">.xx</span><span class="class">.xxx</span></span><br><span class="line">        User wangqiankun</span><br><span class="line">        HostName <span class="number">192</span><span class="class">.xxx</span><span class="class">.xx</span><span class="class">.xxx</span></span><br><span class="line">        IdentityFile ~/.ssh/id_rsa</span><br><span class="line"><span class="id">#GitHub</span> user (wangqiankun@outloo.com)</span><br><span class="line">Host github<span class="class">.com</span></span><br><span class="line">        User wangqiankun@outlook<span class="class">.com</span></span><br><span class="line">        HostName github<span class="class">.com</span></span><br><span class="line">        IdentityFile ~/.ssh/gitgub_rsa</span><br><span class="line">~</span><br></pre></td></tr></table></figure>
+<p>注意细节：</p>
+<ol>
+<li>Host与HostName需一致，并且“192.xxx.xx.xxx”不可写为“<a href="http://192.xxx.xx.xxx/”" target="_blank" rel="external">http://192.xxx.xx.xxx/”</a></li>
+<li>“~/.ssh/id_rsa”中“id_rsa”文件与账号对应</li>
+</ol>
+<h3 id="BaiBai!">BaiBai!</h3></span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/10/13/tools/Studio使用Gerrit插件/" itemprop="url">
                 Studio使用Gerrit插件
               </a>
@@ -749,7 +830,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
