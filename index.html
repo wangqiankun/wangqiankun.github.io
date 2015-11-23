@@ -158,6 +158,263 @@
           
           
             
+              <a class="post-title-link" href="/2015/11/23/Android TextView真实字高研究/" itemprop="url">
+                Android TextView真实字高研究
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-11-23T20:31:54+08:00" content="2015-11-23">
+            2015-11-23
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/11/23/Android TextView真实字高研究/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/23/Android TextView真实字高研究/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>#这一直是Android开发的痛点！<br>众说周知，Android开发中TextView控件有个无法解决的“bug”–TextView总是在上下有间距，导致在画界面的时候，都要根据UE给的标注做几次复杂的减法运算，累倒不说，还是可能会被UE打会重改！！！</p>
+<p>终于有一天我发现了个方法<code>android:includeFontPadding=&quot;true&quot;</code>，欣喜若狂。屁颠屁颠的加上，还是不能用啊…世间还有真情？世间还有真爱？？</p>
+<p>很久很久以后，又想解决这个问题了。也许是天意，让我看到了这个图（有些错误的标注，请无视）<img src="/pic/android_textview.png" alt="盗图哈"></p>
+<p>大致就是说，Google大牛这样做是有道理的，毕竟世界上有这么多的语言不是?为了兼顾除中文外的特殊语言（隐约有些奇怪），好人Google就在上下各加上一些高度，还能获取每块的大小。</p>
+<p>于是做了些数学运算，设置字号为10、50、100后的各块大小。log如下，看下规律</p>
+<pre><code><span class="attribute">D/Aige</span>: <span class="string">top：-10.561523</span>
+<span class="attribute">D/Aige</span>: <span class="string">ascent：-9.277344</span>
+<span class="attribute">D/Aige</span>: <span class="string">leading：0.0</span>
+<span class="attribute">D/Aige</span>: <span class="string">descent：2.4414063</span>
+<span class="attribute">D/Aige</span>: <span class="string">bottom：2.709961</span>
+<span class="attribute">D/Aige</span>: <span class="string">top-ascent/ascent：0.13842106</span>
+<span class="attribute">D/Aige</span>: <span class="string">bottom/ascent：0.29210526</span>
+
+<span class="http">
+<span class="attribute">D/Aige</span>: <span class="string">top：-52.807617</span>
+<span class="attribute">D/Aige</span>: <span class="string">ascent：-46.38672</span>
+<span class="attribute">D/Aige</span>: <span class="string">leading：0.0</span>
+<span class="attribute">D/Aige</span>: <span class="string">descent：12.207031</span>
+<span class="attribute">D/Aige</span>: <span class="string">bottom：13.549805</span>
+<span class="attribute">D/Aige</span>: <span class="string">top-ascent/ascent：0.13842106</span>
+<span class="attribute">D/Aige</span>: <span class="string">bottom/ascent：0.29210526</span>
+
+<span class="http"><span class="attribute">D/Aige</span>: <span class="string">top：-105.615234</span>
+<span class="attribute">D/Aige</span>: <span class="string">ascent：-92.77344</span>
+<span class="attribute">D/Aige</span>: <span class="string">leading：0.0</span>
+<span class="attribute">D/Aige</span>: <span class="string">descent：24.414063</span>
+<span class="attribute">D/Aige</span>: <span class="string">bottom：27.09961</span>
+<span class="attribute">D/Aige</span>: <span class="string">top-ascent/ascent：0.13842106</span>
+<span class="attribute">D/Aige</span>: <span class="string">bottom/ascent：0.29210526</span></span></span>
+</code></pre><p>他们的比值是一样的！<br>我想大家都应该懂了，请记住他们<br>目前已经把这个比例给UE了，初步测试，改良后的标注，没问题。<br>等明天UE改进下标注，在来反馈结果。期待~</p>
+<pre><code>top-ascent/ascent：<span class="number">0.13842106</span>
+bottom/ascent：<span class="number">0.29210526</span>
+</code></pre><p>以上一切想法的来源均来自<a href="http://blog.csdn.net/aigestudio/article/details/41447349" target="_blank" rel="external">请查看</a>，感谢AigeStudio大牛!!! </p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/11/23/Activity研究之isFinishing()与isDestroyed()/" itemprop="url">
+                Activity研究之isFinishing()与isDestroyed()
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-11-23T15:20:31+08:00" content="2015-11-23">
+            2015-11-23
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/11/23/Activity研究之isFinishing()与isDestroyed()/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/23/Activity研究之isFinishing()与isDestroyed()/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>App carsh后，经常会遇到些奇奇怪怪的问题，很多都是因为Activity finish后，还在这个Activity操作相关数据的情况。这就需要进行对Activity的状态进行判断。google好久，大部分都跟这个博文中说的类似<a href="http://sdywcd.iteye.com/blog/2061734" target="_blank" rel="external">如何判断android activity是否运行</a>。</p>
+<p>文章很好，可是，总觉得还有更好的东西。所以就在Activity源码上（其实都是.出来的）看到有两个方法，定睛，就是它！</p>
+<pre><code>/**
+ * Check <span class="keyword">to</span> see whether this activity <span class="keyword">is</span> <span class="keyword">in</span> <span class="keyword">the</span> process <span class="keyword">of</span> finishing,
+ * either because you called {@link <span class="comment">#finish} on it or someone else</span>
+ * has requested <span class="keyword">that</span> <span class="keyword">it</span> finished.  This <span class="keyword">is</span> often used <span class="keyword">in</span>
+ * {@link <span class="comment">#onPause} to determine whether the activity is simply pausing or</span>
+ * completely finishing.
+ *
+ * @<span class="constant">return</span> If <span class="keyword">the</span> activity <span class="keyword">is</span> finishing, returns <span class="constant">true</span>; <span class="keyword">else</span> returns <span class="constant">false</span>.
+ *
+ * @see <span class="comment">#finish</span>
+ */
+public <span class="type">boolean</span> isFinishing() {
+<span class="command">    return</span> mFinished;
+}
+
+/**
+ * Returns <span class="constant">true</span> <span class="keyword">if</span> <span class="keyword">the</span> final {@link <span class="comment">#onDestroy()} call has been made</span>
+ * <span class="function_start"><span class="keyword">on</span></span> <span class="keyword">the</span> Activity, so this instance <span class="keyword">is</span> now dead.
+ */
+public <span class="type">boolean</span> isDestroyed() {
+<span class="command">    return</span> mDestroyed;
+}
+</code></pre><p>额，My English is poor，他两个区别很大吗？<br>Demo之</p>
+<p>Activity代码（Activity2基本一样）</p>
+<pre><code>public <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">AppCompatActivity</span> {</span>
+    <span class="type">MyThread</span> myThread;
+
+    <span class="annotation">@Override</span>
+    <span class="keyword">protected</span> void onCreate(<span class="type">Bundle</span> savedInstanceState) {
+        <span class="keyword">super</span>.onCreate(savedInstanceState);
+        setContentView(<span class="type">R</span>.layout.activity_main);
+
+        myThread = <span class="keyword">new</span> <span class="type">MyThread</span>();
+        myThread.run();
+
+    }
+
+    <span class="comment">//关闭Activity</span>
+    public void close(<span class="type">View</span> view) {
+        <span class="type">MainActivity</span>.<span class="keyword">this</span>.finish();
+        myThread.run();
+    }
+
+    <span class="comment">//跳转到Activity2</span>
+    public void jump2Activity2(<span class="type">View</span> view) {
+        <span class="type">Intent</span> intent = <span class="keyword">new</span> <span class="type">Intent</span>(<span class="keyword">this</span>, <span class="type">MainActivity2</span>.<span class="keyword">class</span>);
+        startActivity(intent);
+    }
+
+
+    public <span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Thread</span> {</span>
+
+        <span class="annotation">@Override</span>
+        public void run() {
+            <span class="keyword">super</span>.run();
+            <span class="type">Log</span>.d(<span class="string">"activity-isDestroyed"</span>, <span class="type">MainActivity</span>.<span class="keyword">this</span>.isDestroyed() + <span class="string">""</span>);
+            <span class="type">Log</span>.d(<span class="string">"activity-isFinishing"</span>, <span class="type">MainActivity</span>.<span class="keyword">this</span>.isFinishing() + <span class="string">""</span>);
+        }
+    }
+
+}
+</code></pre><p>Log日志</p>
+<pre><code>打开Activity1
+<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">17</span>:<span class="number">12.142</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isDestroyed: <span class="literal">false</span>
+<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">17</span>:<span class="number">12.142</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isFinishing: <span class="literal">false</span>
+打开Activity2
+<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">28.213</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isDestroyed: <span class="literal">false</span>
+<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">28.213</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isFinishing: <span class="literal">false</span>
+关闭Activity2
+<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">35.476</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isDestroyed: <span class="literal">false</span>
+<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">35.476</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isFinishing: <span class="literal">true</span>
+关闭Activity1
+<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">40.503</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isDestroyed: <span class="literal">false</span>
+<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">40.503</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isFinishing: <span class="literal">true</span>
+</code></pre><p><code>isDestroyed()</code>基本都是false。接着又去Activity源码瞅瞅，唯一有用的代码却又没有调用，包括父类。</p>
+<pre><code>final void performDestroy<span class="literal">()</span> {
+    mDestroyed = <span class="literal">true</span>;
+    mWindow.destroy<span class="literal">()</span>;
+    mFragments.dispatchDestroy<span class="literal">()</span>;
+    onDestroy<span class="literal">()</span>;
+    mFragments.doLoaderDestroy<span class="literal">()</span>;
+    <span class="keyword">if</span> (mVoiceInteractor != null) {
+        mVoiceInteractor.detachActivity<span class="literal">()</span>;
+    }
+}
+</code></pre><p>所以就用<code>isFinishing()</code>了呗。</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
               <a class="post-title-link" href="/2015/11/20/MaterialDesign跳转动画效果实现/" itemprop="url">
                 MaterialDesign跳转动画效果实现
               </a>
@@ -712,8 +969,24 @@ toolbar.setNavigationOnClickListener(<span class="keyword">new</span> View.OnCli
     mSearchView.findViewById(R.id.search_src_text);
     <span class="comment">//设置搜索框中输入文字的颜色</span>
     textView.setTextColor(Color.BLACK);
+    <span class="comment">//搜索内容监听</span>
+    searchView.setOnQueryTextListener(<span class="keyword">new</span> SearchView.OnQueryTextListener() {
+
+        <span class="annotation">@Override</span>
+        <span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">onQueryTextSubmit</span><span class="params">(String query)</span> </span>{
+            Log.d(<span class="string">"onQueryTextSubmit"</span>, query);
+            <span class="keyword">return</span> <span class="keyword">false</span>;
+        }
+
+        <span class="annotation">@Override</span>
+        <span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">onQueryTextChange</span><span class="params">(String newText)</span> </span>{
+            Log.d(<span class="string">"onQueryTextChange"</span>, newText);
+            <span class="keyword">return</span> <span class="keyword">false</span>;
+        }
+    });        
+
     <span class="keyword">return</span> <span class="keyword">true</span>;
-}
+}            
 </code></pre><h4 id="设置Toolbar上的分享功能">设置Toolbar上的分享功能</h4><p>还以main.xml中的搜索功能模块举例</p>
 <pre><code>&lt;<span class="property">item</span>
     android:<span class="property">id</span>=<span class="string">"@+id/nav_share"</span>
@@ -1103,230 +1376,11 @@ toolbar.setNavigationOnClickListener(<span class="keyword">new</span> View.OnCli
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/10/13/RxJava小笔记/" itemprop="url">
-                RxJava小笔记
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-10-13T22:29:13+08:00" content="2015-10-13">
-            2015-10-13
-          </time>
-        </span>
-
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/10/13/RxJava小笔记/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/13/RxJava小笔记/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>自用，摘抄于<a href="http://blog.csdn.net/lzyzsd/article/category/2767743" target="_blank" rel="external">大头鬼blog</a></p>
-<p>###基本流程<br>一般响应式编程的信息流如下所示：<br>Observable -&gt; Operator 1 -&gt; Operator 2 -&gt; Operator 3 -&gt; Subscriber<br>observable是事件的生产者，subscriber是事件最终的消费者。<br>Operators 即操作符：为了解决对Observable对象的变换的问题。用于在Observable和最终的Subscriber之间修改Observable发出的事件</p>
-<ol>
-<li>Observable<string> stringObservable = Observable.create(new Observable.OnSub…){…}</string></li>
-<li>Subscriber<string> subscriber = new Subscriber<string>() {…}</string></string></li>
-<li>stringObservable.subscribe(subscriber);<br>通俗解释下上述代码：1为创建事件 2.</li>
-</ol>
-<h4 id="响应式特点">响应式特点</h4><p>Subscriber有三个方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.subscribe(<span class="keyword">new</span> Subscriber&lt;String&gt;() &#123;</span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNext</span><span class="params">(String s)</span> </span>&#123; System.out.println(s); &#125;</span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCompleted</span><span class="params">()</span> </span>&#123; System.out.println(<span class="string">"Completed!"</span>); &#125;</span><br><span class="line">	<span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable e)</span> </span>&#123; System.out.println(<span class="string">"Ouch!"</span>); &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
-<p>1.只要有异常发生onError()一定会被调用</p>
-<p>这极大的简化了错误处理。只需要在一个地方处理错误即可以。</p>
-<p>2.操作符不需要处理异常</p>
-<p>将异常处理交给订阅者来做，Observerable的操作符调用链中一旦有一个抛出了异常，就会直接执行onError()方法。</p>
-<p>3.你能够知道什么时候订阅者已经接收了全部的数据。</p>
-<p>####Operators常用操作符</p>
-<ol>
-<li>map 就是用来把把一个事件转换为另一个事件的。</li>
-<li>flatMap 它可以返回任何它想返回的Observable对象。</li>
-<li>filter(title -&gt; title != null)  过滤某种不满足条件，比如!＝nullfilter()输出和输入相同的元素，并且会过滤掉那些不满足检查条件的。</li>
-<li>take()输出最多指定数量的结果。 take(5)</li>
-<li>doOnNext()允许我们在每次输出一个元素之前做一些额外的事情，比如这里的保存标题。.doOnNext(title -&gt; saveTitle(title))</li>
-<li>.subscribeOn(Schedulers.io()) 指定在Schedulers io中执行</li>
-<li>.observeOn(AndroidSchedulers.mainThread()) 指定在主线程中执行</li>
-<li>Observable.subscribe()返回一个Observable  其中纪录了是否与订阅者有关联 。调用unsubscribing方法可以取消关联，并立即停止整个调用链</li>
-<li>可自定义</li>
-</ol>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/10/13/Studio使用Java8的lambda命令/" itemprop="url">
-                Studio使用Java8的lambda命令
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-10-13T22:27:30+08:00" content="2015-10-13">
-            2015-10-13
-          </time>
-        </span>
-
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/10/13/Studio使用Java8的lambda命令/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/13/Studio使用Java8的lambda命令/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>###使用前<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Button</span> button = (<span class="type">Button</span>) findViewById(R.id.button);</span><br><span class="line">button.setOnClickListener(new <span class="type">View</span>.<span class="type">OnClickListener</span>() &#123;</span><br><span class="line">   @<span class="type">Override</span></span><br><span class="line">   public <span class="type">void</span> onClick(<span class="type">View</span> v) &#123;</span><br><span class="line">       <span class="keyword">method</span>();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>###使用后(我所知道的所有的匿名内部类都可简化)<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Button</span> button = (<span class="type">Button</span>) findViewById(R.id.button);</span><br><span class="line">button.setOnClickListener(v -&gt; <span class="keyword">method</span>());</span><br></pre></td></tr></table></figure></p>
-<p>1.在Project工程目录使用</p>
-<pre><code><span class="keyword">dependencies</span> {
-<span class="keyword">classpath</span> <span class="string">'com.android.tools.build:gradle:1.2.3'</span>
-<span class="keyword">classpath</span> <span class="string">'me.tatarka:gradle-retrolambda:3.1.0'</span>
-<span class="comment">// <span class="doctag">NOTE:</span> Do not place your application dependencies here; they belong</span>
-<span class="comment">// in the individual module build.gradle files</span>
-}
-</code></pre><p> 2.在Moudule中使用 以下是例子</p>
-<pre><code>apply plugin: <span class="string">'com.android.application'</span>
-<span class="comment">//添加－1</span>
-apply plugin: <span class="string">'me.tatarka.retrolambda'</span>
-
-
-android {
-compileSdkVersion <span class="number">21</span>
-buildToolsVersion <span class="string">"21.1.2"</span>
-
-defaultConfig {
-    applicationId <span class="string">"com.wqk.demo.rxandroid"</span>
-    minSdkVersion <span class="number">14</span>
-    targetSdkVersion <span class="number">21</span>
-    versionCode <span class="number">1</span>
-    versionName <span class="string">"1.0"</span>
-}
-
-<span class="comment">//添加－2</span>
-compileOptions {
-    <span class="keyword">sourceCompatibility</span> JavaVersion.VERSION_1_8
-    <span class="keyword">targetCompatibility</span> JavaVersion.VERSION_1_8
-}
-
-buildTypes {
-    release {
-        minifyEnabled <span class="keyword">false</span>
-        proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span>
-        }
-    }
-}
-
-<span class="keyword">dependencies</span> {
-    <span class="keyword">compile</span> <span class="keyword">fileTree</span>(<span class="keyword">include</span>: [<span class="string">'*.jar'</span>], dir: <span class="string">'libs'</span>)
-    <span class="keyword">compile</span> <span class="string">'com.android.support:appcompat-v7:22.2.0'</span>
-    <span class="keyword">compile</span> <span class="string">'io.reactivex:rxandroid:0.25.0'</span>
-}
-
-<span class="keyword">repositories</span> {
-    mavenCentral()
-}
-
-<span class="comment">//添加JAVA8支持 －3</span>
-retrolambda {
-<span class="comment">//Comend＋；可以弹出本地JDK地址设置界面，拷贝就行</span>
-   jdk <span class="string">"/Library/Java/JavaVirtualMachines/jdk1.8.0_20.jdk/Contents/Home"</span>
-}
-</code></pre><p>3.注意事项：需下载JAVA8 （编码可以不用，在Gradle另配）</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">&raquo;</a>
   </nav>
 
  </div>
@@ -1360,7 +1414,7 @@ retrolambda {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

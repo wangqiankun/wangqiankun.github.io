@@ -53,7 +53,7 @@
 
 &amp;lt;android.support.design.widget.CoordinatorLayout
     xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;">
-<meta property="og:updated_time" content="2015-11-20T08:16:58.000Z">
+<meta property="og:updated_time" content="2015-11-23T09:16:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Toolbar个人使用总结">
 <meta name="twitter:description" content="Toolbar的使用过程步骤1-xml中集成
@@ -356,8 +356,24 @@ toolbar.setNavigationOnClickListener(<span class="keyword">new</span> View.OnCli
     mSearchView.findViewById(R.id.search_src_text);
     <span class="comment">//设置搜索框中输入文字的颜色</span>
     textView.setTextColor(Color.BLACK);
+    <span class="comment">//搜索内容监听</span>
+    searchView.setOnQueryTextListener(<span class="keyword">new</span> SearchView.OnQueryTextListener() {
+
+        <span class="annotation">@Override</span>
+        <span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">onQueryTextSubmit</span><span class="params">(String query)</span> </span>{
+            Log.d(<span class="string">"onQueryTextSubmit"</span>, query);
+            <span class="keyword">return</span> <span class="keyword">false</span>;
+        }
+
+        <span class="annotation">@Override</span>
+        <span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">onQueryTextChange</span><span class="params">(String newText)</span> </span>{
+            Log.d(<span class="string">"onQueryTextChange"</span>, newText);
+            <span class="keyword">return</span> <span class="keyword">false</span>;
+        }
+    });        
+
     <span class="keyword">return</span> <span class="keyword">true</span>;
-}
+}            
 </code></pre><h4 id="设置Toolbar上的分享功能">设置Toolbar上的分享功能</h4><p>还以main.xml中的搜索功能模块举例</p>
 <pre><code>&lt;<span class="property">item</span>
     android:<span class="property">id</span>=<span class="string">"@+id/nav_share"</span>
@@ -470,7 +486,7 @@ toolbar.setNavigationOnClickListener(<span class="keyword">new</span> View.OnCli
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">20</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

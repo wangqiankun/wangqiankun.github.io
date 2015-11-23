@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="Android," />
+  <meta name="keywords" content="Hexo,next" />
 
 
 
@@ -39,22 +39,20 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="只需要要在xml中添加以下字段android:scrollbars=”vertical” //垂直 可以其他滚动方向
-也可以扩展以下配置android:scrollbarStyle=”X” //其中X为outsideOverlay或insideOverlay。android:scrollbarFadeDuration=”X” //其中X表示滚动条从出现到消失的时间，单位是毫秒。
-android:f">
+<meta name="description" content="#这一直是Android开发的痛点！众说周知，Android开发中TextView控件有个无法解决的“bug”–TextView总是在上下有间距，导致在画界面的时候，都要根据UE给的标注做几次复杂的减法运算，累倒不说，还是可能会被UE打会重改！！！
+终于有一天我发现了个方法android:includeFontPadding=&amp;quot;true&amp;quot;，欣喜若狂。屁颠屁颠的加上，还是不能用啊">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TextView中的滚动效果">
-<meta property="og:url" content="http://wangqiankun.github.io/2015/10/13/TextView中的滚动效果/index.html">
+<meta property="og:title" content="Android TextView真实字高研究">
+<meta property="og:url" content="http://wangqiankun.github.io/2015/11/23/Android TextView真实字高研究/index.html">
 <meta property="og:site_name" content="Qiankun's Blog">
-<meta property="og:description" content="只需要要在xml中添加以下字段android:scrollbars=”vertical” //垂直 可以其他滚动方向
-也可以扩展以下配置android:scrollbarStyle=”X” //其中X为outsideOverlay或insideOverlay。android:scrollbarFadeDuration=”X” //其中X表示滚动条从出现到消失的时间，单位是毫秒。
-android:f">
-<meta property="og:updated_time" content="2015-10-13T12:12:04.000Z">
+<meta property="og:description" content="#这一直是Android开发的痛点！众说周知，Android开发中TextView控件有个无法解决的“bug”–TextView总是在上下有间距，导致在画界面的时候，都要根据UE给的标注做几次复杂的减法运算，累倒不说，还是可能会被UE打会重改！！！
+终于有一天我发现了个方法android:includeFontPadding=&amp;quot;true&amp;quot;，欣喜若狂。屁颠屁颠的加上，还是不能用啊">
+<meta property="og:image" content="http://wangqiankun.github.io/pic/android_textview.png">
+<meta property="og:updated_time" content="2015-11-23T13:10:30.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TextView中的滚动效果">
-<meta name="twitter:description" content="只需要要在xml中添加以下字段android:scrollbars=”vertical” //垂直 可以其他滚动方向
-也可以扩展以下配置android:scrollbarStyle=”X” //其中X为outsideOverlay或insideOverlay。android:scrollbarFadeDuration=”X” //其中X表示滚动条从出现到消失的时间，单位是毫秒。
-android:f">
+<meta name="twitter:title" content="Android TextView真实字高研究">
+<meta name="twitter:description" content="#这一直是Android开发的痛点！众说周知，Android开发中TextView控件有个无法解决的“bug”–TextView总是在上下有间距，导致在画界面的时候，都要根据UE给的标注做几次复杂的减法运算，累倒不说，还是可能会被UE打会重改！！！
+终于有一天我发现了个方法android:includeFontPadding=&amp;quot;true&amp;quot;，欣喜若狂。屁颠屁颠的加上，还是不能用啊">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -64,7 +62,7 @@ android:f">
   };
 </script>
 
-  <title> TextView中的滚动效果 | Qiankun's Blog </title>
+  <title> Android TextView真实字高研究 | Qiankun's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -163,7 +161,7 @@ android:f">
           
           
             
-              TextView中的滚动效果
+              Android TextView真实字高研究
             
           
         </h1>
@@ -172,8 +170,8 @@ android:f">
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-10-13T20:11:36+08:00" content="2015-10-13">
-            2015-10-13
+          <time itemprop="dateCreated" datetime="2015-11-23T20:31:54+08:00" content="2015-11-23">
+            2015-11-23
           </time>
         </span>
 
@@ -183,8 +181,8 @@ android:f">
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/10/13/TextView中的滚动效果/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/13/TextView中的滚动效果/" itemprop="commentsCount"></span>
+              <a href="/2015/11/23/Android TextView真实字高研究/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/23/Android TextView真实字高研究/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -198,36 +196,55 @@ android:f">
       
 
       
-        <span itemprop="articleBody"><p>只需要要在xml中添加以下字段<br>android:scrollbars=”vertical” //垂直 可以其他滚动方向</p>
-<p>也可以扩展以下配置<br>android:scrollbarStyle=”X” //其中X为outsideOverlay或insideOverlay。<br>android:scrollbarFadeDuration=”X” //其中X表示滚动条从出现到消失的时间，单位是毫秒。</p>
-<p>android:fadingEdge=”vertical” //设置拉滚动条时 ，边框渐变的方向。</p>
-<blockquote>
-<p>参考资料：<br><a href="http://blog.csdn.net/crazyzhangcrazy/article/details/8596451" target="_blank" rel="external">[Android] TextView的垂直滚动效果</a><br><a href="http://www.open-open.com/lib/view/open1392086471160.html" target="_blank" rel="external">Android View 属性详解</a></p>
-</blockquote>
+        <span itemprop="articleBody"><p>#这一直是Android开发的痛点！<br>众说周知，Android开发中TextView控件有个无法解决的“bug”–TextView总是在上下有间距，导致在画界面的时候，都要根据UE给的标注做几次复杂的减法运算，累倒不说，还是可能会被UE打会重改！！！</p>
+<p>终于有一天我发现了个方法<code>android:includeFontPadding=&quot;true&quot;</code>，欣喜若狂。屁颠屁颠的加上，还是不能用啊…世间还有真情？世间还有真爱？？</p>
+<p>很久很久以后，又想解决这个问题了。也许是天意，让我看到了这个图（有些错误的标注，请无视）<img src="/pic/android_textview.png" alt="盗图哈"></p>
+<p>大致就是说，Google大牛这样做是有道理的，毕竟世界上有这么多的语言不是?为了兼顾除中文外的特殊语言（隐约有些奇怪），好人Google就在上下各加上一些高度，还能获取每块的大小。</p>
+<p>于是做了些数学运算，设置字号为10、50、100后的各块大小。log如下，看下规律</p>
+<pre><code><span class="attribute">D/Aige</span>: <span class="string">top：-10.561523</span>
+<span class="attribute">D/Aige</span>: <span class="string">ascent：-9.277344</span>
+<span class="attribute">D/Aige</span>: <span class="string">leading：0.0</span>
+<span class="attribute">D/Aige</span>: <span class="string">descent：2.4414063</span>
+<span class="attribute">D/Aige</span>: <span class="string">bottom：2.709961</span>
+<span class="attribute">D/Aige</span>: <span class="string">top-ascent/ascent：0.13842106</span>
+<span class="attribute">D/Aige</span>: <span class="string">bottom/ascent：0.29210526</span>
+
+<span class="http">
+<span class="attribute">D/Aige</span>: <span class="string">top：-52.807617</span>
+<span class="attribute">D/Aige</span>: <span class="string">ascent：-46.38672</span>
+<span class="attribute">D/Aige</span>: <span class="string">leading：0.0</span>
+<span class="attribute">D/Aige</span>: <span class="string">descent：12.207031</span>
+<span class="attribute">D/Aige</span>: <span class="string">bottom：13.549805</span>
+<span class="attribute">D/Aige</span>: <span class="string">top-ascent/ascent：0.13842106</span>
+<span class="attribute">D/Aige</span>: <span class="string">bottom/ascent：0.29210526</span>
+
+<span class="http"><span class="attribute">D/Aige</span>: <span class="string">top：-105.615234</span>
+<span class="attribute">D/Aige</span>: <span class="string">ascent：-92.77344</span>
+<span class="attribute">D/Aige</span>: <span class="string">leading：0.0</span>
+<span class="attribute">D/Aige</span>: <span class="string">descent：24.414063</span>
+<span class="attribute">D/Aige</span>: <span class="string">bottom：27.09961</span>
+<span class="attribute">D/Aige</span>: <span class="string">top-ascent/ascent：0.13842106</span>
+<span class="attribute">D/Aige</span>: <span class="string">bottom/ascent：0.29210526</span></span></span>
+</code></pre><p>他们的比值是一样的！<br>我想大家都应该懂了，请记住他们<br>目前已经把这个比例给UE了，初步测试，改良后的标注，没问题。<br>等明天UE改进下标注，在来反馈结果。期待~</p>
+<pre><code>top-ascent/ascent：<span class="number">0.13842106</span>
+bottom/ascent：<span class="number">0.29210526</span>
+</code></pre><p>以上一切想法的来源均来自<a href="http://blog.csdn.net/aigestudio/article/details/41447349" target="_blank" rel="external">请查看</a>，感谢AigeStudio大牛!!! </p>
 </span>
       
     </div>
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Android/" rel="tag">#Android</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/13/使用友盟自定义错误/" rel="prev">使用友盟自定义错误</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/13/使用merge标签 减少布局嵌套/" rel="next">使用merge标签 减少布局嵌套</a>
+              <a href="/2015/11/23/Activity研究之isFinishing()与isDestroyed()/" rel="next">Activity研究之isFinishing()与isDestroyed()</a>
             
           </div>
         </div>
@@ -252,8 +269,8 @@ android:f">
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/10/13/TextView中的滚动效果/"
-                   data-title="TextView中的滚动效果" data-url="http://wangqiankun.github.io/2015/10/13/TextView中的滚动效果/">
+              <div class="ds-thread" data-thread-key="2015/11/23/Android TextView真实字高研究/"
+                   data-title="Android TextView真实字高研究" data-url="http://wangqiankun.github.io/2015/11/23/Android TextView真实字高研究/">
               </div>
             
           </div>

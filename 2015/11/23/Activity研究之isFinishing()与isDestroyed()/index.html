@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="Android," />
+  <meta name="keywords" content="Hexo,next" />
 
 
 
@@ -39,22 +39,19 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="只需要要在xml中添加以下字段android:scrollbars=”vertical” //垂直 可以其他滚动方向
-也可以扩展以下配置android:scrollbarStyle=”X” //其中X为outsideOverlay或insideOverlay。android:scrollbarFadeDuration=”X” //其中X表示滚动条从出现到消失的时间，单位是毫秒。
-android:f">
+<meta name="description" content="App carsh后，经常会遇到些奇奇怪怪的问题，很多都是因为Activity finish后，还在这个Activity操作相关数据的情况。这就需要进行对Activity的状态进行判断。google好久，大部分都跟这个博文中说的类似如何判断android activity是否运行。
+文章很好，可是，总觉得还有更好的东西。所以就在Activity源码上（其实都是.出来的）看到有两个方法，定睛，就是它">
 <meta property="og:type" content="article">
-<meta property="og:title" content="TextView中的滚动效果">
-<meta property="og:url" content="http://wangqiankun.github.io/2015/10/13/TextView中的滚动效果/index.html">
+<meta property="og:title" content="Activity研究之isFinishing()与isDestroyed()">
+<meta property="og:url" content="http://wangqiankun.github.io/2015/11/23/Activity研究之isFinishing()与isDestroyed()/index.html">
 <meta property="og:site_name" content="Qiankun's Blog">
-<meta property="og:description" content="只需要要在xml中添加以下字段android:scrollbars=”vertical” //垂直 可以其他滚动方向
-也可以扩展以下配置android:scrollbarStyle=”X” //其中X为outsideOverlay或insideOverlay。android:scrollbarFadeDuration=”X” //其中X表示滚动条从出现到消失的时间，单位是毫秒。
-android:f">
-<meta property="og:updated_time" content="2015-10-13T12:12:04.000Z">
+<meta property="og:description" content="App carsh后，经常会遇到些奇奇怪怪的问题，很多都是因为Activity finish后，还在这个Activity操作相关数据的情况。这就需要进行对Activity的状态进行判断。google好久，大部分都跟这个博文中说的类似如何判断android activity是否运行。
+文章很好，可是，总觉得还有更好的东西。所以就在Activity源码上（其实都是.出来的）看到有两个方法，定睛，就是它">
+<meta property="og:updated_time" content="2015-11-23T12:34:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TextView中的滚动效果">
-<meta name="twitter:description" content="只需要要在xml中添加以下字段android:scrollbars=”vertical” //垂直 可以其他滚动方向
-也可以扩展以下配置android:scrollbarStyle=”X” //其中X为outsideOverlay或insideOverlay。android:scrollbarFadeDuration=”X” //其中X表示滚动条从出现到消失的时间，单位是毫秒。
-android:f">
+<meta name="twitter:title" content="Activity研究之isFinishing()与isDestroyed()">
+<meta name="twitter:description" content="App carsh后，经常会遇到些奇奇怪怪的问题，很多都是因为Activity finish后，还在这个Activity操作相关数据的情况。这就需要进行对Activity的状态进行判断。google好久，大部分都跟这个博文中说的类似如何判断android activity是否运行。
+文章很好，可是，总觉得还有更好的东西。所以就在Activity源码上（其实都是.出来的）看到有两个方法，定睛，就是它">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -64,7 +61,7 @@ android:f">
   };
 </script>
 
-  <title> TextView中的滚动效果 | Qiankun's Blog </title>
+  <title> Activity研究之isFinishing()与isDestroyed() | Qiankun's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -163,7 +160,7 @@ android:f">
           
           
             
-              TextView中的滚动效果
+              Activity研究之isFinishing()与isDestroyed()
             
           
         </h1>
@@ -172,8 +169,8 @@ android:f">
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-10-13T20:11:36+08:00" content="2015-10-13">
-            2015-10-13
+          <time itemprop="dateCreated" datetime="2015-11-23T15:20:31+08:00" content="2015-11-23">
+            2015-11-23
           </time>
         </span>
 
@@ -183,8 +180,8 @@ android:f">
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/10/13/TextView中的滚动效果/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/13/TextView中的滚动效果/" itemprop="commentsCount"></span>
+              <a href="/2015/11/23/Activity研究之isFinishing()与isDestroyed()/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/23/Activity研究之isFinishing()与isDestroyed()/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -198,36 +195,112 @@ android:f">
       
 
       
-        <span itemprop="articleBody"><p>只需要要在xml中添加以下字段<br>android:scrollbars=”vertical” //垂直 可以其他滚动方向</p>
-<p>也可以扩展以下配置<br>android:scrollbarStyle=”X” //其中X为outsideOverlay或insideOverlay。<br>android:scrollbarFadeDuration=”X” //其中X表示滚动条从出现到消失的时间，单位是毫秒。</p>
-<p>android:fadingEdge=”vertical” //设置拉滚动条时 ，边框渐变的方向。</p>
-<blockquote>
-<p>参考资料：<br><a href="http://blog.csdn.net/crazyzhangcrazy/article/details/8596451" target="_blank" rel="external">[Android] TextView的垂直滚动效果</a><br><a href="http://www.open-open.com/lib/view/open1392086471160.html" target="_blank" rel="external">Android View 属性详解</a></p>
-</blockquote>
+        <span itemprop="articleBody"><p>App carsh后，经常会遇到些奇奇怪怪的问题，很多都是因为Activity finish后，还在这个Activity操作相关数据的情况。这就需要进行对Activity的状态进行判断。google好久，大部分都跟这个博文中说的类似<a href="http://sdywcd.iteye.com/blog/2061734" target="_blank" rel="external">如何判断android activity是否运行</a>。</p>
+<p>文章很好，可是，总觉得还有更好的东西。所以就在Activity源码上（其实都是.出来的）看到有两个方法，定睛，就是它！</p>
+<pre><code>/**
+ * Check <span class="keyword">to</span> see whether this activity <span class="keyword">is</span> <span class="keyword">in</span> <span class="keyword">the</span> process <span class="keyword">of</span> finishing,
+ * either because you called {@link <span class="comment">#finish} on it or someone else</span>
+ * has requested <span class="keyword">that</span> <span class="keyword">it</span> finished.  This <span class="keyword">is</span> often used <span class="keyword">in</span>
+ * {@link <span class="comment">#onPause} to determine whether the activity is simply pausing or</span>
+ * completely finishing.
+ *
+ * @<span class="constant">return</span> If <span class="keyword">the</span> activity <span class="keyword">is</span> finishing, returns <span class="constant">true</span>; <span class="keyword">else</span> returns <span class="constant">false</span>.
+ *
+ * @see <span class="comment">#finish</span>
+ */
+public <span class="type">boolean</span> isFinishing() {
+<span class="command">    return</span> mFinished;
+}
+
+/**
+ * Returns <span class="constant">true</span> <span class="keyword">if</span> <span class="keyword">the</span> final {@link <span class="comment">#onDestroy()} call has been made</span>
+ * <span class="function_start"><span class="keyword">on</span></span> <span class="keyword">the</span> Activity, so this instance <span class="keyword">is</span> now dead.
+ */
+public <span class="type">boolean</span> isDestroyed() {
+<span class="command">    return</span> mDestroyed;
+}
+</code></pre><p>额，My English is poor，他两个区别很大吗？<br>Demo之</p>
+<p>Activity代码（Activity2基本一样）</p>
+<pre><code>public <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">AppCompatActivity</span> {</span>
+    <span class="type">MyThread</span> myThread;
+
+    <span class="annotation">@Override</span>
+    <span class="keyword">protected</span> void onCreate(<span class="type">Bundle</span> savedInstanceState) {
+        <span class="keyword">super</span>.onCreate(savedInstanceState);
+        setContentView(<span class="type">R</span>.layout.activity_main);
+
+        myThread = <span class="keyword">new</span> <span class="type">MyThread</span>();
+        myThread.run();
+
+    }
+
+    <span class="comment">//关闭Activity</span>
+    public void close(<span class="type">View</span> view) {
+        <span class="type">MainActivity</span>.<span class="keyword">this</span>.finish();
+        myThread.run();
+    }
+
+    <span class="comment">//跳转到Activity2</span>
+    public void jump2Activity2(<span class="type">View</span> view) {
+        <span class="type">Intent</span> intent = <span class="keyword">new</span> <span class="type">Intent</span>(<span class="keyword">this</span>, <span class="type">MainActivity2</span>.<span class="keyword">class</span>);
+        startActivity(intent);
+    }
+
+
+    public <span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Thread</span> {</span>
+
+        <span class="annotation">@Override</span>
+        public void run() {
+            <span class="keyword">super</span>.run();
+            <span class="type">Log</span>.d(<span class="string">"activity-isDestroyed"</span>, <span class="type">MainActivity</span>.<span class="keyword">this</span>.isDestroyed() + <span class="string">""</span>);
+            <span class="type">Log</span>.d(<span class="string">"activity-isFinishing"</span>, <span class="type">MainActivity</span>.<span class="keyword">this</span>.isFinishing() + <span class="string">""</span>);
+        }
+    }
+
+}
+</code></pre><p>Log日志</p>
+<pre><code>打开Activity1
+<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">17</span>:<span class="number">12.142</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isDestroyed: <span class="literal">false</span>
+<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">17</span>:<span class="number">12.142</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isFinishing: <span class="literal">false</span>
+打开Activity2
+<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">28.213</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isDestroyed: <span class="literal">false</span>
+<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">28.213</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isFinishing: <span class="literal">false</span>
+关闭Activity2
+<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">35.476</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isDestroyed: <span class="literal">false</span>
+<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">35.476</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isFinishing: <span class="literal">true</span>
+关闭Activity1
+<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">40.503</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isDestroyed: <span class="literal">false</span>
+<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">40.503</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isFinishing: <span class="literal">true</span>
+</code></pre><p><code>isDestroyed()</code>基本都是false。接着又去Activity源码瞅瞅，唯一有用的代码却又没有调用，包括父类。</p>
+<pre><code>final void performDestroy<span class="literal">()</span> {
+    mDestroyed = <span class="literal">true</span>;
+    mWindow.destroy<span class="literal">()</span>;
+    mFragments.dispatchDestroy<span class="literal">()</span>;
+    onDestroy<span class="literal">()</span>;
+    mFragments.doLoaderDestroy<span class="literal">()</span>;
+    <span class="keyword">if</span> (mVoiceInteractor != null) {
+        mVoiceInteractor.detachActivity<span class="literal">()</span>;
+    }
+}
+</code></pre><p>所以就用<code>isFinishing()</code>了呗。</p>
 </span>
       
     </div>
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Android/" rel="tag">#Android</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/13/使用友盟自定义错误/" rel="prev">使用友盟自定义错误</a>
+              <a href="/2015/11/23/Android TextView真实字高研究/" rel="prev">Android TextView真实字高研究</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/13/使用merge标签 减少布局嵌套/" rel="next">使用merge标签 减少布局嵌套</a>
+              <a href="/2015/11/20/MaterialDesign跳转动画效果实现/" rel="next">MaterialDesign跳转动画效果实现</a>
             
           </div>
         </div>
@@ -252,8 +325,8 @@ android:f">
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/10/13/TextView中的滚动效果/"
-                   data-title="TextView中的滚动效果" data-url="http://wangqiankun.github.io/2015/10/13/TextView中的滚动效果/">
+              <div class="ds-thread" data-thread-key="2015/11/23/Activity研究之isFinishing()与isDestroyed()/"
+                   data-title="Activity研究之isFinishing()与isDestroyed()" data-url="http://wangqiankun.github.io/2015/11/23/Activity研究之isFinishing()与isDestroyed()/">
               </div>
             
           </div>
