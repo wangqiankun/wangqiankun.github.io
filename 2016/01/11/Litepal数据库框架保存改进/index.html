@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="Android," />
+  <meta name="keywords" content="Hexo,next" />
 
 
 
@@ -39,28 +39,19 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="因为catch的Error或Exception友盟无法获取，那么就可以使用友盟提供的自定义错误来解决
-
-在AndroidManifest.xml里面添加读取日志的权限android.permission.READ_LOGS
-在MainActicity的OnCreate方法中调用MobclickAgent.setCatchUncaughtExceptions(true);
-在catch的语句中使用用">
+<meta name="description" content="郭霖推荐的Litepal用起来非常方便，但是当保存大量数据数据时，往往会花费很长时间（一个1300多条的数据，使用saveAll()竟然耗时10s+）。稍作修改，自己写了个保存的方法。时间控制在1s内。使用saveOrders2DB(mList)替换宇Litepal的DataSupport.saveAll(mList)
+public void saveOrders2DB(List&amp;lt;Bean&amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用友盟自定义错误">
-<meta property="og:url" content="http://wangqiankun.github.io/2015/10/13/使用友盟自定义错误/index.html">
+<meta property="og:title" content="Litepal数据库框架保存改进">
+<meta property="og:url" content="http://wangqiankun.github.io/2016/01/11/Litepal数据库框架保存改进/index.html">
 <meta property="og:site_name" content="Qiankun's Blog">
-<meta property="og:description" content="因为catch的Error或Exception友盟无法获取，那么就可以使用友盟提供的自定义错误来解决
-
-在AndroidManifest.xml里面添加读取日志的权限android.permission.READ_LOGS
-在MainActicity的OnCreate方法中调用MobclickAgent.setCatchUncaughtExceptions(true);
-在catch的语句中使用用">
-<meta property="og:updated_time" content="2015-10-13T12:25:11.000Z">
+<meta property="og:description" content="郭霖推荐的Litepal用起来非常方便，但是当保存大量数据数据时，往往会花费很长时间（一个1300多条的数据，使用saveAll()竟然耗时10s+）。稍作修改，自己写了个保存的方法。时间控制在1s内。使用saveOrders2DB(mList)替换宇Litepal的DataSupport.saveAll(mList)
+public void saveOrders2DB(List&amp;lt;Bean&amp;">
+<meta property="og:updated_time" content="2016-01-11T09:53:29.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用友盟自定义错误">
-<meta name="twitter:description" content="因为catch的Error或Exception友盟无法获取，那么就可以使用友盟提供的自定义错误来解决
-
-在AndroidManifest.xml里面添加读取日志的权限android.permission.READ_LOGS
-在MainActicity的OnCreate方法中调用MobclickAgent.setCatchUncaughtExceptions(true);
-在catch的语句中使用用">
+<meta name="twitter:title" content="Litepal数据库框架保存改进">
+<meta name="twitter:description" content="郭霖推荐的Litepal用起来非常方便，但是当保存大量数据数据时，往往会花费很长时间（一个1300多条的数据，使用saveAll()竟然耗时10s+）。稍作修改，自己写了个保存的方法。时间控制在1s内。使用saveOrders2DB(mList)替换宇Litepal的DataSupport.saveAll(mList)
+public void saveOrders2DB(List&amp;lt;Bean&amp;">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -70,7 +61,7 @@
   };
 </script>
 
-  <title> 使用友盟自定义错误 | Qiankun's Blog </title>
+  <title> Litepal数据库框架保存改进 | Qiankun's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -169,7 +160,7 @@
           
           
             
-              使用友盟自定义错误
+              Litepal数据库框架保存改进
             
           
         </h1>
@@ -178,8 +169,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-10-13T20:16:41+08:00" content="2015-10-13">
-            2015-10-13
+          <time itemprop="dateCreated" datetime="2016-01-11T17:49:20+08:00" content="2016-01-11">
+            2016-01-11
           </time>
         </span>
 
@@ -189,8 +180,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/10/13/使用友盟自定义错误/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/13/使用友盟自定义错误/" itemprop="commentsCount"></span>
+              <a href="/2016/01/11/Litepal数据库框架保存改进/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/01/11/Litepal数据库框架保存改进/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -204,38 +195,46 @@
       
 
       
-        <span itemprop="articleBody"><p>因为catch的Error或Exception友盟无法获取，那么就可以使用友盟提供的自定义错误来解决</p>
-<ol>
-<li>在AndroidManifest.xml里面添加读取日志的权限android.permission.READ_LOGS</li>
-<li>在MainActicity的OnCreate方法中调用<br>MobclickAgent.setCatchUncaughtExceptions(true);</li>
-<li>在catch的语句中使用用MobclickAgent.reportError(Context context,String error) 或者<br>MobclickAgent.reportError(Context context, Throwable e)语句，使友盟上传日志</li>
-</ol>
-<p>也可以自定义标签<br>MobclickAgent.onEvent(Contextcontext, String event_id, String  label);</p>
-<p>参考<a href="http://www.apkbus.com/home.php?mod=space&amp;uid=317549&amp;do=blog&amp;id=54835" target="_blank" rel="external">MobclickAgent——友盟用户分析工具</a></p>
-</span>
+        <span itemprop="articleBody"><p>郭霖推荐的Litepal用起来非常方便，但是当保存大量数据数据时，往往会花费很长时间（一个1300多条的数据，使用saveAll()竟然耗时10s+）。<br>稍作修改，自己写了个保存的方法。时间控制在1s内。<br>使用saveOrders2DB(mList)替换宇Litepal的DataSupport.saveAll(mList)</p>
+<pre><code><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">saveOrders2DB</span><span class="params">(List&lt;Bean&gt; list)</span> </span>{
+
+    ContentValues contentValues;
+    SQLiteDatabase db = Connector.getDatabase();
+    db.beginTransaction();
+    <span class="keyword">try</span> {
+        <span class="keyword">for</span> (Bean aBean : list) {
+            contentValues = <span class="keyword">new</span> ContentValues();
+            contentValues.put(<span class="string">"orderId"</span>, aBean.getOrderId());
+            contentValues.put(<span class="string">"orderNo"</span>, aBean.getOrderNo());
+            contentValues.put(<span class="string">"orderTime"</span>, aBean.getOrderTime() == <span class="keyword">null</span> ? 
+                    <span class="keyword">null</span> : aBean.getOrderTime().getTime());
+
+            <span class="comment">//注意，Litepal中的表名是你Bean类名的小写</span>
+            db.insert(<span class="string">"bean"</span>, <span class="keyword">null</span>, contentValues);
+        }
+        db.setTransactionSuccessful();
+    } <span class="keyword">catch</span> (Exception e) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> DataSupportException(e.getMessage());
+    } <span class="keyword">finally</span> {
+        db.endTransaction();
+    }
+}
+</code></pre></span>
       
     </div>
 
     <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Android/" rel="tag">#Android</a>
-          
-        </div>
       
 
       
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/13/tools/git入门/" rel="prev">git入门</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/13/TextView中的滚动效果/" rel="next">TextView中的滚动效果</a>
+              <a href="/2015/11/23/Android TextView真实字高研究/" rel="next">Android TextView真实字高研究</a>
             
           </div>
         </div>
@@ -260,8 +259,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/10/13/使用友盟自定义错误/"
-                   data-title="使用友盟自定义错误" data-url="http://wangqiankun.github.io/2015/10/13/使用友盟自定义错误/">
+              <div class="ds-thread" data-thread-key="2016/01/11/Litepal数据库框架保存改进/"
+                   data-title="Litepal数据库框架保存改进" data-url="http://wangqiankun.github.io/2016/01/11/Litepal数据库框架保存改进/">
               </div>
             
           </div>
