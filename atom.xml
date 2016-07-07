@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://wangqiankun.github.io/"/>
-  <updated>2016-01-11T09:53:29.000Z</updated>
+  <updated>2016-07-07T14:49:25.000Z</updated>
   <id>http://wangqiankun.github.io/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://wangqiankun.github.io/2016/01/11/Litepal%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A1%86%E6%9E%B6%E4%BF%9D%E5%AD%98%E6%94%B9%E8%BF%9B/"/>
     <id>http://wangqiankun.github.io/2016/01/11/Litepal数据库框架保存改进/</id>
     <published>2016-01-11T09:49:20.000Z</published>
-    <updated>2016-01-11T09:53:29.000Z</updated>
+    <updated>2016-07-07T14:49:25.000Z</updated>
     <content type="html"><![CDATA[<p>郭霖推荐的Litepal用起来非常方便，但是当保存大量数据数据时，往往会花费很长时间（一个1300多条的数据，使用saveAll()竟然耗时10s+）。<br>稍作修改，自己写了个保存的方法。时间控制在1s内。<br>使用saveOrders2DB(mList)替换宇Litepal的DataSupport.saveAll(mList)</p>
 <pre><code><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">saveOrders2DB</span><span class="params">(List&lt;Bean&gt; list)</span> </span>{
 
@@ -44,9 +44,34 @@
         db.endTransaction();
     }
 }
-</code></pre>]]></content>
+</code></pre><a id="more"></a>]]></content>
     <summary type="html">
-    <![CDATA[<p>郭霖推荐的Litepal用起来非常方便，但是当保存大量数据数据时，往往会花费很长时间（一个1300多条的数据，使用saveAll()竟然耗时10s+）。<br>稍作修改，自己写了个保存的方法。时间控制在1s内。<br>使用saveOrders2DB(mList)替换宇Lit]]>
+    <![CDATA[<p>郭霖推荐的Litepal用起来非常方便，但是当保存大量数据数据时，往往会花费很长时间（一个1300多条的数据，使用saveAll()竟然耗时10s+）。<br>稍作修改，自己写了个保存的方法。时间控制在1s内。<br>使用saveOrders2DB(mList)替换宇Litepal的DataSupport.saveAll(mList)</p>
+<pre><code><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">saveOrders2DB</span><span class="params">(List&lt;Bean&gt; list)</span> </span>{
+
+    ContentValues contentValues;
+    SQLiteDatabase db = Connector.getDatabase();
+    db.beginTransaction();
+    <span class="keyword">try</span> {
+        <span class="keyword">for</span> (Bean aBean : list) {
+            contentValues = <span class="keyword">new</span> ContentValues();
+            contentValues.put(<span class="string">"orderId"</span>, aBean.getOrderId());
+            contentValues.put(<span class="string">"orderNo"</span>, aBean.getOrderNo());
+            contentValues.put(<span class="string">"orderTime"</span>, aBean.getOrderTime() == <span class="keyword">null</span> ? 
+                    <span class="keyword">null</span> : aBean.getOrderTime().getTime());
+
+            <span class="comment">//注意，Litepal中的表名是你Bean类名的小写</span>
+            db.insert(<span class="string">"bean"</span>, <span class="keyword">null</span>, contentValues);
+        }
+        db.setTransactionSuccessful();
+    } <span class="keyword">catch</span> (Exception e) {
+        <span class="keyword">throw</span> <span class="keyword">new</span> DataSupportException(e.getMessage());
+    } <span class="keyword">finally</span> {
+        db.endTransaction();
+    }
+}
+</code></pre>]]>
+    
     </summary>
     
   </entry>
@@ -993,48 +1018,6 @@ retrolambda {
   </entry>
   
   <entry>
-    <title><![CDATA[那些年我所趟过的坑系列之Git配置双账号]]></title>
-    <link href="http://wangqiankun.github.io/2015/10/13/tools/Test/"/>
-    <id>http://wangqiankun.github.io/2015/10/13/tools/Test/</id>
-    <published>2015-10-13T14:15:15.000Z</published>
-    <updated>2016-02-16T09:35:47.000Z</updated>
-    <content type="html"><![CDATA[<p>提交代码遇到权限问题：</p>
-<pre><code><span class="symbol">localhost:</span>main wangqiankun<span class="variable">$ </span>git push origin <span class="constant">HEAD</span><span class="symbol">:refs/for/master</span>
-<span class="constant">Username</span> <span class="keyword">for</span> <span class="string">'http://192.xxx.xx.xxx'</span><span class="symbol">:</span> wangqiankun
-<span class="constant">Password</span> <span class="keyword">for</span> <span class="string">'http://wangqiankun@192.xxx.xx.xxx'</span><span class="symbol">:</span>
-<span class="symbol">remote:</span> <span class="constant">Unauthorized</span>
-<span class="symbol">fatal:</span> <span class="constant">Authentication</span> failed <span class="keyword">for</span> <span class="string">'http://192.xxx.xx.xxx/biz/mobile/dd-android-agent/'</span>
-</code></pre><h2 id="错误">错误</h2><ol>
-<li>在clone代码时需要选中“clone with commit-msg hook”和“SSH”两个选项<br>拷贝clone代码回车后，如果让你输入账号就是操作不正确，哪怕输入后能down代码</li>
-<li>配置config时需如下输入</li>
-</ol>
-<pre><code># <span class="tag">Default</span> <span class="tag">work</span> <span class="tag">user</span> (wangqiankun<span class="variable">@zufangit</span>.cn)
-<span class="tag">Host</span> <span class="tag">192</span><span class="class">.xxx</span><span class="class">.xx</span><span class="class">.xxx</span>
-    <span class="tag">User</span> <span class="tag">wangqiankun</span>
-     <span class="tag">HostName</span> <span class="tag">192</span><span class="class">.xxx</span><span class="class">.xx</span><span class="class">.xxx</span>
-     <span class="tag">IdentityFile</span> ~/<span class="class">.ssh</span>/<span class="tag">id_rsa</span>
-# <span class="tag">GitHub</span> <span class="tag">user</span> (wangqiankun<span class="variable">@outloo</span>.com)
-<span class="tag">Host</span> <span class="tag">github</span><span class="class">.com</span>
-     <span class="tag">User</span> <span class="tag">wangqiankun</span>@<span class="tag">outlook</span><span class="class">.com</span>
-     <span class="tag">HostName</span> <span class="tag">github</span><span class="class">.com</span>
-     <span class="tag">IdentityFile</span> ~/<span class="class">.ssh</span>/<span class="tag">gitgub_rsa</span>
-\~
-</code></pre><p>注意细节：</p>
-<ol>
-<li>Host与HostName需一致，并且“192.xxx.xx.xxx”不可写为“<a href="http://192.xxx.xx.xxx/”" target="_blank" rel="external">http://192.xxx.xx.xxx/”</a></li>
-<li>“~/.ssh/id_rsa”中“id_rsa”文件与账号对应</li>
-</ol>
-<h3 id="BaiBai!">BaiBai!</h3>]]></content>
-    <summary type="html">
-    <![CDATA[<p>提交代码遇到权限问题：</p>
-<pre><code><span class="symbol">localhost:</span>main wangqiankun<span class="variable">$ </span>git push origin <span cl]]>
-    </summary>
-    
-      <category term="Tools" scheme="http://wangqiankun.github.io/tags/Tools/"/>
-    
-  </entry>
-  
-  <entry>
     <title><![CDATA[Studio使用Gerrit插件]]></title>
     <link href="http://wangqiankun.github.io/2015/10/13/tools/Studio%E4%BD%BF%E7%94%A8Gerrit%E6%8F%92%E4%BB%B6/"/>
     <id>http://wangqiankun.github.io/2015/10/13/tools/Studio使用Gerrit插件/</id>
@@ -1110,6 +1093,28 @@ retrolambda {
 <ol>
 <li>在AndroidManifest.xml里面添加读取日志的权限android.permission.READ_LOGS</li>
 <li>在Mai]]>
+    </summary>
+    
+      <category term="Android" scheme="http://wangqiankun.github.io/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[TextView中的滚动效果]]></title>
+    <link href="http://wangqiankun.github.io/2015/10/13/TextView%E4%B8%AD%E7%9A%84%E6%BB%9A%E5%8A%A8%E6%95%88%E6%9E%9C/"/>
+    <id>http://wangqiankun.github.io/2015/10/13/TextView中的滚动效果/</id>
+    <published>2015-10-13T12:11:36.000Z</published>
+    <updated>2015-10-13T12:12:04.000Z</updated>
+    <content type="html"><![CDATA[<p>只需要要在xml中添加以下字段<br>android:scrollbars=”vertical” //垂直 可以其他滚动方向</p>
+<p>也可以扩展以下配置<br>android:scrollbarStyle=”X” //其中X为outsideOverlay或insideOverlay。<br>android:scrollbarFadeDuration=”X” //其中X表示滚动条从出现到消失的时间，单位是毫秒。</p>
+<p>android:fadingEdge=”vertical” //设置拉滚动条时 ，边框渐变的方向。</p>
+<blockquote>
+<p>参考资料：<br><a href="http://blog.csdn.net/crazyzhangcrazy/article/details/8596451" target="_blank" rel="external">[Android] TextView的垂直滚动效果</a><br><a href="http://www.open-open.com/lib/view/open1392086471160.html" target="_blank" rel="external">Android View 属性详解</a></p>
+</blockquote>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>只需要要在xml中添加以下字段<br>android:scrollbars=”vertical” //垂直 可以其他滚动方向</p>
+<p>也可以扩展以下配置<br>android:scrollbarStyle=”X” //其中X为outsideOverlay或inside]]>
     </summary>
     
       <category term="Android" scheme="http://wangqiankun.github.io/tags/Android/"/>

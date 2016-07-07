@@ -196,7 +196,7 @@
 
       
         
-          <span itemprop="articleBody"><p>郭霖推荐的Litepal用起来非常方便，但是当保存大量数据数据时，往往会花费很长时间（一个1300多条的数据，使用saveAll()竟然耗时10s+）。<br>稍作修改，自己写了个保存的方法。时间控制在1s内。<br>使用saveOrders2DB(mList)替换宇Litepal的DataSupport.saveAll(mList)</p>
+          <p>郭霖推荐的Litepal用起来非常方便，但是当保存大量数据数据时，往往会花费很长时间（一个1300多条的数据，使用saveAll()竟然耗时10s+）。<br>稍作修改，自己写了个保存的方法。时间控制在1s内。<br>使用saveOrders2DB(mList)替换宇Litepal的DataSupport.saveAll(mList)</p>
 <pre><code><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">saveOrders2DB</span><span class="params">(List&lt;Bean&gt; list)</span> </span>{
 
     ContentValues contentValues;
@@ -220,7 +220,12 @@
         db.endTransaction();
     }
 }
-</code></pre></span>
+</code></pre>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/01/11/Litepal数据库框架保存改进/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1437,7 +1442,7 @@ toolbar.setNavigationOnClickListener(<span class="keyword">new</span> View.OnCli
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-count">23</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
