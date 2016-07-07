@@ -39,19 +39,16 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="郭霖推荐的Litepal用起来非常方便，但是当保存大量数据数据时，往往会花费很长时间（一个1300多条的数据，使用saveAll()竟然耗时10s+）。稍作修改，自己写了个保存的方法。时间控制在1s内。使用saveOrders2DB(mList)替换宇Litepal的DataSupport.saveAll(mList)
-public void saveOrders2DB(List&amp;lt;Bean&amp;">
+<meta name="description" content="郭霖推荐的Litepal用起来非常方便，但是当保存大量数据数据时，往往会花费很长时间（一个1300多条的数据，使用saveAll()竟然耗时10s+）。稍作修改，自己写了个保存的方法。时间控制在1s内。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Litepal数据库框架保存改进">
 <meta property="og:url" content="http://wangqiankun.github.io/2016/01/11/Litepal数据库框架保存改进/index.html">
 <meta property="og:site_name" content="Qiankun's Blog">
-<meta property="og:description" content="郭霖推荐的Litepal用起来非常方便，但是当保存大量数据数据时，往往会花费很长时间（一个1300多条的数据，使用saveAll()竟然耗时10s+）。稍作修改，自己写了个保存的方法。时间控制在1s内。使用saveOrders2DB(mList)替换宇Litepal的DataSupport.saveAll(mList)
-public void saveOrders2DB(List&amp;lt;Bean&amp;">
-<meta property="og:updated_time" content="2016-07-07T14:49:25.000Z">
+<meta property="og:description" content="郭霖推荐的Litepal用起来非常方便，但是当保存大量数据数据时，往往会花费很长时间（一个1300多条的数据，使用saveAll()竟然耗时10s+）。稍作修改，自己写了个保存的方法。时间控制在1s内。">
+<meta property="og:updated_time" content="2016-07-07T14:52:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Litepal数据库框架保存改进">
-<meta name="twitter:description" content="郭霖推荐的Litepal用起来非常方便，但是当保存大量数据数据时，往往会花费很长时间（一个1300多条的数据，使用saveAll()竟然耗时10s+）。稍作修改，自己写了个保存的方法。时间控制在1s内。使用saveOrders2DB(mList)替换宇Litepal的DataSupport.saveAll(mList)
-public void saveOrders2DB(List&amp;lt;Bean&amp;">
+<meta name="twitter:description" content="郭霖推荐的Litepal用起来非常方便，但是当保存大量数据数据时，往往会花费很长时间（一个1300多条的数据，使用saveAll()竟然耗时10s+）。稍作修改，自己写了个保存的方法。时间控制在1s内。">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -195,7 +192,8 @@ public void saveOrders2DB(List&amp;lt;Bean&amp;">
       
 
       
-        <span itemprop="articleBody"><p>郭霖推荐的Litepal用起来非常方便，但是当保存大量数据数据时，往往会花费很长时间（一个1300多条的数据，使用saveAll()竟然耗时10s+）。<br>稍作修改，自己写了个保存的方法。时间控制在1s内。<br>使用saveOrders2DB(mList)替换宇Litepal的DataSupport.saveAll(mList)</p>
+        <span itemprop="articleBody"><p>郭霖推荐的Litepal用起来非常方便，但是当保存大量数据数据时，往往会花费很长时间（一个1300多条的数据，使用saveAll()竟然耗时10s+）。<br>稍作修改，自己写了个保存的方法。时间控制在1s内。<br><a id="more"></a></p>
+<p>使用saveOrders2DB(mList)替换宇Litepal的DataSupport.saveAll(mList)</p>
 <pre><code><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">saveOrders2DB</span><span class="params">(List&lt;Bean&gt; list)</span> </span>{
 
     ContentValues contentValues;
@@ -219,7 +217,7 @@ public void saveOrders2DB(List&amp;lt;Bean&amp;">
         db.endTransaction();
     }
 }
-</code></pre><a id="more"></a></span>
+</code></pre></span>
       
     </div>
 

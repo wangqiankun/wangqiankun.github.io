@@ -196,31 +196,7 @@
 
       
         
-          <p>郭霖推荐的Litepal用起来非常方便，但是当保存大量数据数据时，往往会花费很长时间（一个1300多条的数据，使用saveAll()竟然耗时10s+）。<br>稍作修改，自己写了个保存的方法。时间控制在1s内。<br>使用saveOrders2DB(mList)替换宇Litepal的DataSupport.saveAll(mList)</p>
-<pre><code><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">saveOrders2DB</span><span class="params">(List&lt;Bean&gt; list)</span> </span>{
-
-    ContentValues contentValues;
-    SQLiteDatabase db = Connector.getDatabase();
-    db.beginTransaction();
-    <span class="keyword">try</span> {
-        <span class="keyword">for</span> (Bean aBean : list) {
-            contentValues = <span class="keyword">new</span> ContentValues();
-            contentValues.put(<span class="string">"orderId"</span>, aBean.getOrderId());
-            contentValues.put(<span class="string">"orderNo"</span>, aBean.getOrderNo());
-            contentValues.put(<span class="string">"orderTime"</span>, aBean.getOrderTime() == <span class="keyword">null</span> ? 
-                    <span class="keyword">null</span> : aBean.getOrderTime().getTime());
-
-            <span class="comment">//注意，Litepal中的表名是你Bean类名的小写</span>
-            db.insert(<span class="string">"bean"</span>, <span class="keyword">null</span>, contentValues);
-        }
-        db.setTransactionSuccessful();
-    } <span class="keyword">catch</span> (Exception e) {
-        <span class="keyword">throw</span> <span class="keyword">new</span> DataSupportException(e.getMessage());
-    } <span class="keyword">finally</span> {
-        db.endTransaction();
-    }
-}
-</code></pre>
+          <p>郭霖推荐的Litepal用起来非常方便，但是当保存大量数据数据时，往往会花费很长时间（一个1300多条的数据，使用saveAll()竟然耗时10s+）。<br>稍作修改，自己写了个保存的方法。时间控制在1s内。<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/01/11/Litepal数据库框架保存改进/#more" rel="contents">
               阅读全文 &raquo;

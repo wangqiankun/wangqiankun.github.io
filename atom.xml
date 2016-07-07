@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://wangqiankun.github.io/"/>
-  <updated>2016-07-07T14:49:25.000Z</updated>
+  <updated>2016-07-07T14:52:58.000Z</updated>
   <id>http://wangqiankun.github.io/</id>
   
   <author>
@@ -19,8 +19,9 @@
     <link href="http://wangqiankun.github.io/2016/01/11/Litepal%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A1%86%E6%9E%B6%E4%BF%9D%E5%AD%98%E6%94%B9%E8%BF%9B/"/>
     <id>http://wangqiankun.github.io/2016/01/11/Litepal数据库框架保存改进/</id>
     <published>2016-01-11T09:49:20.000Z</published>
-    <updated>2016-07-07T14:49:25.000Z</updated>
-    <content type="html"><![CDATA[<p>郭霖推荐的Litepal用起来非常方便，但是当保存大量数据数据时，往往会花费很长时间（一个1300多条的数据，使用saveAll()竟然耗时10s+）。<br>稍作修改，自己写了个保存的方法。时间控制在1s内。<br>使用saveOrders2DB(mList)替换宇Litepal的DataSupport.saveAll(mList)</p>
+    <updated>2016-07-07T14:52:58.000Z</updated>
+    <content type="html"><![CDATA[<p>郭霖推荐的Litepal用起来非常方便，但是当保存大量数据数据时，往往会花费很长时间（一个1300多条的数据，使用saveAll()竟然耗时10s+）。<br>稍作修改，自己写了个保存的方法。时间控制在1s内。<br><a id="more"></a></p>
+<p>使用saveOrders2DB(mList)替换宇Litepal的DataSupport.saveAll(mList)</p>
 <pre><code><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">saveOrders2DB</span><span class="params">(List&lt;Bean&gt; list)</span> </span>{
 
     ContentValues contentValues;
@@ -44,33 +45,9 @@
         db.endTransaction();
     }
 }
-</code></pre><a id="more"></a>]]></content>
+</code></pre>]]></content>
     <summary type="html">
-    <![CDATA[<p>郭霖推荐的Litepal用起来非常方便，但是当保存大量数据数据时，往往会花费很长时间（一个1300多条的数据，使用saveAll()竟然耗时10s+）。<br>稍作修改，自己写了个保存的方法。时间控制在1s内。<br>使用saveOrders2DB(mList)替换宇Litepal的DataSupport.saveAll(mList)</p>
-<pre><code><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">saveOrders2DB</span><span class="params">(List&lt;Bean&gt; list)</span> </span>{
-
-    ContentValues contentValues;
-    SQLiteDatabase db = Connector.getDatabase();
-    db.beginTransaction();
-    <span class="keyword">try</span> {
-        <span class="keyword">for</span> (Bean aBean : list) {
-            contentValues = <span class="keyword">new</span> ContentValues();
-            contentValues.put(<span class="string">"orderId"</span>, aBean.getOrderId());
-            contentValues.put(<span class="string">"orderNo"</span>, aBean.getOrderNo());
-            contentValues.put(<span class="string">"orderTime"</span>, aBean.getOrderTime() == <span class="keyword">null</span> ? 
-                    <span class="keyword">null</span> : aBean.getOrderTime().getTime());
-
-            <span class="comment">//注意，Litepal中的表名是你Bean类名的小写</span>
-            db.insert(<span class="string">"bean"</span>, <span class="keyword">null</span>, contentValues);
-        }
-        db.setTransactionSuccessful();
-    } <span class="keyword">catch</span> (Exception e) {
-        <span class="keyword">throw</span> <span class="keyword">new</span> DataSupportException(e.getMessage());
-    } <span class="keyword">finally</span> {
-        db.endTransaction();
-    }
-}
-</code></pre>]]>
+    <![CDATA[<p>郭霖推荐的Litepal用起来非常方便，但是当保存大量数据数据时，往往会花费很长时间（一个1300多条的数据，使用saveAll()竟然耗时10s+）。<br>稍作修改，自己写了个保存的方法。时间控制在1s内。<br>]]>
     
     </summary>
     
