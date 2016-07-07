@@ -510,10 +510,34 @@ retrolambda {
         }
     }
 }
+
+
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BtnBottom</span> <span class="keyword">extends</span> <span class="title">Button</span> </span>{
+
+    <span class="function"><span class="keyword">public</span> <span class="title">BtnBottom</span><span class="params">(Context context)</span> </span>{
+        <span class="keyword">super</span>(context);
+    }
+
+    <span class="function"><span class="keyword">public</span> <span class="title">BtnBottom</span><span class="params">(Context context, AttributeSet attrs)</span> </span>{
+        <span class="keyword">super</span>(context, attrs);
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setClickable</span><span class="params">(<span class="keyword">boolean</span> clickable)</span> </span>{
+        <span class="keyword">super</span>.setClickable(clickable);
+        <span class="keyword">if</span> (clickable) {
+            <span class="keyword">this</span>.setBackgroundResource(R.drawable.bg_btn_bottom_normal);
+            <span class="keyword">this</span>.setTextColor(getResources().getColor(R.color.text_fff));
+        } <span class="keyword">else</span> {
+            <span class="keyword">this</span>.setBackgroundColor(getResources().getColor(R.color.btn_f1f1f2));
+            <span class="keyword">this</span>.setTextColor(getResources().getColor(R.color.text_d7d7d8));
+        }
+    }
+}
 </code></pre><ul>
 <li>2）因为需要点击效果，所以在clickable为true时，设置背景色为selector</li>
 </ul>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="pi">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">selector</span> <span class="attribute">xmlns:android</span>=<span class="value">"http://schemas.android.com/apk/res/android"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">item</span> <span class="attribute">android:drawable</span>=<span class="value">"@color/btn_b311213a"</span> <span class="attribute">android:state_pressed</span>=<span class="value">"true"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">item</span> <span class="attribute">android:drawable</span>=<span class="value">"@color/btn_b311213a"</span> <span class="attribute">android:state_focused</span>=<span class="value">"true"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">item</span> <span class="attribute">android:drawable</span>=<span class="value">"@color/btn_11213a"</span>  /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">selector</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>```<br>\&lt;?xml version=”1.0” encoding=”utf-8”?><br>\<selector xmlns:android="http://schemas.android.com/apk/res/android" \=""><br>    <item android:drawable="@color/btn_b311213a" android:state_pressed="true"><br>    <item android:drawable="@color/btn_b311213a" android:state_focused="true"><br>    <item android:drawable="@color/btn_11213a"><br></item></item></item></selector><br>```</p>
 <blockquote>
 <p>心得：selector 名为选择器，也就是说遇到对应的的item就会使用，可能之前顺序排列没做好，<br>或者可以在seletor中嵌套seletor？需待实验下</p>
 </blockquote>
@@ -670,6 +694,100 @@ retrolambda {
 </ol>
 <figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hexcolor">#Def</span>ault work user (wangqiankun@zufangit.cn)</span><br><span class="line">Host <span class="number">192</span><span class="class">.xxx</span><span class="class">.xx</span><span class="class">.xxx</span></span><br><span class="line">        User wangqiankun</span><br><span class="line">        HostName <span class="number">192</span><span class="class">.xxx</span><span class="class">.xx</span><span class="class">.xxx</span></span><br><span class="line">        IdentityFile ~/.ssh/id_rsa</span><br><span class="line"><span class="id">#GitHub</span> user (wangqiankun@outloo.com)</span><br><span class="line">Host github<span class="class">.com</span></span><br><span class="line">        User wangqiankun@outlook<span class="class">.com</span></span><br><span class="line">        HostName github<span class="class">.com</span></span><br><span class="line">        IdentityFile ~/.ssh/gitgub_rsa</span><br><span class="line">~</span><br></pre></td></tr></table></figure>
 <p>注意细节：</p>
+<ol>
+<li>Host与HostName需一致，并且“192.xxx.xx.xxx”不可写为“<a href="http://192.xxx.xx.xxx/”" target="_blank" rel="external">http://192.xxx.xx.xxx/”</a></li>
+<li>“~/.ssh/id_rsa”中“id_rsa”文件与账号对应</li>
+</ol>
+<h3 id="BaiBai!">BaiBai!</h3></span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/10/13/tools/Test/" itemprop="url">
+                那些年我所趟过的坑系列之Git配置双账号
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-10-13T22:15:15+08:00" content="2015-10-13">
+            2015-10-13
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/10/13/tools/Test/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/13/tools/Test/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>提交代码遇到权限问题：</p>
+<pre><code><span class="symbol">localhost:</span>main wangqiankun<span class="variable">$ </span>git push origin <span class="constant">HEAD</span><span class="symbol">:refs/for/master</span>
+<span class="constant">Username</span> <span class="keyword">for</span> <span class="string">'http://192.xxx.xx.xxx'</span><span class="symbol">:</span> wangqiankun
+<span class="constant">Password</span> <span class="keyword">for</span> <span class="string">'http://wangqiankun@192.xxx.xx.xxx'</span><span class="symbol">:</span>
+<span class="symbol">remote:</span> <span class="constant">Unauthorized</span>
+<span class="symbol">fatal:</span> <span class="constant">Authentication</span> failed <span class="keyword">for</span> <span class="string">'http://192.xxx.xx.xxx/biz/mobile/dd-android-agent/'</span>
+</code></pre><h2 id="错误">错误</h2><ol>
+<li>在clone代码时需要选中“clone with commit-msg hook”和“SSH”两个选项<br>拷贝clone代码回车后，如果让你输入账号就是操作不正确，哪怕输入后能down代码</li>
+<li>配置config时需如下输入</li>
+</ol>
+<pre><code># <span class="tag">Default</span> <span class="tag">work</span> <span class="tag">user</span> (wangqiankun<span class="variable">@zufangit</span>.cn)
+<span class="tag">Host</span> <span class="tag">192</span><span class="class">.xxx</span><span class="class">.xx</span><span class="class">.xxx</span>
+    <span class="tag">User</span> <span class="tag">wangqiankun</span>
+     <span class="tag">HostName</span> <span class="tag">192</span><span class="class">.xxx</span><span class="class">.xx</span><span class="class">.xxx</span>
+     <span class="tag">IdentityFile</span> ~/<span class="class">.ssh</span>/<span class="tag">id_rsa</span>
+# <span class="tag">GitHub</span> <span class="tag">user</span> (wangqiankun<span class="variable">@outloo</span>.com)
+<span class="tag">Host</span> <span class="tag">github</span><span class="class">.com</span>
+     <span class="tag">User</span> <span class="tag">wangqiankun</span>@<span class="tag">outlook</span><span class="class">.com</span>
+     <span class="tag">HostName</span> <span class="tag">github</span><span class="class">.com</span>
+     <span class="tag">IdentityFile</span> ~/<span class="class">.ssh</span>/<span class="tag">gitgub_rsa</span>
+\~
+</code></pre><p>注意细节：</p>
 <ol>
 <li>Host与HostName需一致，并且“192.xxx.xx.xxx”不可写为“<a href="http://192.xxx.xx.xxx/”" target="_blank" rel="external">http://192.xxx.xx.xxx/”</a></li>
 <li>“~/.ssh/id_rsa”中“id_rsa”文件与账号对应</li>
@@ -923,80 +1041,6 @@ retrolambda {
 
 
     
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/10/13/TextView中的滚动效果/" itemprop="url">
-                TextView中的滚动效果
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-10-13T20:11:36+08:00" content="2015-10-13">
-            2015-10-13
-          </time>
-        </span>
-
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/10/13/TextView中的滚动效果/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/13/TextView中的滚动效果/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>只需要要在xml中添加以下字段<br>android:scrollbars=”vertical” //垂直 可以其他滚动方向</p>
-<p>也可以扩展以下配置<br>android:scrollbarStyle=”X” //其中X为outsideOverlay或insideOverlay。<br>android:scrollbarFadeDuration=”X” //其中X表示滚动条从出现到消失的时间，单位是毫秒。</p>
-<p>android:fadingEdge=”vertical” //设置拉滚动条时 ，边框渐变的方向。</p>
-<blockquote>
-<p>参考资料：<br><a href="http://blog.csdn.net/crazyzhangcrazy/article/details/8596451" target="_blank" rel="external">[Android] TextView的垂直滚动效果</a><br><a href="http://www.open-open.com/lib/view/open1392086471160.html" target="_blank" rel="external">Android View 属性详解</a></p>
-</blockquote>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1035,7 +1079,7 @@ retrolambda {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-count">24</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
