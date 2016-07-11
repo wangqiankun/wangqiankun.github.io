@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://wangqiankun.github.io/"/>
-  <updated>2016-07-07T14:55:31.000Z</updated>
+  <updated>2016-07-11T04:47:45.000Z</updated>
   <id>http://wangqiankun.github.io/</id>
   
   <author>
@@ -15,12 +15,12 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title><![CDATA[Litepal数据库框架保存改进]]></title>
-    <link href="http://wangqiankun.github.io/2016/01/11/Litepal%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A1%86%E6%9E%B6%E4%BF%9D%E5%AD%98%E6%94%B9%E8%BF%9B/"/>
-    <id>http://wangqiankun.github.io/2016/01/11/Litepal数据库框架保存改进/</id>
-    <published>2016-01-11T09:49:20.000Z</published>
-    <updated>2016-07-07T14:55:31.000Z</updated>
-    <content type="html"><![CDATA[<p>郭霖推荐的Litepal用起来非常方便，但是当保存大量数据数据时，往往会花费很长时间（一个1300多条的数据，使用saveAll()竟然耗时10s+）。<br>稍作修改，自己写了个保存的方法。时间控制在1s内。</p>
+    <title><![CDATA[LitePal数据库框架保存改进]]></title>
+    <link href="http://wangqiankun.github.io/2016/05/11/LitePal%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A1%86%E6%9E%B6%E4%BF%9D%E5%AD%98%E6%94%B9%E8%BF%9B/"/>
+    <id>http://wangqiankun.github.io/2016/05/11/LitePal数据库框架保存改进/</id>
+    <published>2016-05-11T09:49:20.000Z</published>
+    <updated>2016-07-11T04:47:45.000Z</updated>
+    <content type="html"><![CDATA[<p>郭霖推荐的LitePal用起来非常方便，但是当保存大量数据数据时，往往会花费很长时间（一个1300多条的数据，使用saveAll()竟然耗时10s+）。<br>稍作修改，自己写了个保存的方法。时间控制在1s内。</p>
 <a id="more"></a>
 <p>使用saveOrders2DB(mList)替换宇Litepal的DataSupport.saveAll(mList)</p>
 <pre><code><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">saveOrders2DB</span><span class="params">(List&lt;Bean&gt; list)</span> </span>{
@@ -48,7 +48,7 @@
 }
 </code></pre>]]></content>
     <summary type="html">
-    <![CDATA[<p>郭霖推荐的Litepal用起来非常方便，但是当保存大量数据数据时，往往会花费很长时间（一个1300多条的数据，使用saveAll()竟然耗时10s+）。<br>稍作修改，自己写了个保存的方法。时间控制在1s内。</p>]]>
+    <![CDATA[<p>郭霖推荐的LitePal用起来非常方便，但是当保存大量数据数据时，往往会花费很长时间（一个1300多条的数据，使用saveAll()竟然耗时10s+）。<br>稍作修改，自己写了个保存的方法。时间控制在1s内。</p>]]>
     
     </summary>
     
@@ -56,10 +56,10 @@
   
   <entry>
     <title><![CDATA[Android TextView真实字高研究]]></title>
-    <link href="http://wangqiankun.github.io/2015/11/23/Android%20TextView%E7%9C%9F%E5%AE%9E%E5%AD%97%E9%AB%98%E7%A0%94%E7%A9%B6/"/>
-    <id>http://wangqiankun.github.io/2015/11/23/Android TextView真实字高研究/</id>
-    <published>2015-11-23T12:31:54.000Z</published>
-    <updated>2016-07-11T04:42:48.000Z</updated>
+    <link href="http://wangqiankun.github.io/2016/04/23/Android%20TextView%E7%9C%9F%E5%AE%9E%E5%AD%97%E9%AB%98%E7%A0%94%E7%A9%B6/"/>
+    <id>http://wangqiankun.github.io/2016/04/23/Android TextView真实字高研究/</id>
+    <published>2016-04-23T12:31:54.000Z</published>
+    <updated>2016-07-11T04:47:55.000Z</updated>
     <content type="html"><![CDATA[<p>#这一直是Android开发的痛点！<br>众说周知，Android开发中TextView控件有个无法解决的“bug”–TextView总是在上下有间距，导致在画界面的时候，都要根据UE给的标注做几次复杂的减法运算，累倒不说，还是可能会被UE打回重改！！！</p>
 <a id="more"></a>
 <p>终于有一天我发现了个方法<code>android:includeFontPadding=&quot;true&quot;</code>，欣喜若狂。屁颠屁颠的加上，还是不能用啊…世间还有真情？世间还有真爱？？</p>
@@ -99,6 +99,90 @@ bottom/ascent：<span class="number">0.29210526</span>
     <![CDATA[<p>#这一直是Android开发的痛点！<br>众说周知，Android开发中TextView控件有个无法解决的“bug”–TextView总是在上下有间距，导致在画界面的时候，都要根据UE给的标注做几次复杂的减法运算，累倒不说，还是可能会被UE打回重改！！！</p>]]>
     
     </summary>
+    
+      <category term="Android" scheme="http://wangqiankun.github.io/tags/Android/"/>
+    
+      <category term="TextView" scheme="http://wangqiankun.github.io/tags/TextView/"/>
+    
+      <category term="UI" scheme="http://wangqiankun.github.io/tags/UI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Button的点击效果和Clickable效果]]></title>
+    <link href="http://wangqiankun.github.io/2016/03/11/Button%E7%9A%84%E7%82%B9%E5%87%BB%E6%95%88%E6%9E%9C%E5%92%8CClickable%E6%95%88%E6%9E%9C/"/>
+    <id>http://wangqiankun.github.io/2016/03/11/Button的点击效果和Clickable效果/</id>
+    <published>2016-03-11T13:20:20.000Z</published>
+    <updated>2016-07-11T04:48:54.000Z</updated>
+    <content type="html"><![CDATA[<p>由于产品需求，Button的点击状态、Clickable状态都要有不同的显示效果<br>研究Selector半天也没有找到可以使不同状态同时展示<br>于是，就迂回用笨方法搞定</p>
+<a id="more"></a>
+<ul>
+<li>1）自定义一个集成Button的类,重写setClickable状态，在两种状态设置不同背景色以及TextColor</li>
+</ul>
+<pre><code><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BtnBottom</span> <span class="keyword">extends</span> <span class="title">Button</span> </span>{
+
+    <span class="function"><span class="keyword">public</span> <span class="title">BtnBottom</span><span class="params">(Context context)</span> </span>{
+        <span class="keyword">super</span>(context);
+    }
+
+    <span class="function"><span class="keyword">public</span> <span class="title">BtnBottom</span><span class="params">(Context context, AttributeSet attrs)</span> </span>{
+        <span class="keyword">super</span>(context, attrs);
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setClickable</span><span class="params">(<span class="keyword">boolean</span> clickable)</span> </span>{
+        <span class="keyword">super</span>.setClickable(clickable);
+        <span class="keyword">if</span> (clickable) {
+            <span class="keyword">this</span>.setBackgroundResource(R.drawable.bg_btn_bottom_normal);
+            <span class="keyword">this</span>.setTextColor(getResources().getColor(R.color.text_fff));
+        } <span class="keyword">else</span> {
+            <span class="keyword">this</span>.setBackgroundColor(getResources().getColor(R.color.btn_f1f1f2));
+            <span class="keyword">this</span>.setTextColor(getResources().getColor(R.color.text_d7d7d8));
+        }
+    }
+}
+
+
+<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BtnBottom</span> <span class="keyword">extends</span> <span class="title">Button</span> </span>{
+
+    <span class="function"><span class="keyword">public</span> <span class="title">BtnBottom</span><span class="params">(Context context)</span> </span>{
+        <span class="keyword">super</span>(context);
+    }
+
+    <span class="function"><span class="keyword">public</span> <span class="title">BtnBottom</span><span class="params">(Context context, AttributeSet attrs)</span> </span>{
+        <span class="keyword">super</span>(context, attrs);
+    }
+
+    <span class="annotation">@Override</span>
+    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setClickable</span><span class="params">(<span class="keyword">boolean</span> clickable)</span> </span>{
+        <span class="keyword">super</span>.setClickable(clickable);
+        <span class="keyword">if</span> (clickable) {
+            <span class="keyword">this</span>.setBackgroundResource(R.drawable.bg_btn_bottom_normal);
+            <span class="keyword">this</span>.setTextColor(getResources().getColor(R.color.text_fff));
+        } <span class="keyword">else</span> {
+            <span class="keyword">this</span>.setBackgroundColor(getResources().getColor(R.color.btn_f1f1f2));
+            <span class="keyword">this</span>.setTextColor(getResources().getColor(R.color.text_d7d7d8));
+        }
+    }
+}
+</code></pre><ul>
+<li>2）因为需要点击效果，所以在clickable为true时，设置背景色为selector</li>
+</ul>
+<p>```<br>\&lt;?xml version=”1.0” encoding=”utf-8”?><br>\<selector xmlns:android="http://schemas.android.com/apk/res/android" \=""><br>    <item android:drawable="@color/btn_b311213a" android:state_pressed="true"><br>    <item android:drawable="@color/btn_b311213a" android:state_focused="true"><br>    <item android:drawable="@color/btn_11213a"><br></item></item></item></selector><br>```</p>
+<blockquote>
+<p>心得：selector 名为选择器，也就是说遇到对应的的item就会使用，可能之前顺序排列没做好，<br>或者可以在seletor中嵌套seletor？需待实验下</p>
+</blockquote>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>由于产品需求，Button的点击状态、Clickable状态都要有不同的显示效果<br>研究Selector半天也没有找到可以使不同状态同时展示<br>于是，就迂回用笨方法搞定</p>]]>
+    
+    </summary>
+    
+      <category term="Android" scheme="http://wangqiankun.github.io/tags/Android/"/>
+    
+      <category term="Button" scheme="http://wangqiankun.github.io/tags/Button/"/>
+    
+      <category term="UI" scheme="http://wangqiankun.github.io/tags/UI/"/>
     
   </entry>
   
@@ -863,80 +947,6 @@ retrolambda {
 ]]></content>
     <summary type="html">
     <![CDATA[<p>###使用前<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><]]>
-    </summary>
-    
-      <category term="Android" scheme="http://wangqiankun.github.io/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Button的点击效果和Clickable效果]]></title>
-    <link href="http://wangqiankun.github.io/2015/10/13/Button%E7%9A%84%E7%82%B9%E5%87%BB%E6%95%88%E6%9E%9C%E5%92%8CClickable%E6%95%88%E6%9E%9C/"/>
-    <id>http://wangqiankun.github.io/2015/10/13/Button的点击效果和Clickable效果/</id>
-    <published>2015-10-13T14:25:45.000Z</published>
-    <updated>2016-07-07T15:19:55.000Z</updated>
-    <content type="html"><![CDATA[<p>由于产品需求，Button的点击状态、Clickable状态都要有不同的显示效果<br>研究Selector半天也没有找到可以使不同状态同时展示<br>于是，就迂回用笨方法搞定</p>
-<a id="more"></a>
-<ul>
-<li>1）自定义一个集成Button的类,重写setClickable状态，在两种状态设置不同背景色以及TextColor</li>
-</ul>
-<pre><code><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BtnBottom</span> <span class="keyword">extends</span> <span class="title">Button</span> </span>{
-
-    <span class="function"><span class="keyword">public</span> <span class="title">BtnBottom</span><span class="params">(Context context)</span> </span>{
-        <span class="keyword">super</span>(context);
-    }
-
-    <span class="function"><span class="keyword">public</span> <span class="title">BtnBottom</span><span class="params">(Context context, AttributeSet attrs)</span> </span>{
-        <span class="keyword">super</span>(context, attrs);
-    }
-
-    <span class="annotation">@Override</span>
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setClickable</span><span class="params">(<span class="keyword">boolean</span> clickable)</span> </span>{
-        <span class="keyword">super</span>.setClickable(clickable);
-        <span class="keyword">if</span> (clickable) {
-            <span class="keyword">this</span>.setBackgroundResource(R.drawable.bg_btn_bottom_normal);
-            <span class="keyword">this</span>.setTextColor(getResources().getColor(R.color.text_fff));
-        } <span class="keyword">else</span> {
-            <span class="keyword">this</span>.setBackgroundColor(getResources().getColor(R.color.btn_f1f1f2));
-            <span class="keyword">this</span>.setTextColor(getResources().getColor(R.color.text_d7d7d8));
-        }
-    }
-}
-
-
-<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BtnBottom</span> <span class="keyword">extends</span> <span class="title">Button</span> </span>{
-
-    <span class="function"><span class="keyword">public</span> <span class="title">BtnBottom</span><span class="params">(Context context)</span> </span>{
-        <span class="keyword">super</span>(context);
-    }
-
-    <span class="function"><span class="keyword">public</span> <span class="title">BtnBottom</span><span class="params">(Context context, AttributeSet attrs)</span> </span>{
-        <span class="keyword">super</span>(context, attrs);
-    }
-
-    <span class="annotation">@Override</span>
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setClickable</span><span class="params">(<span class="keyword">boolean</span> clickable)</span> </span>{
-        <span class="keyword">super</span>.setClickable(clickable);
-        <span class="keyword">if</span> (clickable) {
-            <span class="keyword">this</span>.setBackgroundResource(R.drawable.bg_btn_bottom_normal);
-            <span class="keyword">this</span>.setTextColor(getResources().getColor(R.color.text_fff));
-        } <span class="keyword">else</span> {
-            <span class="keyword">this</span>.setBackgroundColor(getResources().getColor(R.color.btn_f1f1f2));
-            <span class="keyword">this</span>.setTextColor(getResources().getColor(R.color.text_d7d7d8));
-        }
-    }
-}
-</code></pre><ul>
-<li>2）因为需要点击效果，所以在clickable为true时，设置背景色为selector</li>
-</ul>
-<p>```<br>\&lt;?xml version=”1.0” encoding=”utf-8”?><br>\<selector xmlns:android="http://schemas.android.com/apk/res/android" \=""><br>    <item android:drawable="@color/btn_b311213a" android:state_pressed="true"><br>    <item android:drawable="@color/btn_b311213a" android:state_focused="true"><br>    <item android:drawable="@color/btn_11213a"><br></item></item></item></selector><br>```</p>
-<blockquote>
-<p>心得：selector 名为选择器，也就是说遇到对应的的item就会使用，可能之前顺序排列没做好，<br>或者可以在seletor中嵌套seletor？需待实验下</p>
-</blockquote>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>由于产品需求，Button的点击状态、Clickable状态都要有不同的显示效果<br>研究Selector半天也没有找到可以使不同状态同时展示<br>于是，就迂回用笨方法搞定</p>]]>
-    
     </summary>
     
       <category term="Android" scheme="http://wangqiankun.github.io/tags/Android/"/>
