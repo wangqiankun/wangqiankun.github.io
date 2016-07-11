@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://wangqiankun.github.io/2015/10/13/AndroidSudio%E4%B8%8B%E7%94%A8butterknife%E6%B3%A8%E8%A7%A3/</loc>
+    <lastmod>2016-07-11T05:32:39.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://wangqiankun.github.io/2015/11/13/Toolbar%E4%B8%AA%E4%BA%BA%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</loc>
     <lastmod>2016-07-11T05:18:28.000Z</lastmod>
   </url>
@@ -79,11 +84,6 @@
   <url>
     <loc>http://wangqiankun.github.io/2015/10/13/Studio%E4%BD%BF%E7%94%A8Java8%E7%9A%84lambda%E5%91%BD%E4%BB%A4/</loc>
     <lastmod>2015-10-13T14:27:56.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://wangqiankun.github.io/2015/10/13/AndroidSudio%E4%B8%8B%E7%94%A8butterknife%E6%B3%A8%E8%A7%A3/</loc>
-    <lastmod>2015-10-13T14:18:23.000Z</lastmod>
   </url>
   
   <url>

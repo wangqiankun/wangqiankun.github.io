@@ -766,11 +766,11 @@ retrolambda {
   </entry>
   
   <entry>
-    <title><![CDATA[AndroidSudio下用butterknife注解]]></title>
+    <title><![CDATA[Android Sudio 下用 butterknife 注解]]></title>
     <link href="http://wangqiankun.github.io/2015/10/13/AndroidSudio%E4%B8%8B%E7%94%A8butterknife%E6%B3%A8%E8%A7%A3/"/>
     <id>http://wangqiankun.github.io/2015/10/13/AndroidSudio下用butterknife注解/</id>
     <published>2015-10-13T14:17:58.000Z</published>
-    <updated>2015-10-13T14:18:23.000Z</updated>
+    <updated>2016-07-11T05:32:39.000Z</updated>
     <content type="html"><![CDATA[<ol>
 <li>在gradle中引用 compile ‘compile ‘com.jakewharton:butterknife:7.0.1’’ 这个库<br>最新版本<a href="https://github.com/JakeWharton/butterknife" target="_blank" rel="external">点击这里查看</a></li>
 <li>在插件搜butterknife-zelezny，然后安装</li>
@@ -779,6 +779,11 @@ retrolambda {
 <blockquote>
 <p>注意：使用快捷键的时候，需要把鼠标放在layout的资源文件名上。</p>
 </blockquote>
+<h3 id="2016某日_更新">2016某日 更新</h3><p>butterknife 有个让我个人不爽的地方</p>
+<blockquote>
+<p>优势是省略了 findViewById() ,但随之带来的是大量的注解。每个 View 都需要一行注解 + 一行声明，View 多的话，会让人恶心。 新打开一个类，往往需要向下翻好长时间才可以找到正文</p>
+</blockquote>
+<p>个人对此工具的看法是，可以尝鲜，但不建议在正式项目中使用。</p>
 ]]></content>
     <summary type="html">
     <![CDATA[<ol>
@@ -786,6 +791,10 @@ retrolambda {
     </summary>
     
       <category term="Android" scheme="http://wangqiankun.github.io/tags/Android/"/>
+    
+      <category term="Android Studio" scheme="http://wangqiankun.github.io/tags/Android-Studio/"/>
+    
+      <category term="butterknife" scheme="http://wangqiankun.github.io/tags/butterknife/"/>
     
   </entry>
   
