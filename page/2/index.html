@@ -158,225 +158,6 @@
           
           
             
-              <a class="post-title-link" href="/2015/10/13/RxJava小笔记/" itemprop="url">
-                RxJava小笔记
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-10-13T22:29:13+08:00" content="2015-10-13">
-            2015-10-13
-          </time>
-        </span>
-
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/10/13/RxJava小笔记/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/13/RxJava小笔记/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>自用，摘抄于<a href="http://blog.csdn.net/lzyzsd/article/category/2767743" target="_blank" rel="external">大头鬼blog</a></p>
-<p>###基本流程<br>一般响应式编程的信息流如下所示：<br>Observable -&gt; Operator 1 -&gt; Operator 2 -&gt; Operator 3 -&gt; Subscriber<br>observable是事件的生产者，subscriber是事件最终的消费者。<br>Operators 即操作符：为了解决对Observable对象的变换的问题。用于在Observable和最终的Subscriber之间修改Observable发出的事件</p>
-<ol>
-<li>Observable<string> stringObservable = Observable.create(new Observable.OnSub…){…}</string></li>
-<li>Subscriber<string> subscriber = new Subscriber<string>() {…}</string></string></li>
-<li>stringObservable.subscribe(subscriber);<br>通俗解释下上述代码：1为创建事件 2.</li>
-</ol>
-<h4 id="响应式特点">响应式特点</h4><p>Subscriber有三个方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.subscribe(<span class="keyword">new</span> Subscriber&lt;String&gt;() &#123;</span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNext</span><span class="params">(String s)</span> </span>&#123; System.out.println(s); &#125;</span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCompleted</span><span class="params">()</span> </span>&#123; System.out.println(<span class="string">"Completed!"</span>); &#125;</span><br><span class="line">	<span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable e)</span> </span>&#123; System.out.println(<span class="string">"Ouch!"</span>); &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
-<p>1.只要有异常发生onError()一定会被调用</p>
-<p>这极大的简化了错误处理。只需要在一个地方处理错误即可以。</p>
-<p>2.操作符不需要处理异常</p>
-<p>将异常处理交给订阅者来做，Observerable的操作符调用链中一旦有一个抛出了异常，就会直接执行onError()方法。</p>
-<p>3.你能够知道什么时候订阅者已经接收了全部的数据。</p>
-<p>####Operators常用操作符</p>
-<ol>
-<li>map 就是用来把把一个事件转换为另一个事件的。</li>
-<li>flatMap 它可以返回任何它想返回的Observable对象。</li>
-<li>filter(title -&gt; title != null)  过滤某种不满足条件，比如!＝nullfilter()输出和输入相同的元素，并且会过滤掉那些不满足检查条件的。</li>
-<li>take()输出最多指定数量的结果。 take(5)</li>
-<li>doOnNext()允许我们在每次输出一个元素之前做一些额外的事情，比如这里的保存标题。.doOnNext(title -&gt; saveTitle(title))</li>
-<li>.subscribeOn(Schedulers.io()) 指定在Schedulers io中执行</li>
-<li>.observeOn(AndroidSchedulers.mainThread()) 指定在主线程中执行</li>
-<li>Observable.subscribe()返回一个Observable  其中纪录了是否与订阅者有关联 。调用unsubscribing方法可以取消关联，并立即停止整个调用链</li>
-<li>可自定义</li>
-</ol>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-              <a class="post-title-link" href="/2015/10/13/Studio使用Java8的lambda命令/" itemprop="url">
-                Studio使用Java8的lambda命令
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-10-13T22:27:30+08:00" content="2015-10-13">
-            2015-10-13
-          </time>
-        </span>
-
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/10/13/Studio使用Java8的lambda命令/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/13/Studio使用Java8的lambda命令/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>###使用前<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Button</span> button = (<span class="type">Button</span>) findViewById(R.id.button);</span><br><span class="line">button.setOnClickListener(new <span class="type">View</span>.<span class="type">OnClickListener</span>() &#123;</span><br><span class="line">   @<span class="type">Override</span></span><br><span class="line">   public <span class="type">void</span> onClick(<span class="type">View</span> v) &#123;</span><br><span class="line">       <span class="keyword">method</span>();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
-<p>###使用后(我所知道的所有的匿名内部类都可简化)<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Button</span> button = (<span class="type">Button</span>) findViewById(R.id.button);</span><br><span class="line">button.setOnClickListener(v -&gt; <span class="keyword">method</span>());</span><br></pre></td></tr></table></figure></p>
-<p>1.在Project工程目录使用</p>
-<pre><code><span class="keyword">dependencies</span> {
-<span class="keyword">classpath</span> <span class="string">'com.android.tools.build:gradle:1.2.3'</span>
-<span class="keyword">classpath</span> <span class="string">'me.tatarka:gradle-retrolambda:3.1.0'</span>
-<span class="comment">// <span class="doctag">NOTE:</span> Do not place your application dependencies here; they belong</span>
-<span class="comment">// in the individual module build.gradle files</span>
-}
-</code></pre><p> 2.在Moudule中使用 以下是例子</p>
-<pre><code>apply plugin: <span class="string">'com.android.application'</span>
-<span class="comment">//添加－1</span>
-apply plugin: <span class="string">'me.tatarka.retrolambda'</span>
-
-
-android {
-compileSdkVersion <span class="number">21</span>
-buildToolsVersion <span class="string">"21.1.2"</span>
-
-defaultConfig {
-    applicationId <span class="string">"com.wqk.demo.rxandroid"</span>
-    minSdkVersion <span class="number">14</span>
-    targetSdkVersion <span class="number">21</span>
-    versionCode <span class="number">1</span>
-    versionName <span class="string">"1.0"</span>
-}
-
-<span class="comment">//添加－2</span>
-compileOptions {
-    <span class="keyword">sourceCompatibility</span> JavaVersion.VERSION_1_8
-    <span class="keyword">targetCompatibility</span> JavaVersion.VERSION_1_8
-}
-
-buildTypes {
-    release {
-        minifyEnabled <span class="keyword">false</span>
-        proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span>
-        }
-    }
-}
-
-<span class="keyword">dependencies</span> {
-    <span class="keyword">compile</span> <span class="keyword">fileTree</span>(<span class="keyword">include</span>: [<span class="string">'*.jar'</span>], dir: <span class="string">'libs'</span>)
-    <span class="keyword">compile</span> <span class="string">'com.android.support:appcompat-v7:22.2.0'</span>
-    <span class="keyword">compile</span> <span class="string">'io.reactivex:rxandroid:0.25.0'</span>
-}
-
-<span class="keyword">repositories</span> {
-    mavenCentral()
-}
-
-<span class="comment">//添加JAVA8支持 －3</span>
-retrolambda {
-<span class="comment">//Comend＋；可以弹出本地JDK地址设置界面，拷贝就行</span>
-   jdk <span class="string">"/Library/Java/JavaVirtualMachines/jdk1.8.0_20.jdk/Contents/Home"</span>
-}
-</code></pre><p>3.注意事项：需下载JAVA8 （编码可以不用，在Gradle另配）</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
               <a class="post-title-link" href="/2015/10/13/AndroidSudio下用butterknife注解/" itemprop="url">
                 AndroidSudio下用butterknife注解
               </a>
@@ -969,6 +750,197 @@ retrolambda {
 
 
     
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/10/13/tools/Gradle自动构建/" itemprop="url">
+                Gradle自动构建
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-10-13T16:31:32+08:00" content="2015-10-13">
+            2015-10-13
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/10/13/tools/Gradle自动构建/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/13/tools/Gradle自动构建/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><blockquote>
+<p>构建跟打包有天壤之别，一句命令可以打成你想要的各种包<br>可灵活配置生产与测试环境的差异…等</p>
+<p>牛逼之处，远不止于此</p>
+</blockquote>
+<ol>
+<li>在项目目录中先执行 ‘./gradlew clean’ 如果提示没权限 则使用 ‘sudo ./gradlew clean’</li>
+<li>Mac可能会提示 ‘sudo: ./gradlew: command not found’ ，意思大概为文件为非可执行状态,先执行 ‘chmod 755 gradlew’ 修改文件属性后，再执行此语句</li>
+<li>执行 ‘./gradle build’ 会生成debug和release两个包</li>
+<li>生成的app在/项目/app/build/outputs/apk下</li>
+</ol>
+<blockquote>
+<p>如果之前未使用过gradle构建项目，一般会从新下载gradle包，无论之前是否使用过。（不过构建下载后，全部的项目都不用再下载gradle了）</p>
+<p>下载时间较久，耐心等待………………你会懂得为什么这么多”…”</p>
+</blockquote>
+<h1 id="涉及到的功能点">涉及到的功能点</h1><h2 id="一、android_{}_中的(自上至下，顺序很重要)">一、android {} 中的(自上至下，顺序很重要)</h2><blockquote>
+<p>defaultConfig为默认配置，其中任何配置都可被其他模块替换滴</p>
+</blockquote>
+<h3 id="签名文件配置（为保证安全，可创建signing-properties文件，在该文件配置路径,向下翻）">签名文件配置（为保证安全，可创建signing.properties文件，在该文件配置路径,向下翻）</h3>   <figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">signingConfigs</span> &#123;</span><br><span class="line">   <span class="tag">debug</span> &#123;&#125;</span><br><span class="line">   <span class="tag">release</span> &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="配置不同版本buildTypes模块（会对应生成名为BuildConfig的文件）,如下">配置不同版本buildTypes模块（会对应生成名为BuildConfig的文件）,如下</h3><blockquote>
+<p>其中buildConfigField(“boolean”, “LOG_DEBUG”, “true”)是自定义语句</p>
+</blockquote>
+<p>   语法buildConfigField(“类型（同JAVA）”,”名字”,”值”)</p>
+<p>   使用方法 public final static String LOG_DEBUG = BuildConfig.LOG_DEBUG;   </p>
+   <figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">buildTypes &#123;</span><br><span class="line">  debug&#123;</span><br><span class="line">      <span class="comment">// 版本名前缀</span></span><br><span class="line">      versionNameSuffix <span class="string">"-debug"</span></span><br><span class="line">      buildConfigField(<span class="string">"boolean"</span>, <span class="string">"LOG_DEBUG"</span>, <span class="string">"true"</span>)</span><br><span class="line">      buildConfigField <span class="string">"String"</span>, <span class="string">"BASE_URL"</span>, <span class="string">"\"http://192.168.1.224:8080/\""</span></span><br><span class="line">      buildConfigField <span class="string">"String"</span>, <span class="string">"BASE_IMG_URL"</span>, <span class="string">"\"http://192.168.1.233:8888/dd-file-gw/\""</span></span><br><span class="line">      minifyEnabled <span class="literal">false</span></span><br><span class="line">      zipAlignEnabled <span class="literal">false</span></span><br><span class="line">      shrinkResources <span class="literal">false</span></span><br><span class="line">      signingConfig signingConfigs.debug</span><br><span class="line">  &#125;</span><br><span class="line">  release &#123;</span><br><span class="line">      <span class="comment">// 版本名前缀</span></span><br><span class="line">      versionNameSuffix <span class="string">"-relase"</span></span><br><span class="line">      <span class="comment">//牛逼哄哄的选择是否输出LOG信息</span></span><br><span class="line">      buildConfigField(<span class="string">"Boolean"</span>, <span class="string">"LOG_DEBUG"</span>, <span class="string">"false"</span>)</span><br><span class="line">      <span class="comment">//牛逼哄哄的设置BASE_URL</span></span><br><span class="line">      buildConfigField <span class="string">"String"</span>, <span class="string">"BASE_URL"</span>, <span class="string">"\"http://mobile.zufangzi.com/\""</span></span><br><span class="line">      <span class="comment">//牛逼哄哄的设置BASE_IMG_URL</span></span><br><span class="line">      buildConfigField <span class="string">"String"</span>, <span class="string">"BASE_IMG_URL"</span>, <span class="string">"\"http://static.zufangzi.com/\""</span></span><br><span class="line">      <span class="comment">//牛逼哄哄的选择是否混淆编译</span></span><br><span class="line">      minifyEnabled <span class="literal">false</span></span><br><span class="line">      <span class="comment">//牛逼哄哄的档案整理工具</span></span><br><span class="line">      zipAlignEnabled <span class="literal">true</span></span><br><span class="line">      <span class="comment">//牛逼哄哄的移除无用的资源文件</span></span><br><span class="line">      shrinkResources <span class="literal">true</span></span><br><span class="line">      signingConfig signingConfigs.release</span><br><span class="line">      proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="修改生成的最终文件名,如下">修改生成的最终文件名,如下</h3><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">applicationVariants.all &#123; variant -&gt;</span><br><span class="line">    variant.outputs.<span class="keyword">each</span> &#123; output -&gt;</span><br><span class="line">        <span class="keyword">def</span> outputFile = output.outputFile</span><br><span class="line">        <span class="keyword">if</span> (outputFile != <span class="keyword">null</span> &amp;&amp; outputFile.name.endsWith(<span class="string">'.apk'</span>)) &#123;</span><br><span class="line">            <span class="keyword">File</span> outputDirectory = <span class="keyword">new</span> <span class="keyword">File</span>(outputFile.parent);</span><br><span class="line">            <span class="keyword">def</span> fileName</span><br><span class="line">            <span class="keyword">if</span> (variant.buildType.name == <span class="string">"release"</span>) &#123;</span><br><span class="line">                fileName = <span class="string">"Butler.$&#123;defaultConfig.versionName&#125;.apk"</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                fileName = <span class="string">"Butler.$&#123;defaultConfig.versionName&#125;_beta.apk"</span></span><br><span class="line">            &#125;</span><br><span class="line">            output.outputFile = <span class="keyword">new</span> <span class="keyword">File</span>(outputDirectory, fileName)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="二、android_{}_下面的">二、android {} 下面的</h2><h3 id="使用signing-properties记录keyStore的地址以及密码">使用signing.properties记录keyStore的地址以及密码</h3>   <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">File</span> propFile = <span class="keyword">file</span>(<span class="string">'signing.properties'</span>);</span><br><span class="line"><span class="keyword">if</span> (propFile.exists()) &#123;</span><br><span class="line">   <span class="keyword">def</span> Properties props = <span class="keyword">new</span> Properties()</span><br><span class="line">   props.load(<span class="keyword">new</span> FileInputStream(propFile))</span><br><span class="line">   <span class="keyword">if</span> (props.containsKey(<span class="string">'STORE_FILE'</span>) &amp;&amp; props.containsKey(<span class="string">'STORE_PASSWORD'</span>) &amp;&amp;</span><br><span class="line">           props.containsKey(<span class="string">'KEY_ALIAS'</span>) &amp;&amp; props.containsKey(<span class="string">'KEY_PASSWORD'</span>)) &#123;</span><br><span class="line">       android.signingConfigs.release.storeFile = <span class="keyword">file</span>(props[<span class="string">'STORE_FILE'</span>])</span><br><span class="line">       android.signingConfigs.release.storePassword = props[<span class="string">'STORE_PASSWORD'</span>]</span><br><span class="line">       android.signingConfigs.release.keyAlias = props[<span class="string">'KEY_ALIAS'</span>]</span><br><span class="line">       android.signingConfigs.release.keyPassword = props[<span class="string">'KEY_PASSWORD'</span>]</span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">       android.buildTypes.release.signingConfig = <span class="keyword">null</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">   android.buildTypes.release.signingConfig = <span class="keyword">null</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>   signing.properties文件内容（该文件和key与src目录同级）</p>
+   <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="setting">STORE_FILE=<span class="value">jks路径</span></span></span><br><span class="line"><span class="setting">STORE_PASSWORD=<span class="value">看名字</span></span></span><br><span class="line"><span class="setting">KEY_ALIAS=<span class="value">看名字</span></span></span><br><span class="line"><span class="setting">KEY_PASSWORD=<span class="value">看名字</span></span></span><br></pre></td></tr></table></figure>
+<h1 id="我遇到过的错误">我遇到过的错误</h1><h2 id="sudo_-/gradlew_clean_出现错误">sudo ./gradlew clean 出现错误</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> What went <span class="string">wrong:</span></span><br><span class="line">A problem occurred configuring root project <span class="string">'Butler'</span>.</span><br><span class="line">&gt; Could not resolve all dependencies <span class="keyword">for</span> configuration <span class="string">':classpath'</span>.</span><br><span class="line">   &gt; Cannot resolve external dependency com.android.tools.<span class="string">build:</span><span class="string">gradle:</span><span class="number">1.3</span><span class="number">.0</span> because no repositories are defined.</span><br><span class="line">     Required <span class="string">by:</span></span><br><span class="line">         :<span class="string">Butler:</span>unspecified</span><br></pre></td></tr></table></figure>
+<p> x项目中有类似 classpath ‘io.fabric.tools:gradle:1.+’的语句，</p>
+<p> 改成最新的版本，或者确定版本名就好。（类似gradle:1.20.0结尾）</p>
+<h2 id="定义打包时间函数_(放在android{}之前)">定义打包时间函数 (放在android{}之前)</h2><p>  def packageTime() {</p>
+<pre><code>return new <span class="function"><span class="title">Date</span><span class="params">()</span></span>.<span class="function"><span class="title">format</span><span class="params">(<span class="string">"MM.dd"</span>, TimeZone.getTimeZone(<span class="string">"UTC"</span>)</span></span>)
+</code></pre><p>  }</p>
+<p>  使用方法：${packageTime()} 拼在字符串中</p>
+<h2 id="修改生成的最终文件名(放在android{}内最后)">修改生成的最终文件名(放在android{}内最后)</h2><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">applicationVariants.all &#123;</span><br><span class="line">      variant -&gt;</span><br><span class="line">        variant.outputs.<span class="keyword">each</span> &#123;</span><br><span class="line">            output -&gt;</span><br><span class="line">                <span class="keyword">def</span> outputFile = output.outputFile</span><br><span class="line">                <span class="keyword">if</span> (outputFile != <span class="keyword">null</span> &amp;&amp; outputFile.name.endsWith(<span class="string">'.apk'</span>)) &#123;</span><br><span class="line">                    <span class="keyword">File</span> outputDirectory = <span class="keyword">new</span> <span class="keyword">File</span>(outputFile.parent);</span><br><span class="line">                    <span class="keyword">def</span> fileName</span><br><span class="line">                    <span class="keyword">if</span> (variant.buildType.name == <span class="string">"release"</span>) &#123;</span><br><span class="line">                                            <span class="comment">// 输出apk名称</span></span><br><span class="line">                        fileName = <span class="string">"Butler_v$&#123;defaultConfig.versionName&#125;_$&#123;packageTime()&#125;.apk"</span></span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        fileName = <span class="string">"Butler_v$&#123;defaultConfig.versionName&#125;_$&#123;packageTime()&#125;_beta.apk"</span></span><br><span class="line">                    &#125;</span><br><span class="line">                    output.outputFile = <span class="keyword">new</span> <span class="keyword">File</span>(outputDirectory, fileName)</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="报错1">报错1</h2>  <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="constant">Could </span><span class="keyword">not</span> resolve all dependencies <span class="keyword">for</span> configuration <span class="string">':classpath'</span>.</span><br><span class="line">&gt; <span class="constant">Cannot </span>resolve external dependency com.android.tools.<span class="symbol">build:</span><span class="symbol">gradle:</span><span class="number">1.3</span>.<span class="number">0</span> because no repositories are <span class="keyword">defined</span>.</span><br><span class="line">  <span class="constant">Required </span><span class="symbol">by:</span></span><br><span class="line">      <span class="symbol">:Butler</span><span class="symbol">:unspecified</span></span><br></pre></td></tr></table></figure>
+<p>  解决地址： <a href="http://stackoverflow.com/questions/28921964/googles-android-basic-samples-code-broken-gradle-issues" target="_blank" rel="external">http://stackoverflow.com/questions/28921964/googles-android-basic-samples-code-broken-gradle-issues</a></p>
+<h2 id="报错2">报错2</h2>  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">What</span> <span class="tag">went</span> <span class="rule"><span class="attribute">wrong</span>:<span class="value"></span><br><span class="line">Execution failed for task <span class="string">':app:lint'</span>.</span><br><span class="line">Lint found errors in the project</span></span>; <span class="tag">aborting</span> <span class="tag">build</span>.</span><br></pre></td></tr></table></figure>
+<p>解决方法:</p>
+<p>  Fix the issues identified by lint, or add the following to your build script to proceed with errors:</p>
+  <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">android</span> &#123;</span><br><span class="line">  <span class="title">lintOptions</span> &#123;</span><br><span class="line">      <span class="title">abortOnError</span> <span class="built_in">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="不知道什么原因不能调试了,报错如下">不知道什么原因不能调试了,报错如下</h2>  <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Waiting <span class="keyword">for</span> device.</span><br><span class="line">Cannot debug <span class="type">application</span> com.dingding.butler <span class="function_start"><span class="keyword">on</span></span> device motorola-xt1085-TA09004RZM.</span><br><span class="line">This <span class="type">application</span> <span class="keyword">does</span> <span class="keyword">not</span> have <span class="keyword">the</span> debuggable attribute enabled <span class="keyword">in</span> <span class="keyword">its</span> manifest.</span><br><span class="line">If you have manually <span class="keyword">set</span> <span class="keyword">it</span> <span class="keyword">in</span> <span class="keyword">the</span> manifest, <span class="keyword">then</span> remove <span class="keyword">it</span> <span class="keyword">and</span> let <span class="keyword">the</span> IDE automatically assign <span class="keyword">it</span>.</span><br><span class="line">If you are using Gradle, make sure <span class="keyword">that</span> your current variant <span class="keyword">is</span> debuggable.</span><br></pre></td></tr></table></figure>
+<p>  解决办法：</p>
+<p>  点击运行三角右边的机器人图标，选择’Edit Configurations…’–&gt;‘Defaults’</p>
+<p>  出来的列表，每个都点击，看着像有关系的选择框都点下选中，好了…不知道哪个起的作用</p>
+<p>有google到解决方法： Gradle下 release {‘这里添加 ‘debuggable true’’} 没试这个就好了</p>
+<h2 id="无解BUG（已解决，见下篇博文)">无解BUG（已解决，见<a href="http://wangqiankun.github.io/2015/10/13/tools/Gradle%E7%B3%BB%E5%88%97%E4%B9%8BBuildConfig%E6%96%87%E4%BB%B6/">下篇博文</a>)</h2><p>  自动生成的BuildConfig文件，默认为release状态的（可能看不懂这句话 自己写遍就知道了），</p>
+<p>  找了一下午，试了无数种方法，都不行！！！都不行！！！都不行！！！</p>
+<p>  最后无奈，重新down了一份代码，就好了啊！！！就好了啊！！！就好了啊！！！坑爹玩意儿！</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/02/13/Activity研究之isFinishing()与isDestroyed()/" itemprop="url">
+                Activity研究之isFinishing()与isDestroyed()
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-02-13T21:10:31+08:00" content="2015-02-13">
+            2015-02-13
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/02/13/Activity研究之isFinishing()与isDestroyed()/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/02/13/Activity研究之isFinishing()与isDestroyed()/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <p>App carsh后，经常会遇到些奇奇怪怪的问题，很多都是因为Activity finish后，还在这个Activity操作相关数据的情况。这就需要进行对Activity的状态进行判断。google好久，大部分都跟这个博文中说的类似<a href="http://sdywcd.iteye.com/blog/2061734">如何判断android activity是否运行</a>。</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/02/13/Activity研究之isFinishing()与isDestroyed()/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -1007,7 +979,7 @@ retrolambda {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-count">21</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

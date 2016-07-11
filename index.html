@@ -596,75 +596,6 @@
           
           
             
-              <a class="post-title-link" href="/2015/11/12/RecyclerView使用-md/" itemprop="url">
-                RecyclerView使用
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-11-12T11:28:04+08:00" content="2015-11-12">
-            2015-11-12
-          </time>
-        </span>
-
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/11/12/RecyclerView使用-md/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/12/RecyclerView使用-md/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p> 全名 android.support.v7.widget.RecyclerView</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
               <a class="post-title-link" href="/2015/10/13/tools/Android Studio快捷键 -- OS X 10.5+/" itemprop="url">
                 Android Studio快捷键 -- OS X 10.5+
               </a>
@@ -868,8 +799,8 @@
           
           
             
-              <a class="post-title-link" href="/2015/10/13/ToastUtils-java/" itemprop="url">
-                ToastUtils.java
+              <a class="post-title-link" href="/2015/10/13/RxJava小笔记/" itemprop="url">
+                RxJava小笔记
               </a>
             
           
@@ -879,7 +810,7 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-10-13T22:30:50+08:00" content="2015-10-13">
+          <time itemprop="dateCreated" datetime="2015-10-13T22:29:13+08:00" content="2015-10-13">
             2015-10-13
           </time>
         </span>
@@ -890,8 +821,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/10/13/ToastUtils-java/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/13/ToastUtils-java/" itemprop="commentsCount"></span>
+              <a href="/2015/10/13/RxJava小笔记/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/13/RxJava小笔记/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -906,7 +837,157 @@
 
       
         
-          <span itemprop="articleBody"><figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.wqk.utils;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">import</span> android.content.Context;</span><br><span class="line">  <span class="keyword">import</span> android.os.Handler;</span><br><span class="line">  <span class="keyword">import</span> android.os.Looper;</span><br><span class="line">  <span class="keyword">import</span> android.widget.Toast;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span><br><span class="line">   * 公共Toast类，</span><br><span class="line">   * Created by wqk on 15/8/29.</span><br><span class="line">   */</span></span><br><span class="line">  <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ToastUtils</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">private</span> <span class="keyword">static</span> Looper mainLooper = Looper.getMainLooper();</span><br><span class="line">      <span class="keyword">private</span> <span class="keyword">static</span> Handler <span class="keyword">handler</span> = <span class="keyword">new</span> Handler(Looper.getMainLooper());</span><br><span class="line"></span><br><span class="line">      ToastUtils() &#123;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">void</span> <span class="title">showL</span><span class="params">(Context context, <span class="keyword">int</span> resId)</span> </span>&#123;</span><br><span class="line">          show(context, context.getResources().getText(resId), Toast.LENGTH_LONG);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">void</span> <span class="title">showL</span><span class="params">(Context context, String string)</span> </span>&#123;</span><br><span class="line">          show(context, string, Toast.LENGTH_LONG);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">void</span> <span class="title">showS</span><span class="params">(Context context, <span class="keyword">int</span> resId)</span> </span>&#123;</span><br><span class="line">          show(context, context.getResources().getText(resId), Toast.LENGTH_SHORT);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">void</span> <span class="title">showS</span><span class="params">(Context context, String string)</span> </span>&#123;</span><br><span class="line">          show(context, string, Toast.LENGTH_SHORT);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      <span class="keyword">private</span> <span class="keyword">static</span> <span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">(<span class="keyword">final</span> Context context, <span class="keyword">final</span> CharSequence text, <span class="keyword">final</span> <span class="keyword">int</span> duration)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">          <span class="keyword">if</span> (Looper.myLooper() == mainLooper) &#123;</span><br><span class="line">              Toast.makeText(context, text, duration).show();</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              <span class="keyword">handler</span>.post(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">                  <span class="annotation">@Override</span></span><br><span class="line">                  <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                      Toast.makeText(context, text, duration).show();</span><br><span class="line">                  &#125;</span><br><span class="line">              &#125;);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+          <span itemprop="articleBody"><p>自用，摘抄于<a href="http://blog.csdn.net/lzyzsd/article/category/2767743" target="_blank" rel="external">大头鬼blog</a></p>
+<p>###基本流程<br>一般响应式编程的信息流如下所示：<br>Observable -&gt; Operator 1 -&gt; Operator 2 -&gt; Operator 3 -&gt; Subscriber<br>observable是事件的生产者，subscriber是事件最终的消费者。<br>Operators 即操作符：为了解决对Observable对象的变换的问题。用于在Observable和最终的Subscriber之间修改Observable发出的事件</p>
+<ol>
+<li>Observable<string> stringObservable = Observable.create(new Observable.OnSub…){…}</string></li>
+<li>Subscriber<string> subscriber = new Subscriber<string>() {…}</string></string></li>
+<li>stringObservable.subscribe(subscriber);<br>通俗解释下上述代码：1为创建事件 2.</li>
+</ol>
+<h4 id="响应式特点">响应式特点</h4><p>Subscriber有三个方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.subscribe(<span class="keyword">new</span> Subscriber&lt;String&gt;() &#123;</span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNext</span><span class="params">(String s)</span> </span>&#123; System.out.println(s); &#125;</span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCompleted</span><span class="params">()</span> </span>&#123; System.out.println(<span class="string">"Completed!"</span>); &#125;</span><br><span class="line">	<span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable e)</span> </span>&#123; System.out.println(<span class="string">"Ouch!"</span>); &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<p>1.只要有异常发生onError()一定会被调用</p>
+<p>这极大的简化了错误处理。只需要在一个地方处理错误即可以。</p>
+<p>2.操作符不需要处理异常</p>
+<p>将异常处理交给订阅者来做，Observerable的操作符调用链中一旦有一个抛出了异常，就会直接执行onError()方法。</p>
+<p>3.你能够知道什么时候订阅者已经接收了全部的数据。</p>
+<p>####Operators常用操作符</p>
+<ol>
+<li>map 就是用来把把一个事件转换为另一个事件的。</li>
+<li>flatMap 它可以返回任何它想返回的Observable对象。</li>
+<li>filter(title -&gt; title != null)  过滤某种不满足条件，比如!＝nullfilter()输出和输入相同的元素，并且会过滤掉那些不满足检查条件的。</li>
+<li>take()输出最多指定数量的结果。 take(5)</li>
+<li>doOnNext()允许我们在每次输出一个元素之前做一些额外的事情，比如这里的保存标题。.doOnNext(title -&gt; saveTitle(title))</li>
+<li>.subscribeOn(Schedulers.io()) 指定在Schedulers io中执行</li>
+<li>.observeOn(AndroidSchedulers.mainThread()) 指定在主线程中执行</li>
+<li>Observable.subscribe()返回一个Observable  其中纪录了是否与订阅者有关联 。调用unsubscribing方法可以取消关联，并立即停止整个调用链</li>
+<li>可自定义</li>
+</ol>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/10/13/Studio使用Java8的lambda命令/" itemprop="url">
+                Studio使用Java8的lambda命令
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-10-13T22:27:30+08:00" content="2015-10-13">
+            2015-10-13
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/10/13/Studio使用Java8的lambda命令/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/13/Studio使用Java8的lambda命令/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>###使用前<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Button</span> button = (<span class="type">Button</span>) findViewById(R.id.button);</span><br><span class="line">button.setOnClickListener(new <span class="type">View</span>.<span class="type">OnClickListener</span>() &#123;</span><br><span class="line">   @<span class="type">Override</span></span><br><span class="line">   public <span class="type">void</span> onClick(<span class="type">View</span> v) &#123;</span><br><span class="line">       <span class="keyword">method</span>();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>###使用后(我所知道的所有的匿名内部类都可简化)<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Button</span> button = (<span class="type">Button</span>) findViewById(R.id.button);</span><br><span class="line">button.setOnClickListener(v -&gt; <span class="keyword">method</span>());</span><br></pre></td></tr></table></figure></p>
+<p>1.在Project工程目录使用</p>
+<pre><code><span class="keyword">dependencies</span> {
+<span class="keyword">classpath</span> <span class="string">'com.android.tools.build:gradle:1.2.3'</span>
+<span class="keyword">classpath</span> <span class="string">'me.tatarka:gradle-retrolambda:3.1.0'</span>
+<span class="comment">// <span class="doctag">NOTE:</span> Do not place your application dependencies here; they belong</span>
+<span class="comment">// in the individual module build.gradle files</span>
+}
+</code></pre><p> 2.在Moudule中使用 以下是例子</p>
+<pre><code>apply plugin: <span class="string">'com.android.application'</span>
+<span class="comment">//添加－1</span>
+apply plugin: <span class="string">'me.tatarka.retrolambda'</span>
+
+
+android {
+compileSdkVersion <span class="number">21</span>
+buildToolsVersion <span class="string">"21.1.2"</span>
+
+defaultConfig {
+    applicationId <span class="string">"com.wqk.demo.rxandroid"</span>
+    minSdkVersion <span class="number">14</span>
+    targetSdkVersion <span class="number">21</span>
+    versionCode <span class="number">1</span>
+    versionName <span class="string">"1.0"</span>
+}
+
+<span class="comment">//添加－2</span>
+compileOptions {
+    <span class="keyword">sourceCompatibility</span> JavaVersion.VERSION_1_8
+    <span class="keyword">targetCompatibility</span> JavaVersion.VERSION_1_8
+}
+
+buildTypes {
+    release {
+        minifyEnabled <span class="keyword">false</span>
+        proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span>
+        }
+    }
+}
+
+<span class="keyword">dependencies</span> {
+    <span class="keyword">compile</span> <span class="keyword">fileTree</span>(<span class="keyword">include</span>: [<span class="string">'*.jar'</span>], dir: <span class="string">'libs'</span>)
+    <span class="keyword">compile</span> <span class="string">'com.android.support:appcompat-v7:22.2.0'</span>
+    <span class="keyword">compile</span> <span class="string">'io.reactivex:rxandroid:0.25.0'</span>
+}
+
+<span class="keyword">repositories</span> {
+    mavenCentral()
+}
+
+<span class="comment">//添加JAVA8支持 －3</span>
+retrolambda {
+<span class="comment">//Comend＋；可以弹出本地JDK地址设置界面，拷贝就行</span>
+   jdk <span class="string">"/Library/Java/JavaVirtualMachines/jdk1.8.0_20.jdk/Contents/Home"</span>
+}
+</code></pre><p>3.注意事项：需下载JAVA8 （编码可以不用，在Gradle另配）</p>
 </span>
         
       
@@ -964,7 +1045,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-count">21</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

@@ -551,21 +551,6 @@ toolbar.setNavigationOnClickListener(<span class="keyword">new</span> View.OnCli
   </entry>
   
   <entry>
-    <title><![CDATA[RecyclerView使用]]></title>
-    <link href="http://wangqiankun.github.io/2015/11/12/RecyclerView%E4%BD%BF%E7%94%A8-md/"/>
-    <id>http://wangqiankun.github.io/2015/11/12/RecyclerView使用-md/</id>
-    <published>2015-11-12T03:28:04.000Z</published>
-    <updated>2015-11-18T07:56:37.000Z</updated>
-    <content type="html"><![CDATA[<p> 全名 android.support.v7.widget.RecyclerView</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p> 全名 android.support.v7.widget.RecyclerView</p>
-]]>
-    </summary>
-    
-  </entry>
-  
-  <entry>
     <title><![CDATA[Android Studio快捷键 -- OS X 10.5+]]></title>
     <link href="http://wangqiankun.github.io/2015/10/13/tools/Android%20Studio%E5%BF%AB%E6%8D%B7%E9%94%AE%20--%20OS%20X%2010.5+/"/>
     <id>http://wangqiankun.github.io/2015/10/13/tools/Android Studio快捷键 -- OS X 10.5+/</id>
@@ -660,22 +645,6 @@ toolbar.setNavigationOnClickListener(<span class="keyword">new</span> View.OnCli
 ]]></content>
     <summary type="html">
     <![CDATA[<p>用到v4、v7包时不知道怎么在gradle中导入，或者不知道怎么写<br>可以使用快捷键’commend+;’进入’Project Structure’设置界面。<br>上排找到’Dependencies’标签，点击’+’号。就可以找到本地的v4、v7的依赖。ok既可。</]]>
-    </summary>
-    
-      <category term="Android" scheme="http://wangqiankun.github.io/tags/Android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[ToastUtils.java]]></title>
-    <link href="http://wangqiankun.github.io/2015/10/13/ToastUtils-java/"/>
-    <id>http://wangqiankun.github.io/2015/10/13/ToastUtils-java/</id>
-    <published>2015-10-13T14:30:50.000Z</published>
-    <updated>2015-10-13T14:34:30.000Z</updated>
-    <content type="html"><![CDATA[<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.wqk.utils;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">import</span> android.content.Context;</span><br><span class="line">  <span class="keyword">import</span> android.os.Handler;</span><br><span class="line">  <span class="keyword">import</span> android.os.Looper;</span><br><span class="line">  <span class="keyword">import</span> android.widget.Toast;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span><br><span class="line">   * 公共Toast类，</span><br><span class="line">   * Created by wqk on 15/8/29.</span><br><span class="line">   */</span></span><br><span class="line">  <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ToastUtils</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">private</span> <span class="keyword">static</span> Looper mainLooper = Looper.getMainLooper();</span><br><span class="line">      <span class="keyword">private</span> <span class="keyword">static</span> Handler <span class="keyword">handler</span> = <span class="keyword">new</span> Handler(Looper.getMainLooper());</span><br><span class="line"></span><br><span class="line">      ToastUtils() &#123;</span><br><span class="line"></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">void</span> <span class="title">showL</span><span class="params">(Context context, <span class="keyword">int</span> resId)</span> </span>&#123;</span><br><span class="line">          show(context, context.getResources().getText(resId), Toast.LENGTH_LONG);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">void</span> <span class="title">showL</span><span class="params">(Context context, String string)</span> </span>&#123;</span><br><span class="line">          show(context, string, Toast.LENGTH_LONG);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">void</span> <span class="title">showS</span><span class="params">(Context context, <span class="keyword">int</span> resId)</span> </span>&#123;</span><br><span class="line">          show(context, context.getResources().getText(resId), Toast.LENGTH_SHORT);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">void</span> <span class="title">showS</span><span class="params">(Context context, String string)</span> </span>&#123;</span><br><span class="line">          show(context, string, Toast.LENGTH_SHORT);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">      <span class="keyword">private</span> <span class="keyword">static</span> <span class="function"><span class="keyword">void</span> <span class="title">show</span><span class="params">(<span class="keyword">final</span> Context context, <span class="keyword">final</span> CharSequence text, <span class="keyword">final</span> <span class="keyword">int</span> duration)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">          <span class="keyword">if</span> (Looper.myLooper() == mainLooper) &#123;</span><br><span class="line">              Toast.makeText(context, text, duration).show();</span><br><span class="line">          &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              <span class="keyword">handler</span>.post(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">                  <span class="annotation">@Override</span></span><br><span class="line">                  <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                      Toast.makeText(context, text, duration).show();</span><br><span class="line">                  &#125;</span><br><span class="line">              &#125;);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-    <summary type="html">
-    <![CDATA[<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span cla]]>
     </summary>
     
       <category term="Android" scheme="http://wangqiankun.github.io/tags/Android/"/>
@@ -989,6 +958,185 @@ retrolambda {
     </summary>
     
       <category term="Tools" scheme="http://wangqiankun.github.io/tags/Tools/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Gradle自动构建]]></title>
+    <link href="http://wangqiankun.github.io/2015/10/13/tools/Gradle%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA/"/>
+    <id>http://wangqiankun.github.io/2015/10/13/tools/Gradle自动构建/</id>
+    <published>2015-10-13T08:31:32.000Z</published>
+    <updated>2015-10-26T07:31:28.000Z</updated>
+    <content type="html"><![CDATA[<blockquote>
+<p>构建跟打包有天壤之别，一句命令可以打成你想要的各种包<br>可灵活配置生产与测试环境的差异…等</p>
+<p>牛逼之处，远不止于此</p>
+</blockquote>
+<ol>
+<li>在项目目录中先执行 ‘./gradlew clean’ 如果提示没权限 则使用 ‘sudo ./gradlew clean’</li>
+<li>Mac可能会提示 ‘sudo: ./gradlew: command not found’ ，意思大概为文件为非可执行状态,先执行 ‘chmod 755 gradlew’ 修改文件属性后，再执行此语句</li>
+<li>执行 ‘./gradle build’ 会生成debug和release两个包</li>
+<li>生成的app在/项目/app/build/outputs/apk下</li>
+</ol>
+<blockquote>
+<p>如果之前未使用过gradle构建项目，一般会从新下载gradle包，无论之前是否使用过。（不过构建下载后，全部的项目都不用再下载gradle了）</p>
+<p>下载时间较久，耐心等待………………你会懂得为什么这么多”…”</p>
+</blockquote>
+<h1 id="涉及到的功能点">涉及到的功能点</h1><h2 id="一、android_{}_中的(自上至下，顺序很重要)">一、android {} 中的(自上至下，顺序很重要)</h2><blockquote>
+<p>defaultConfig为默认配置，其中任何配置都可被其他模块替换滴</p>
+</blockquote>
+<h3 id="签名文件配置（为保证安全，可创建signing-properties文件，在该文件配置路径,向下翻）">签名文件配置（为保证安全，可创建signing.properties文件，在该文件配置路径,向下翻）</h3>   <figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">signingConfigs</span> &#123;</span><br><span class="line">   <span class="tag">debug</span> &#123;&#125;</span><br><span class="line">   <span class="tag">release</span> &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="配置不同版本buildTypes模块（会对应生成名为BuildConfig的文件）,如下">配置不同版本buildTypes模块（会对应生成名为BuildConfig的文件）,如下</h3><blockquote>
+<p>其中buildConfigField(“boolean”, “LOG_DEBUG”, “true”)是自定义语句</p>
+</blockquote>
+<p>   语法buildConfigField(“类型（同JAVA）”,”名字”,”值”)</p>
+<p>   使用方法 public final static String LOG_DEBUG = BuildConfig.LOG_DEBUG;   </p>
+   <figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">buildTypes &#123;</span><br><span class="line">  debug&#123;</span><br><span class="line">      <span class="comment">// 版本名前缀</span></span><br><span class="line">      versionNameSuffix <span class="string">"-debug"</span></span><br><span class="line">      buildConfigField(<span class="string">"boolean"</span>, <span class="string">"LOG_DEBUG"</span>, <span class="string">"true"</span>)</span><br><span class="line">      buildConfigField <span class="string">"String"</span>, <span class="string">"BASE_URL"</span>, <span class="string">"\"http://192.168.1.224:8080/\""</span></span><br><span class="line">      buildConfigField <span class="string">"String"</span>, <span class="string">"BASE_IMG_URL"</span>, <span class="string">"\"http://192.168.1.233:8888/dd-file-gw/\""</span></span><br><span class="line">      minifyEnabled <span class="literal">false</span></span><br><span class="line">      zipAlignEnabled <span class="literal">false</span></span><br><span class="line">      shrinkResources <span class="literal">false</span></span><br><span class="line">      signingConfig signingConfigs.debug</span><br><span class="line">  &#125;</span><br><span class="line">  release &#123;</span><br><span class="line">      <span class="comment">// 版本名前缀</span></span><br><span class="line">      versionNameSuffix <span class="string">"-relase"</span></span><br><span class="line">      <span class="comment">//牛逼哄哄的选择是否输出LOG信息</span></span><br><span class="line">      buildConfigField(<span class="string">"Boolean"</span>, <span class="string">"LOG_DEBUG"</span>, <span class="string">"false"</span>)</span><br><span class="line">      <span class="comment">//牛逼哄哄的设置BASE_URL</span></span><br><span class="line">      buildConfigField <span class="string">"String"</span>, <span class="string">"BASE_URL"</span>, <span class="string">"\"http://mobile.zufangzi.com/\""</span></span><br><span class="line">      <span class="comment">//牛逼哄哄的设置BASE_IMG_URL</span></span><br><span class="line">      buildConfigField <span class="string">"String"</span>, <span class="string">"BASE_IMG_URL"</span>, <span class="string">"\"http://static.zufangzi.com/\""</span></span><br><span class="line">      <span class="comment">//牛逼哄哄的选择是否混淆编译</span></span><br><span class="line">      minifyEnabled <span class="literal">false</span></span><br><span class="line">      <span class="comment">//牛逼哄哄的档案整理工具</span></span><br><span class="line">      zipAlignEnabled <span class="literal">true</span></span><br><span class="line">      <span class="comment">//牛逼哄哄的移除无用的资源文件</span></span><br><span class="line">      shrinkResources <span class="literal">true</span></span><br><span class="line">      signingConfig signingConfigs.release</span><br><span class="line">      proguardFiles getDefaultProguardFile(<span class="string">'proguard-android.txt'</span>), <span class="string">'proguard-rules.pro'</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="修改生成的最终文件名,如下">修改生成的最终文件名,如下</h3><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">applicationVariants.all &#123; variant -&gt;</span><br><span class="line">    variant.outputs.<span class="keyword">each</span> &#123; output -&gt;</span><br><span class="line">        <span class="keyword">def</span> outputFile = output.outputFile</span><br><span class="line">        <span class="keyword">if</span> (outputFile != <span class="keyword">null</span> &amp;&amp; outputFile.name.endsWith(<span class="string">'.apk'</span>)) &#123;</span><br><span class="line">            <span class="keyword">File</span> outputDirectory = <span class="keyword">new</span> <span class="keyword">File</span>(outputFile.parent);</span><br><span class="line">            <span class="keyword">def</span> fileName</span><br><span class="line">            <span class="keyword">if</span> (variant.buildType.name == <span class="string">"release"</span>) &#123;</span><br><span class="line">                fileName = <span class="string">"Butler.$&#123;defaultConfig.versionName&#125;.apk"</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                fileName = <span class="string">"Butler.$&#123;defaultConfig.versionName&#125;_beta.apk"</span></span><br><span class="line">            &#125;</span><br><span class="line">            output.outputFile = <span class="keyword">new</span> <span class="keyword">File</span>(outputDirectory, fileName)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="二、android_{}_下面的">二、android {} 下面的</h2><h3 id="使用signing-properties记录keyStore的地址以及密码">使用signing.properties记录keyStore的地址以及密码</h3>   <figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">File</span> propFile = <span class="keyword">file</span>(<span class="string">'signing.properties'</span>);</span><br><span class="line"><span class="keyword">if</span> (propFile.exists()) &#123;</span><br><span class="line">   <span class="keyword">def</span> Properties props = <span class="keyword">new</span> Properties()</span><br><span class="line">   props.load(<span class="keyword">new</span> FileInputStream(propFile))</span><br><span class="line">   <span class="keyword">if</span> (props.containsKey(<span class="string">'STORE_FILE'</span>) &amp;&amp; props.containsKey(<span class="string">'STORE_PASSWORD'</span>) &amp;&amp;</span><br><span class="line">           props.containsKey(<span class="string">'KEY_ALIAS'</span>) &amp;&amp; props.containsKey(<span class="string">'KEY_PASSWORD'</span>)) &#123;</span><br><span class="line">       android.signingConfigs.release.storeFile = <span class="keyword">file</span>(props[<span class="string">'STORE_FILE'</span>])</span><br><span class="line">       android.signingConfigs.release.storePassword = props[<span class="string">'STORE_PASSWORD'</span>]</span><br><span class="line">       android.signingConfigs.release.keyAlias = props[<span class="string">'KEY_ALIAS'</span>]</span><br><span class="line">       android.signingConfigs.release.keyPassword = props[<span class="string">'KEY_PASSWORD'</span>]</span><br><span class="line">   &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">       android.buildTypes.release.signingConfig = <span class="keyword">null</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">   android.buildTypes.release.signingConfig = <span class="keyword">null</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>   signing.properties文件内容（该文件和key与src目录同级）</p>
+   <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="setting">STORE_FILE=<span class="value">jks路径</span></span></span><br><span class="line"><span class="setting">STORE_PASSWORD=<span class="value">看名字</span></span></span><br><span class="line"><span class="setting">KEY_ALIAS=<span class="value">看名字</span></span></span><br><span class="line"><span class="setting">KEY_PASSWORD=<span class="value">看名字</span></span></span><br></pre></td></tr></table></figure>
+<h1 id="我遇到过的错误">我遇到过的错误</h1><h2 id="sudo_-/gradlew_clean_出现错误">sudo ./gradlew clean 出现错误</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"> What went <span class="string">wrong:</span></span><br><span class="line">A problem occurred configuring root project <span class="string">'Butler'</span>.</span><br><span class="line">&gt; Could not resolve all dependencies <span class="keyword">for</span> configuration <span class="string">':classpath'</span>.</span><br><span class="line">   &gt; Cannot resolve external dependency com.android.tools.<span class="string">build:</span><span class="string">gradle:</span><span class="number">1.3</span><span class="number">.0</span> because no repositories are defined.</span><br><span class="line">     Required <span class="string">by:</span></span><br><span class="line">         :<span class="string">Butler:</span>unspecified</span><br></pre></td></tr></table></figure>
+<p> x项目中有类似 classpath ‘io.fabric.tools:gradle:1.+’的语句，</p>
+<p> 改成最新的版本，或者确定版本名就好。（类似gradle:1.20.0结尾）</p>
+<h2 id="定义打包时间函数_(放在android{}之前)">定义打包时间函数 (放在android{}之前)</h2><p>  def packageTime() {</p>
+<pre><code>return new <span class="function"><span class="title">Date</span><span class="params">()</span></span>.<span class="function"><span class="title">format</span><span class="params">(<span class="string">"MM.dd"</span>, TimeZone.getTimeZone(<span class="string">"UTC"</span>)</span></span>)
+</code></pre><p>  }</p>
+<p>  使用方法：${packageTime()} 拼在字符串中</p>
+<h2 id="修改生成的最终文件名(放在android{}内最后)">修改生成的最终文件名(放在android{}内最后)</h2><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">applicationVariants.all &#123;</span><br><span class="line">      variant -&gt;</span><br><span class="line">        variant.outputs.<span class="keyword">each</span> &#123;</span><br><span class="line">            output -&gt;</span><br><span class="line">                <span class="keyword">def</span> outputFile = output.outputFile</span><br><span class="line">                <span class="keyword">if</span> (outputFile != <span class="keyword">null</span> &amp;&amp; outputFile.name.endsWith(<span class="string">'.apk'</span>)) &#123;</span><br><span class="line">                    <span class="keyword">File</span> outputDirectory = <span class="keyword">new</span> <span class="keyword">File</span>(outputFile.parent);</span><br><span class="line">                    <span class="keyword">def</span> fileName</span><br><span class="line">                    <span class="keyword">if</span> (variant.buildType.name == <span class="string">"release"</span>) &#123;</span><br><span class="line">                                            <span class="comment">// 输出apk名称</span></span><br><span class="line">                        fileName = <span class="string">"Butler_v$&#123;defaultConfig.versionName&#125;_$&#123;packageTime()&#125;.apk"</span></span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        fileName = <span class="string">"Butler_v$&#123;defaultConfig.versionName&#125;_$&#123;packageTime()&#125;_beta.apk"</span></span><br><span class="line">                    &#125;</span><br><span class="line">                    output.outputFile = <span class="keyword">new</span> <span class="keyword">File</span>(outputDirectory, fileName)</span><br><span class="line">                &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="报错1">报错1</h2>  <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="constant">Could </span><span class="keyword">not</span> resolve all dependencies <span class="keyword">for</span> configuration <span class="string">':classpath'</span>.</span><br><span class="line">&gt; <span class="constant">Cannot </span>resolve external dependency com.android.tools.<span class="symbol">build:</span><span class="symbol">gradle:</span><span class="number">1.3</span>.<span class="number">0</span> because no repositories are <span class="keyword">defined</span>.</span><br><span class="line">  <span class="constant">Required </span><span class="symbol">by:</span></span><br><span class="line">      <span class="symbol">:Butler</span><span class="symbol">:unspecified</span></span><br></pre></td></tr></table></figure>
+<p>  解决地址： <a href="http://stackoverflow.com/questions/28921964/googles-android-basic-samples-code-broken-gradle-issues" target="_blank" rel="external">http://stackoverflow.com/questions/28921964/googles-android-basic-samples-code-broken-gradle-issues</a></p>
+<h2 id="报错2">报错2</h2>  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">What</span> <span class="tag">went</span> <span class="rule"><span class="attribute">wrong</span>:<span class="value"></span><br><span class="line">Execution failed for task <span class="string">':app:lint'</span>.</span><br><span class="line">Lint found errors in the project</span></span>; <span class="tag">aborting</span> <span class="tag">build</span>.</span><br></pre></td></tr></table></figure>
+<p>解决方法:</p>
+<p>  Fix the issues identified by lint, or add the following to your build script to proceed with errors:</p>
+  <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title">android</span> &#123;</span><br><span class="line">  <span class="title">lintOptions</span> &#123;</span><br><span class="line">      <span class="title">abortOnError</span> <span class="built_in">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="不知道什么原因不能调试了,报错如下">不知道什么原因不能调试了,报错如下</h2>  <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Waiting <span class="keyword">for</span> device.</span><br><span class="line">Cannot debug <span class="type">application</span> com.dingding.butler <span class="function_start"><span class="keyword">on</span></span> device motorola-xt1085-TA09004RZM.</span><br><span class="line">This <span class="type">application</span> <span class="keyword">does</span> <span class="keyword">not</span> have <span class="keyword">the</span> debuggable attribute enabled <span class="keyword">in</span> <span class="keyword">its</span> manifest.</span><br><span class="line">If you have manually <span class="keyword">set</span> <span class="keyword">it</span> <span class="keyword">in</span> <span class="keyword">the</span> manifest, <span class="keyword">then</span> remove <span class="keyword">it</span> <span class="keyword">and</span> let <span class="keyword">the</span> IDE automatically assign <span class="keyword">it</span>.</span><br><span class="line">If you are using Gradle, make sure <span class="keyword">that</span> your current variant <span class="keyword">is</span> debuggable.</span><br></pre></td></tr></table></figure>
+<p>  解决办法：</p>
+<p>  点击运行三角右边的机器人图标，选择’Edit Configurations…’–&gt;‘Defaults’</p>
+<p>  出来的列表，每个都点击，看着像有关系的选择框都点下选中，好了…不知道哪个起的作用</p>
+<p>有google到解决方法： Gradle下 release {‘这里添加 ‘debuggable true’’} 没试这个就好了</p>
+<h2 id="无解BUG（已解决，见下篇博文)">无解BUG（已解决，见<a href="http://wangqiankun.github.io/2015/10/13/tools/Gradle%E7%B3%BB%E5%88%97%E4%B9%8BBuildConfig%E6%96%87%E4%BB%B6/">下篇博文</a>)</h2><p>  自动生成的BuildConfig文件，默认为release状态的（可能看不懂这句话 自己写遍就知道了），</p>
+<p>  找了一下午，试了无数种方法，都不行！！！都不行！！！都不行！！！</p>
+<p>  最后无奈，重新down了一份代码，就好了啊！！！就好了啊！！！就好了啊！！！坑爹玩意儿！</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<blockquote>
+<p>构建跟打包有天壤之别，一句命令可以打成你想要的各种包<br>可灵活配置生产与测试环境的差异…等</p>
+<p>牛逼之处，远不止于此</p>
+</blockquote>
+<ol>
+<li>在项目目录中先执行 ‘./gradlew clean’ 如果提]]>
+    </summary>
+    
+      <category term="Tools" scheme="http://wangqiankun.github.io/tags/Tools/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Activity研究之isFinishing()与isDestroyed()]]></title>
+    <link href="http://wangqiankun.github.io/2015/02/13/Activity%E7%A0%94%E7%A9%B6%E4%B9%8BisFinishing()%E4%B8%8EisDestroyed()/"/>
+    <id>http://wangqiankun.github.io/2015/02/13/Activity研究之isFinishing()与isDestroyed()/</id>
+    <published>2015-02-13T13:10:31.000Z</published>
+    <updated>2016-07-11T04:51:41.000Z</updated>
+    <content type="html"><![CDATA[<p>App carsh后，经常会遇到些奇奇怪怪的问题，很多都是因为Activity finish后，还在这个Activity操作相关数据的情况。这就需要进行对Activity的状态进行判断。google好久，大部分都跟这个博文中说的类似<a href="http://sdywcd.iteye.com/blog/2061734" target="_blank" rel="external">如何判断android activity是否运行</a>。</p>
+<a id="more"></a>
+<p>文章很好，可是，总觉得还有更好的东西。所以就在Activity源码上（其实都是.出来的）看到有两个方法，定睛，就是它！</p>
+<pre><code>/**
+ * Check <span class="keyword">to</span> see whether this activity <span class="keyword">is</span> <span class="keyword">in</span> <span class="keyword">the</span> process <span class="keyword">of</span> finishing,
+ * either because you called {@link <span class="comment">#finish} on it or someone else</span>
+ * has requested <span class="keyword">that</span> <span class="keyword">it</span> finished.  This <span class="keyword">is</span> often used <span class="keyword">in</span>
+ * {@link <span class="comment">#onPause} to determine whether the activity is simply pausing or</span>
+ * completely finishing.
+ *
+ * @<span class="constant">return</span> If <span class="keyword">the</span> activity <span class="keyword">is</span> finishing, returns <span class="constant">true</span>; <span class="keyword">else</span> returns <span class="constant">false</span>.
+ *
+ * @see <span class="comment">#finish</span>
+ */
+public <span class="type">boolean</span> isFinishing() {
+<span class="command">    return</span> mFinished;
+}
+
+/**
+ * Returns <span class="constant">true</span> <span class="keyword">if</span> <span class="keyword">the</span> final {@link <span class="comment">#onDestroy()} call has been made</span>
+ * <span class="function_start"><span class="keyword">on</span></span> <span class="keyword">the</span> Activity, so this instance <span class="keyword">is</span> now dead.
+ */
+public <span class="type">boolean</span> isDestroyed() {
+<span class="command">    return</span> mDestroyed;
+}
+</code></pre><p>额，My English is poor，他两个区别很大吗？<br>Demo之</p>
+<p>Activity代码（Activity2基本一样）</p>
+<pre><code>public <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">AppCompatActivity</span> {</span>
+    <span class="type">MyThread</span> myThread;
+
+    <span class="annotation">@Override</span>
+    <span class="keyword">protected</span> void onCreate(<span class="type">Bundle</span> savedInstanceState) {
+        <span class="keyword">super</span>.onCreate(savedInstanceState);
+        setContentView(<span class="type">R</span>.layout.activity_main);
+
+        myThread = <span class="keyword">new</span> <span class="type">MyThread</span>();
+        myThread.run();
+
+    }
+
+    <span class="comment">//关闭Activity</span>
+    public void close(<span class="type">View</span> view) {
+        <span class="type">MainActivity</span>.<span class="keyword">this</span>.finish();
+        myThread.run();
+    }
+
+    <span class="comment">//跳转到Activity2</span>
+    public void jump2Activity2(<span class="type">View</span> view) {
+        <span class="type">Intent</span> intent = <span class="keyword">new</span> <span class="type">Intent</span>(<span class="keyword">this</span>, <span class="type">MainActivity2</span>.<span class="keyword">class</span>);
+        startActivity(intent);
+    }
+
+
+    public <span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Thread</span> {</span>
+
+        <span class="annotation">@Override</span>
+        public void run() {
+            <span class="keyword">super</span>.run();
+            <span class="type">Log</span>.d(<span class="string">"activity-isDestroyed"</span>, <span class="type">MainActivity</span>.<span class="keyword">this</span>.isDestroyed() + <span class="string">""</span>);
+            <span class="type">Log</span>.d(<span class="string">"activity-isFinishing"</span>, <span class="type">MainActivity</span>.<span class="keyword">this</span>.isFinishing() + <span class="string">""</span>);
+        }
+    }
+
+}
+</code></pre><p>Log日志</p>
+<pre><code>打开Activity1
+<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">17</span>:<span class="number">12.142</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isDestroyed: <span class="literal">false</span>
+<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">17</span>:<span class="number">12.142</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isFinishing: <span class="literal">false</span>
+打开Activity2
+<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">28.213</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isDestroyed: <span class="literal">false</span>
+<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">28.213</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isFinishing: <span class="literal">false</span>
+关闭Activity2
+<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">35.476</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isDestroyed: <span class="literal">false</span>
+<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">35.476</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isFinishing: <span class="literal">true</span>
+关闭Activity1
+<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">40.503</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isDestroyed: <span class="literal">false</span>
+<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">40.503</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isFinishing: <span class="literal">true</span>
+</code></pre><p><code>isDestroyed()</code>基本都是false。接着又去Activity源码瞅瞅，唯一有用的代码却又没有调用，包括父类。</p>
+<pre><code>final void performDestroy<span class="literal">()</span> {
+    mDestroyed = <span class="literal">true</span>;
+    mWindow.destroy<span class="literal">()</span>;
+    mFragments.dispatchDestroy<span class="literal">()</span>;
+    onDestroy<span class="literal">()</span>;
+    mFragments.doLoaderDestroy<span class="literal">()</span>;
+    <span class="keyword">if</span> (mVoiceInteractor != null) {
+        mVoiceInteractor.detachActivity<span class="literal">()</span>;
+    }
+}
+</code></pre><p>所以就用<code>isFinishing()</code>了呗。</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>App carsh后，经常会遇到些奇奇怪怪的问题，很多都是因为Activity finish后，还在这个Activity操作相关数据的情况。这就需要进行对Activity的状态进行判断。google好久，大部分都跟这个博文中说的类似<a href="http://sdywcd.iteye.com/blog/2061734">如何判断android activity是否运行</a>。</p>]]>
+    
+    </summary>
+    
+      <category term="Activity" scheme="http://wangqiankun.github.io/tags/Activity/"/>
+    
+      <category term="Android" scheme="http://wangqiankun.github.io/tags/Android/"/>
+    
+      <category term="UI" scheme="http://wangqiankun.github.io/tags/UI/"/>
     
   </entry>
   
