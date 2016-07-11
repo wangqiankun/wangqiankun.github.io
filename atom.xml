@@ -249,11 +249,12 @@ imageView.setOnClickListener(<span class="keyword">new</span> View.OnClickListen
   
   <entry>
     <title><![CDATA[Toolbar的滚动效果]]></title>
-    <link href="http://wangqiankun.github.io/2015/11/20/Toolbar%E7%9A%84%E6%BB%9A%E5%8A%A8%E6%95%88%E6%9E%9C/"/>
-    <id>http://wangqiankun.github.io/2015/11/20/Toolbar的滚动效果/</id>
-    <published>2015-11-20T06:57:07.000Z</published>
-    <updated>2015-11-20T07:36:04.000Z</updated>
+    <link href="http://wangqiankun.github.io/2015/12/20/Toolbar%E7%9A%84%E6%BB%9A%E5%8A%A8%E6%95%88%E6%9E%9C/"/>
+    <id>http://wangqiankun.github.io/2015/12/20/Toolbar的滚动效果/</id>
+    <published>2015-12-20T13:57:07.000Z</published>
+    <updated>2016-07-11T04:56:39.000Z</updated>
     <content type="html"><![CDATA[<p>效果不错，拿出单发个。如图<br><img src="/pic/md_scroll.gif" width="160" height=""></p>
+<a id="more"></a>
 <p>整个Toolbar的背景是一个图片，当向上滚动后，图片逐渐消失，Toolbar背景变成默认效果，Title也会动态的改变字体大小，以适应变小后的效果</p>
 <p>图中界面可以分为两个部分，一个为Toolbar，展开时设置的为200dp，另一个为Toolbar下的主要内容</p>
 <p>看下xml中的根布局</p>
@@ -314,9 +315,15 @@ imageView.setOnClickListener(<span class="keyword">new</span> View.OnClickListen
 <p>不同的是设置背景图片<code>android:background=&quot;@mipmap/ic_launcher&quot;</code>，如果放在里层，png图片中的空白会被主配色代替，放在外层则不会</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>效果不错，拿出单发个。如图<br><img src="/pic/md_scroll.gif" width="160" height=""></p>
-<p>整个Toolbar的背景是一个图片，当向上滚动后，图片逐渐消失，Toolbar背景变成默认效果，Title也会动态的改变]]>
+    <![CDATA[<p>效果不错，拿出单发个。如图<br><img src="/pic/md_scroll.gif" width="160" height=""/></p>]]>
+    
     </summary>
+    
+      <category term="Android" scheme="http://wangqiankun.github.io/tags/Android/"/>
+    
+      <category term="MaterialDesign" scheme="http://wangqiankun.github.io/tags/MaterialDesign/"/>
+    
+      <category term="Toolbar" scheme="http://wangqiankun.github.io/tags/Toolbar/"/>
     
   </entry>
   
@@ -400,8 +407,9 @@ inputName.addTextChangedListener(<span class="keyword">new</span> MyTextWatcher(
     <link href="http://wangqiankun.github.io/2015/11/13/Toolbar%E4%B8%AA%E4%BA%BA%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/"/>
     <id>http://wangqiankun.github.io/2015/11/13/Toolbar个人使用总结/</id>
     <published>2015-11-13T04:26:26.000Z</published>
-    <updated>2015-11-23T08:42:34.000Z</updated>
-    <content type="html"><![CDATA[<h3 id="Toolbar的使用过程">Toolbar的使用过程</h3><h4 id="步骤1-xml中集成">步骤1-xml中集成</h4><blockquote>
+    <updated>2016-07-11T04:59:26.000Z</updated>
+    <content type="html"><![CDATA[<h3 id="Toolbar的使用过程">Toolbar的使用过程</h3><h4 id="步骤1-xml中集成">步骤1-xml中集成</h4><a id="more"></a>
+<blockquote>
 <p>布局CoordinatorLayout作用：主要处理界面的滚动<br><a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0717/3196.html" target="_blank" rel="external">详见：CoordinatorLayout与滚动的处理</a></p>
 </blockquote>
 <pre><code>&lt;android<span class="class">.support</span><span class="class">.design</span><span class="class">.widget</span><span class="class">.CoordinatorLayout</span>
@@ -602,9 +610,17 @@ toolbar.setNavigationOnClickListener(<span class="keyword">new</span> View.OnCli
 <p> 当然，状态栏也要跟着变换。这个稍后补充…</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<h3 id="Toolbar的使用过程">Toolbar的使用过程</h3><h4 id="步骤1-xml中集成">步骤1-xml中集成</h4><blockquote>
-<p>布局CoordinatorLayout作用：主要处理界面的滚动<br><a href="http:/]]>
+    <![CDATA[<h3 id="Toolbar的使用过程">Toolbar的使用过程</h3><h4 id="步骤1-xml中集成">步骤1-xml中集成</h4>]]>
+    
     </summary>
+    
+      <category term="Android" scheme="http://wangqiankun.github.io/tags/Android/"/>
+    
+      <category term="MaterialDesign" scheme="http://wangqiankun.github.io/tags/MaterialDesign/"/>
+    
+      <category term="ToolBar" scheme="http://wangqiankun.github.io/tags/ToolBar/"/>
+    
+      <category term="UI" scheme="http://wangqiankun.github.io/tags/UI/"/>
     
   </entry>
   
