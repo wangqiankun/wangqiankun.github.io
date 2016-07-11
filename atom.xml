@@ -187,107 +187,6 @@ bottom/ascent：<span class="number">0.29210526</span>
   </entry>
   
   <entry>
-    <title><![CDATA[Activity研究之isFinishing()与isDestroyed()]]></title>
-    <link href="http://wangqiankun.github.io/2015/11/23/Activity%E7%A0%94%E7%A9%B6%E4%B9%8BisFinishing()%E4%B8%8EisDestroyed()/"/>
-    <id>http://wangqiankun.github.io/2015/11/23/Activity研究之isFinishing()与isDestroyed()/</id>
-    <published>2015-11-23T07:20:31.000Z</published>
-    <updated>2015-11-23T12:32:51.000Z</updated>
-    <content type="html"><![CDATA[<p>App carsh后，经常会遇到些奇奇怪怪的问题，很多都是因为Activity finish后，还在这个Activity操作相关数据的情况。这就需要进行对Activity的状态进行判断。google好久，大部分都跟这个博文中说的类似<a href="http://sdywcd.iteye.com/blog/2061734" target="_blank" rel="external">如何判断android activity是否运行</a>。</p>
-<p>文章很好，可是，总觉得还有更好的东西。所以就在Activity源码上（其实都是.出来的）看到有两个方法，定睛，就是它！</p>
-<pre><code>/**
- * Check <span class="keyword">to</span> see whether this activity <span class="keyword">is</span> <span class="keyword">in</span> <span class="keyword">the</span> process <span class="keyword">of</span> finishing,
- * either because you called {@link <span class="comment">#finish} on it or someone else</span>
- * has requested <span class="keyword">that</span> <span class="keyword">it</span> finished.  This <span class="keyword">is</span> often used <span class="keyword">in</span>
- * {@link <span class="comment">#onPause} to determine whether the activity is simply pausing or</span>
- * completely finishing.
- *
- * @<span class="constant">return</span> If <span class="keyword">the</span> activity <span class="keyword">is</span> finishing, returns <span class="constant">true</span>; <span class="keyword">else</span> returns <span class="constant">false</span>.
- *
- * @see <span class="comment">#finish</span>
- */
-public <span class="type">boolean</span> isFinishing() {
-<span class="command">    return</span> mFinished;
-}
-
-/**
- * Returns <span class="constant">true</span> <span class="keyword">if</span> <span class="keyword">the</span> final {@link <span class="comment">#onDestroy()} call has been made</span>
- * <span class="function_start"><span class="keyword">on</span></span> <span class="keyword">the</span> Activity, so this instance <span class="keyword">is</span> now dead.
- */
-public <span class="type">boolean</span> isDestroyed() {
-<span class="command">    return</span> mDestroyed;
-}
-</code></pre><p>额，My English is poor，他两个区别很大吗？<br>Demo之</p>
-<p>Activity代码（Activity2基本一样）</p>
-<pre><code>public <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">AppCompatActivity</span> {</span>
-    <span class="type">MyThread</span> myThread;
-
-    <span class="annotation">@Override</span>
-    <span class="keyword">protected</span> void onCreate(<span class="type">Bundle</span> savedInstanceState) {
-        <span class="keyword">super</span>.onCreate(savedInstanceState);
-        setContentView(<span class="type">R</span>.layout.activity_main);
-
-        myThread = <span class="keyword">new</span> <span class="type">MyThread</span>();
-        myThread.run();
-
-    }
-
-    <span class="comment">//关闭Activity</span>
-    public void close(<span class="type">View</span> view) {
-        <span class="type">MainActivity</span>.<span class="keyword">this</span>.finish();
-        myThread.run();
-    }
-
-    <span class="comment">//跳转到Activity2</span>
-    public void jump2Activity2(<span class="type">View</span> view) {
-        <span class="type">Intent</span> intent = <span class="keyword">new</span> <span class="type">Intent</span>(<span class="keyword">this</span>, <span class="type">MainActivity2</span>.<span class="keyword">class</span>);
-        startActivity(intent);
-    }
-
-
-    public <span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Thread</span> {</span>
-
-        <span class="annotation">@Override</span>
-        public void run() {
-            <span class="keyword">super</span>.run();
-            <span class="type">Log</span>.d(<span class="string">"activity-isDestroyed"</span>, <span class="type">MainActivity</span>.<span class="keyword">this</span>.isDestroyed() + <span class="string">""</span>);
-            <span class="type">Log</span>.d(<span class="string">"activity-isFinishing"</span>, <span class="type">MainActivity</span>.<span class="keyword">this</span>.isFinishing() + <span class="string">""</span>);
-        }
-    }
-
-}
-</code></pre><p>Log日志</p>
-<pre><code>打开Activity1
-<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">17</span>:<span class="number">12.142</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isDestroyed: <span class="literal">false</span>
-<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">17</span>:<span class="number">12.142</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isFinishing: <span class="literal">false</span>
-打开Activity2
-<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">28.213</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isDestroyed: <span class="literal">false</span>
-<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">28.213</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isFinishing: <span class="literal">false</span>
-关闭Activity2
-<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">35.476</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isDestroyed: <span class="literal">false</span>
-<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">35.476</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isFinishing: <span class="literal">true</span>
-关闭Activity1
-<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">40.503</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isDestroyed: <span class="literal">false</span>
-<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">40.503</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isFinishing: <span class="literal">true</span>
-</code></pre><p><code>isDestroyed()</code>基本都是false。接着又去Activity源码瞅瞅，唯一有用的代码却又没有调用，包括父类。</p>
-<pre><code>final void performDestroy<span class="literal">()</span> {
-    mDestroyed = <span class="literal">true</span>;
-    mWindow.destroy<span class="literal">()</span>;
-    mFragments.dispatchDestroy<span class="literal">()</span>;
-    onDestroy<span class="literal">()</span>;
-    mFragments.doLoaderDestroy<span class="literal">()</span>;
-    <span class="keyword">if</span> (mVoiceInteractor != null) {
-        mVoiceInteractor.detachActivity<span class="literal">()</span>;
-    }
-}
-</code></pre><p>所以就用<code>isFinishing()</code>了呗。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>App carsh后，经常会遇到些奇奇怪怪的问题，很多都是因为Activity finish后，还在这个Activity操作相关数据的情况。这就需要进行对Activity的状态进行判断。google好久，大部分都跟这个博文中说的类似<a href="http://sdywc]]>
-    </summary>
-    
-  </entry>
-  
-  <entry>
     <title><![CDATA[MaterialDesign跳转动画效果实现]]></title>
     <link href="http://wangqiankun.github.io/2015/11/20/MaterialDesign%E8%B7%B3%E8%BD%AC%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/"/>
     <id>http://wangqiankun.github.io/2015/11/20/MaterialDesign跳转动画效果实现/</id>
@@ -1104,6 +1003,25 @@ retrolambda {
     <summary type="html">
     <![CDATA[<p>只需要要在xml中添加以下字段<br>android:scrollbars=”vertical” //垂直 可以其他滚动方向</p>
 <p>也可以扩展以下配置<br>android:scrollbarStyle=”X” //其中X为outsideOverlay或inside]]>
+    </summary>
+    
+      <category term="Android" scheme="http://wangqiankun.github.io/tags/Android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[使用merge标签 减少布局嵌套]]></title>
+    <link href="http://wangqiankun.github.io/2015/10/13/%E4%BD%BF%E7%94%A8merge%E6%A0%87%E7%AD%BE%20%E5%87%8F%E5%B0%91%E5%B8%83%E5%B1%80%E5%B5%8C%E5%A5%97/"/>
+    <id>http://wangqiankun.github.io/2015/10/13/使用merge标签 减少布局嵌套/</id>
+    <published>2015-10-13T12:00:17.000Z</published>
+    <updated>2015-10-13T12:01:58.000Z</updated>
+    <content type="html"><![CDATA[<p>当包含有mearge标签的布局被添加到另一个布局时，该布局的merge节点会被删除，而该布局的子View会被肢解添加到新的父布局中</p>
+<p>merge标签结合include标签一起使用时尤其有用</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>当包含有mearge标签的布局被添加到另一个布局时，该布局的merge节点会被删除，而该布局的子View会被肢解添加到新的父布局中</p>
+<p>merge标签结合include标签一起使用时尤其有用</p>
+]]>
     </summary>
     
       <category term="Android" scheme="http://wangqiankun.github.io/tags/Android/"/>

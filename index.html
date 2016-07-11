@@ -377,162 +377,6 @@
           
           
             
-              <a class="post-title-link" href="/2015/11/23/Activity研究之isFinishing()与isDestroyed()/" itemprop="url">
-                Activity研究之isFinishing()与isDestroyed()
-              </a>
-            
-          
-        </h1>
-      
-
-      <div class="post-meta">
-        <span class="post-time">
-          发表于
-          <time itemprop="dateCreated" datetime="2015-11-23T15:20:31+08:00" content="2015-11-23">
-            2015-11-23
-          </time>
-        </span>
-
-        
-
-        
-          
-            <span class="post-comments-count">
-              &nbsp; | &nbsp;
-              <a href="/2015/11/23/Activity研究之isFinishing()与isDestroyed()/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/11/23/Activity研究之isFinishing()与isDestroyed()/" itemprop="commentsCount"></span>
-              </a>
-            </span>
-          
-        
-      </div>
-    </header>
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody"><p>App carsh后，经常会遇到些奇奇怪怪的问题，很多都是因为Activity finish后，还在这个Activity操作相关数据的情况。这就需要进行对Activity的状态进行判断。google好久，大部分都跟这个博文中说的类似<a href="http://sdywcd.iteye.com/blog/2061734" target="_blank" rel="external">如何判断android activity是否运行</a>。</p>
-<p>文章很好，可是，总觉得还有更好的东西。所以就在Activity源码上（其实都是.出来的）看到有两个方法，定睛，就是它！</p>
-<pre><code>/**
- * Check <span class="keyword">to</span> see whether this activity <span class="keyword">is</span> <span class="keyword">in</span> <span class="keyword">the</span> process <span class="keyword">of</span> finishing,
- * either because you called {@link <span class="comment">#finish} on it or someone else</span>
- * has requested <span class="keyword">that</span> <span class="keyword">it</span> finished.  This <span class="keyword">is</span> often used <span class="keyword">in</span>
- * {@link <span class="comment">#onPause} to determine whether the activity is simply pausing or</span>
- * completely finishing.
- *
- * @<span class="constant">return</span> If <span class="keyword">the</span> activity <span class="keyword">is</span> finishing, returns <span class="constant">true</span>; <span class="keyword">else</span> returns <span class="constant">false</span>.
- *
- * @see <span class="comment">#finish</span>
- */
-public <span class="type">boolean</span> isFinishing() {
-<span class="command">    return</span> mFinished;
-}
-
-/**
- * Returns <span class="constant">true</span> <span class="keyword">if</span> <span class="keyword">the</span> final {@link <span class="comment">#onDestroy()} call has been made</span>
- * <span class="function_start"><span class="keyword">on</span></span> <span class="keyword">the</span> Activity, so this instance <span class="keyword">is</span> now dead.
- */
-public <span class="type">boolean</span> isDestroyed() {
-<span class="command">    return</span> mDestroyed;
-}
-</code></pre><p>额，My English is poor，他两个区别很大吗？<br>Demo之</p>
-<p>Activity代码（Activity2基本一样）</p>
-<pre><code>public <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">AppCompatActivity</span> {</span>
-    <span class="type">MyThread</span> myThread;
-
-    <span class="annotation">@Override</span>
-    <span class="keyword">protected</span> void onCreate(<span class="type">Bundle</span> savedInstanceState) {
-        <span class="keyword">super</span>.onCreate(savedInstanceState);
-        setContentView(<span class="type">R</span>.layout.activity_main);
-
-        myThread = <span class="keyword">new</span> <span class="type">MyThread</span>();
-        myThread.run();
-
-    }
-
-    <span class="comment">//关闭Activity</span>
-    public void close(<span class="type">View</span> view) {
-        <span class="type">MainActivity</span>.<span class="keyword">this</span>.finish();
-        myThread.run();
-    }
-
-    <span class="comment">//跳转到Activity2</span>
-    public void jump2Activity2(<span class="type">View</span> view) {
-        <span class="type">Intent</span> intent = <span class="keyword">new</span> <span class="type">Intent</span>(<span class="keyword">this</span>, <span class="type">MainActivity2</span>.<span class="keyword">class</span>);
-        startActivity(intent);
-    }
-
-
-    public <span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Thread</span> {</span>
-
-        <span class="annotation">@Override</span>
-        public void run() {
-            <span class="keyword">super</span>.run();
-            <span class="type">Log</span>.d(<span class="string">"activity-isDestroyed"</span>, <span class="type">MainActivity</span>.<span class="keyword">this</span>.isDestroyed() + <span class="string">""</span>);
-            <span class="type">Log</span>.d(<span class="string">"activity-isFinishing"</span>, <span class="type">MainActivity</span>.<span class="keyword">this</span>.isFinishing() + <span class="string">""</span>);
-        }
-    }
-
-}
-</code></pre><p>Log日志</p>
-<pre><code>打开Activity1
-<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">17</span>:<span class="number">12.142</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isDestroyed: <span class="literal">false</span>
-<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">17</span>:<span class="number">12.142</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isFinishing: <span class="literal">false</span>
-打开Activity2
-<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">28.213</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isDestroyed: <span class="literal">false</span>
-<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">28.213</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isFinishing: <span class="literal">false</span>
-关闭Activity2
-<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">35.476</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isDestroyed: <span class="literal">false</span>
-<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">35.476</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isFinishing: <span class="literal">true</span>
-关闭Activity1
-<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">40.503</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isDestroyed: <span class="literal">false</span>
-<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">40.503</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isFinishing: <span class="literal">true</span>
-</code></pre><p><code>isDestroyed()</code>基本都是false。接着又去Activity源码瞅瞅，唯一有用的代码却又没有调用，包括父类。</p>
-<pre><code>final void performDestroy<span class="literal">()</span> {
-    mDestroyed = <span class="literal">true</span>;
-    mWindow.destroy<span class="literal">()</span>;
-    mFragments.dispatchDestroy<span class="literal">()</span>;
-    onDestroy<span class="literal">()</span>;
-    mFragments.doLoaderDestroy<span class="literal">()</span>;
-    <span class="keyword">if</span> (mVoiceInteractor != null) {
-        mVoiceInteractor.detachActivity<span class="literal">()</span>;
-    }
-}
-</code></pre><p>所以就用<code>isFinishing()</code>了呗。</p>
-</span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      
-      
-        <h1 class="post-title" itemprop="name headline">
-          
-          
-            
               <a class="post-title-link" href="/2015/11/20/MaterialDesign跳转动画效果实现/" itemprop="url">
                 MaterialDesign跳转动画效果实现
               </a>
@@ -1356,6 +1200,75 @@ toolbar.setNavigationOnClickListener(<span class="keyword">new</span> View.OnCli
 
 
     
+      
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              <a class="post-title-link" href="/2015/10/13/Android Studio 添加support库/" itemprop="url">
+                Android Studio 添加support库
+              </a>
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          发表于
+          <time itemprop="dateCreated" datetime="2015-10-13T22:38:25+08:00" content="2015-10-13">
+            2015-10-13
+          </time>
+        </span>
+
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <a href="/2015/10/13/Android Studio 添加support库/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/13/Android Studio 添加support库/" itemprop="commentsCount"></span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody"><p>用到v4、v7包时不知道怎么在gradle中导入，或者不知道怎么写<br>可以使用快捷键’commend+;’进入’Project Structure’设置界面。<br>上排找到’Dependencies’标签，点击’+’号。就可以找到本地的v4、v7的依赖。ok既可。</p>
+</span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -1408,7 +1321,7 @@ toolbar.setNavigationOnClickListener(<span class="keyword">new</span> View.OnCli
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-count">8</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
