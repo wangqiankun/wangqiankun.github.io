@@ -484,64 +484,12 @@ retrolambda {
 
       
         
-          <span itemprop="articleBody"><p>由于产品需求，button的点击状态、Clickable状态都要有不同的显示效果<br>研究Selector半天也没有找到可以使不同状态同时展示<br>于是，就迂回用笨方法搞定</p>
-<ul>
-<li>1）自定义一个集成Button的类,重写setClickable状态，在两种状态设置不同背景色以及TextColor</li>
-</ul>
-<pre><code><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BtnBottom</span> <span class="keyword">extends</span> <span class="title">Button</span> </span>{
-
-    <span class="function"><span class="keyword">public</span> <span class="title">BtnBottom</span><span class="params">(Context context)</span> </span>{
-        <span class="keyword">super</span>(context);
-    }
-
-    <span class="function"><span class="keyword">public</span> <span class="title">BtnBottom</span><span class="params">(Context context, AttributeSet attrs)</span> </span>{
-        <span class="keyword">super</span>(context, attrs);
-    }
-
-    <span class="annotation">@Override</span>
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setClickable</span><span class="params">(<span class="keyword">boolean</span> clickable)</span> </span>{
-        <span class="keyword">super</span>.setClickable(clickable);
-        <span class="keyword">if</span> (clickable) {
-            <span class="keyword">this</span>.setBackgroundResource(R.drawable.bg_btn_bottom_normal);
-            <span class="keyword">this</span>.setTextColor(getResources().getColor(R.color.text_fff));
-        } <span class="keyword">else</span> {
-            <span class="keyword">this</span>.setBackgroundColor(getResources().getColor(R.color.btn_f1f1f2));
-            <span class="keyword">this</span>.setTextColor(getResources().getColor(R.color.text_d7d7d8));
-        }
-    }
-}
-
-
-<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BtnBottom</span> <span class="keyword">extends</span> <span class="title">Button</span> </span>{
-
-    <span class="function"><span class="keyword">public</span> <span class="title">BtnBottom</span><span class="params">(Context context)</span> </span>{
-        <span class="keyword">super</span>(context);
-    }
-
-    <span class="function"><span class="keyword">public</span> <span class="title">BtnBottom</span><span class="params">(Context context, AttributeSet attrs)</span> </span>{
-        <span class="keyword">super</span>(context, attrs);
-    }
-
-    <span class="annotation">@Override</span>
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setClickable</span><span class="params">(<span class="keyword">boolean</span> clickable)</span> </span>{
-        <span class="keyword">super</span>.setClickable(clickable);
-        <span class="keyword">if</span> (clickable) {
-            <span class="keyword">this</span>.setBackgroundResource(R.drawable.bg_btn_bottom_normal);
-            <span class="keyword">this</span>.setTextColor(getResources().getColor(R.color.text_fff));
-        } <span class="keyword">else</span> {
-            <span class="keyword">this</span>.setBackgroundColor(getResources().getColor(R.color.btn_f1f1f2));
-            <span class="keyword">this</span>.setTextColor(getResources().getColor(R.color.text_d7d7d8));
-        }
-    }
-}
-</code></pre><ul>
-<li>2）因为需要点击效果，所以在clickable为true时，设置背景色为selector</li>
-</ul>
-<p>```<br>\&lt;?xml version=”1.0” encoding=”utf-8”?><br>\<selector xmlns:android="http://schemas.android.com/apk/res/android" \=""><br>    <item android:drawable="@color/btn_b311213a" android:state_pressed="true"><br>    <item android:drawable="@color/btn_b311213a" android:state_focused="true"><br>    <item android:drawable="@color/btn_11213a"><br></item></item></item></selector><br>```</p>
-<blockquote>
-<p>心得：selector 名为选择器，也就是说遇到对应的的item就会使用，可能之前顺序排列没做好，<br>或者可以在seletor中嵌套seletor？需待实验下</p>
-</blockquote>
-</span>
+          <p>由于产品需求，Button的点击状态、Clickable状态都要有不同的显示效果<br>研究Selector半天也没有找到可以使不同状态同时展示<br>于是，就迂回用笨方法搞定</p>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2015/10/13/Button的点击效果和Clickable效果/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>

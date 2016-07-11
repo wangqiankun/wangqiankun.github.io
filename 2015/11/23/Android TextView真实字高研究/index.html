@@ -39,20 +39,17 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="#这一直是Android开发的痛点！众说周知，Android开发中TextView控件有个无法解决的“bug”–TextView总是在上下有间距，导致在画界面的时候，都要根据UE给的标注做几次复杂的减法运算，累倒不说，还是可能会被UE打会重改！！！
-终于有一天我发现了个方法android:includeFontPadding=&amp;quot;true&amp;quot;，欣喜若狂。屁颠屁颠的加上，还是不能用啊">
+<meta name="description" content="#这一直是Android开发的痛点！众说周知，Android开发中TextView控件有个无法解决的“bug”–TextView总是在上下有间距，导致在画界面的时候，都要根据UE给的标注做几次复杂的减法运算，累倒不说，还是可能会被UE打回重改！！！">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android TextView真实字高研究">
 <meta property="og:url" content="http://wangqiankun.github.io/2015/11/23/Android TextView真实字高研究/index.html">
 <meta property="og:site_name" content="Qiankun's Blog">
-<meta property="og:description" content="#这一直是Android开发的痛点！众说周知，Android开发中TextView控件有个无法解决的“bug”–TextView总是在上下有间距，导致在画界面的时候，都要根据UE给的标注做几次复杂的减法运算，累倒不说，还是可能会被UE打会重改！！！
-终于有一天我发现了个方法android:includeFontPadding=&amp;quot;true&amp;quot;，欣喜若狂。屁颠屁颠的加上，还是不能用啊">
+<meta property="og:description" content="#这一直是Android开发的痛点！众说周知，Android开发中TextView控件有个无法解决的“bug”–TextView总是在上下有间距，导致在画界面的时候，都要根据UE给的标注做几次复杂的减法运算，累倒不说，还是可能会被UE打回重改！！！">
 <meta property="og:image" content="http://wangqiankun.github.io/pic/android_textview.png">
-<meta property="og:updated_time" content="2015-11-23T13:10:30.000Z">
+<meta property="og:updated_time" content="2016-07-11T04:42:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Android TextView真实字高研究">
-<meta name="twitter:description" content="#这一直是Android开发的痛点！众说周知，Android开发中TextView控件有个无法解决的“bug”–TextView总是在上下有间距，导致在画界面的时候，都要根据UE给的标注做几次复杂的减法运算，累倒不说，还是可能会被UE打会重改！！！
-终于有一天我发现了个方法android:includeFontPadding=&amp;quot;true&amp;quot;，欣喜若狂。屁颠屁颠的加上，还是不能用啊">
+<meta name="twitter:description" content="#这一直是Android开发的痛点！众说周知，Android开发中TextView控件有个无法解决的“bug”–TextView总是在上下有间距，导致在画界面的时候，都要根据UE给的标注做几次复杂的减法运算，累倒不说，还是可能会被UE打回重改！！！">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -196,7 +193,8 @@
       
 
       
-        <span itemprop="articleBody"><p>#这一直是Android开发的痛点！<br>众说周知，Android开发中TextView控件有个无法解决的“bug”–TextView总是在上下有间距，导致在画界面的时候，都要根据UE给的标注做几次复杂的减法运算，累倒不说，还是可能会被UE打会重改！！！</p>
+        <span itemprop="articleBody"><p>#这一直是Android开发的痛点！<br>众说周知，Android开发中TextView控件有个无法解决的“bug”–TextView总是在上下有间距，导致在画界面的时候，都要根据UE给的标注做几次复杂的减法运算，累倒不说，还是可能会被UE打回重改！！！</p>
+<a id="more"></a>
 <p>终于有一天我发现了个方法<code>android:includeFontPadding=&quot;true&quot;</code>，欣喜若狂。屁颠屁颠的加上，还是不能用啊…世间还有真情？世间还有真爱？？</p>
 <p>很久很久以后，又想解决这个问题了。也许是天意，让我看到了这个图（有些错误的标注，请无视）<img src="/pic/android_textview.png" alt="盗图哈"></p>
 <p>大致就是说，Google大牛这样做是有道理的，毕竟世界上有这么多的语言不是?为了兼顾除中文外的特殊语言（隐约有些奇怪），好人Google就在上下各加上一些高度，还能获取每块的大小。</p>

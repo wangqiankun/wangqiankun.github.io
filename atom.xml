@@ -59,8 +59,9 @@
     <link href="http://wangqiankun.github.io/2015/11/23/Android%20TextView%E7%9C%9F%E5%AE%9E%E5%AD%97%E9%AB%98%E7%A0%94%E7%A9%B6/"/>
     <id>http://wangqiankun.github.io/2015/11/23/Android TextView真实字高研究/</id>
     <published>2015-11-23T12:31:54.000Z</published>
-    <updated>2015-11-23T13:10:30.000Z</updated>
-    <content type="html"><![CDATA[<p>#这一直是Android开发的痛点！<br>众说周知，Android开发中TextView控件有个无法解决的“bug”–TextView总是在上下有间距，导致在画界面的时候，都要根据UE给的标注做几次复杂的减法运算，累倒不说，还是可能会被UE打会重改！！！</p>
+    <updated>2016-07-11T04:42:48.000Z</updated>
+    <content type="html"><![CDATA[<p>#这一直是Android开发的痛点！<br>众说周知，Android开发中TextView控件有个无法解决的“bug”–TextView总是在上下有间距，导致在画界面的时候，都要根据UE给的标注做几次复杂的减法运算，累倒不说，还是可能会被UE打回重改！！！</p>
+<a id="more"></a>
 <p>终于有一天我发现了个方法<code>android:includeFontPadding=&quot;true&quot;</code>，欣喜若狂。屁颠屁颠的加上，还是不能用啊…世间还有真情？世间还有真爱？？</p>
 <p>很久很久以后，又想解决这个问题了。也许是天意，让我看到了这个图（有些错误的标注，请无视）<img src="/pic/android_textview.png" alt="盗图哈"></p>
 <p>大致就是说，Google大牛这样做是有道理的，毕竟世界上有这么多的语言不是?为了兼顾除中文外的特殊语言（隐约有些奇怪），好人Google就在上下各加上一些高度，还能获取每块的大小。</p>
@@ -95,8 +96,8 @@ bottom/ascent：<span class="number">0.29210526</span>
 </code></pre><p>以上一切想法的来源均来自<a href="http://blog.csdn.net/aigestudio/article/details/41447349" target="_blank" rel="external">请查看</a>，感谢AigeStudio大牛!!! </p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>#这一直是Android开发的痛点！<br>众说周知，Android开发中TextView控件有个无法解决的“bug”–TextView总是在上下有间距，导致在画界面的时候，都要根据UE给的标注做几次复杂的减法运算，累倒不说，还是可能会被UE打会重改！！！</p>
-<p>终]]>
+    <![CDATA[<p>#这一直是Android开发的痛点！<br>众说周知，Android开发中TextView控件有个无法解决的“bug”–TextView总是在上下有间距，导致在画界面的时候，都要根据UE给的标注做几次复杂的减法运算，累倒不说，还是可能会被UE打回重改！！！</p>]]>
+    
     </summary>
     
   </entry>
@@ -873,8 +874,9 @@ retrolambda {
     <link href="http://wangqiankun.github.io/2015/10/13/Button%E7%9A%84%E7%82%B9%E5%87%BB%E6%95%88%E6%9E%9C%E5%92%8CClickable%E6%95%88%E6%9E%9C/"/>
     <id>http://wangqiankun.github.io/2015/10/13/Button的点击效果和Clickable效果/</id>
     <published>2015-10-13T14:25:45.000Z</published>
-    <updated>2016-02-16T09:39:43.000Z</updated>
-    <content type="html"><![CDATA[<p>由于产品需求，button的点击状态、Clickable状态都要有不同的显示效果<br>研究Selector半天也没有找到可以使不同状态同时展示<br>于是，就迂回用笨方法搞定</p>
+    <updated>2016-07-07T15:19:55.000Z</updated>
+    <content type="html"><![CDATA[<p>由于产品需求，Button的点击状态、Clickable状态都要有不同的显示效果<br>研究Selector半天也没有找到可以使不同状态同时展示<br>于是，就迂回用笨方法搞定</p>
+<a id="more"></a>
 <ul>
 <li>1）自定义一个集成Button的类,重写setClickable状态，在两种状态设置不同背景色以及TextColor</li>
 </ul>
@@ -933,9 +935,8 @@ retrolambda {
 </blockquote>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>由于产品需求，button的点击状态、Clickable状态都要有不同的显示效果<br>研究Selector半天也没有找到可以使不同状态同时展示<br>于是，就迂回用笨方法搞定</p>
-<ul>
-<li>1）自定义一个集成Button的类,重写setClickable状态，]]>
+    <![CDATA[<p>由于产品需求，Button的点击状态、Clickable状态都要有不同的显示效果<br>研究Selector半天也没有找到可以使不同状态同时展示<br>于是，就迂回用笨方法搞定</p>]]>
+    
     </summary>
     
       <category term="Android" scheme="http://wangqiankun.github.io/tags/Android/"/>
