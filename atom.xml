@@ -188,11 +188,12 @@ bottom/ascent：<span class="number">0.29210526</span>
   
   <entry>
     <title><![CDATA[MaterialDesign跳转动画效果实现]]></title>
-    <link href="http://wangqiankun.github.io/2015/11/20/MaterialDesign%E8%B7%B3%E8%BD%AC%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/"/>
-    <id>http://wangqiankun.github.io/2015/11/20/MaterialDesign跳转动画效果实现/</id>
-    <published>2015-11-20T07:43:54.000Z</published>
-    <updated>2015-11-20T08:10:29.000Z</updated>
+    <link href="http://wangqiankun.github.io/2016/01/20/MaterialDesign%E8%B7%B3%E8%BD%AC%E5%8A%A8%E7%94%BB%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/"/>
+    <id>http://wangqiankun.github.io/2016/01/20/MaterialDesign跳转动画效果实现/</id>
+    <published>2016-01-20T12:43:54.000Z</published>
+    <updated>2016-07-11T04:54:43.000Z</updated>
     <content type="html"><![CDATA[<p>依旧先上效果<img src="/pic/md_jump.gif" width="160" height=""></p>
+<a id="more"></a>
 <p>在点击Activity1中的图片，跳转至Activity2。系统会根据两个Activity中图片的大小和位置，动态展现动画。</p>
 <p>图中两个不同图片能看出google些许设计思路（同一个图片效果会更好）</p>
 <p>上xml</p>
@@ -234,14 +235,15 @@ imageView.setOnClickListener(<span class="keyword">new</span> View.OnClickListen
 <p>就酱~</p>
 ]]></content>
     <summary type="html">
-    <![CDATA[<p>依旧先上效果<img src="/pic/md_jump.gif" width="160" height=""></p>
-<p>在点击Activity1中的图片，跳转至Activity2。系统会根据两个Activity中图片的大小和位置，动态展现动画。</p>
-<p>图中两]]>
+    <![CDATA[<p>依旧先上效果<img src="/pic/md_jump.gif" width="160" height=""/></p>]]>
+    
     </summary>
     
       <category term="Android" scheme="http://wangqiankun.github.io/tags/Android/"/>
     
       <category term="MaterialDesign" scheme="http://wangqiankun.github.io/tags/MaterialDesign/"/>
+    
+      <category term="UI" scheme="http://wangqiankun.github.io/tags/UI/"/>
     
   </entry>
   
