@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="Android,Android Studio,butterknife," />
+  <meta name="keywords" content="Android,Android Studio,ButterKnife," />
 
 
 
@@ -39,43 +39,31 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="在gradle中引用 compile ‘compile ‘com.jakewharton:butterknife:7.0.1’’ 这个库最新版本点击这里查看
-在插件搜butterknife-zelezny，然后安装
-按这里的动图提示的快捷键来就行了
+<meta name="description" content="附上目前自己在用的一种简化 findViewById() 的方法。在 BaseActivity 和 BaseFragment 中加入如下代码  
+protected TextView getTextView(int id) {
+    return ((TextView) findViewById(id));
+}
 
-
-注意：使用快捷键的时候，需要把鼠标放在layout的资源文件名上。
-
-2016某日 更新butterknife 有个让我个人不爽的地方
-
-优势是省">
+protected EditText getEditText(int id) {">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android Sudio 下用 butterknife 注解">
-<meta property="og:url" content="http://wangqiankun.github.io/2015/10/13/AndroidSudio下用butterknife注解/index.html">
+<meta property="og:title" content="优化 findViewById() 的方法（胜于 ButterKnife）">
+<meta property="og:url" content="http://wangqiankun.github.io/2016/07/11/优化 findViewById() 的方法（胜于 ButterKnife）/index.html">
 <meta property="og:site_name" content="Qiankun's Blog">
-<meta property="og:description" content="在gradle中引用 compile ‘compile ‘com.jakewharton:butterknife:7.0.1’’ 这个库最新版本点击这里查看
-在插件搜butterknife-zelezny，然后安装
-按这里的动图提示的快捷键来就行了
+<meta property="og:description" content="附上目前自己在用的一种简化 findViewById() 的方法。在 BaseActivity 和 BaseFragment 中加入如下代码  
+protected TextView getTextView(int id) {
+    return ((TextView) findViewById(id));
+}
 
-
-注意：使用快捷键的时候，需要把鼠标放在layout的资源文件名上。
-
-2016某日 更新butterknife 有个让我个人不爽的地方
-
-优势是省">
-<meta property="og:updated_time" content="2016-07-11T05:32:39.000Z">
+protected EditText getEditText(int id) {">
+<meta property="og:updated_time" content="2016-07-11T08:32:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Android Sudio 下用 butterknife 注解">
-<meta name="twitter:description" content="在gradle中引用 compile ‘compile ‘com.jakewharton:butterknife:7.0.1’’ 这个库最新版本点击这里查看
-在插件搜butterknife-zelezny，然后安装
-按这里的动图提示的快捷键来就行了
+<meta name="twitter:title" content="优化 findViewById() 的方法（胜于 ButterKnife）">
+<meta name="twitter:description" content="附上目前自己在用的一种简化 findViewById() 的方法。在 BaseActivity 和 BaseFragment 中加入如下代码  
+protected TextView getTextView(int id) {
+    return ((TextView) findViewById(id));
+}
 
-
-注意：使用快捷键的时候，需要把鼠标放在layout的资源文件名上。
-
-2016某日 更新butterknife 有个让我个人不爽的地方
-
-优势是省">
+protected EditText getEditText(int id) {">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -85,7 +73,7 @@
   };
 </script>
 
-  <title> Android Sudio 下用 butterknife 注解 | Qiankun's Blog </title>
+  <title> 优化 findViewById() 的方法（胜于 ButterKnife） | Qiankun's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -184,7 +172,7 @@
           
           
             
-              Android Sudio 下用 butterknife 注解
+              优化 findViewById() 的方法（胜于 ButterKnife）
             
           
         </h1>
@@ -193,8 +181,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2015-10-13T22:17:58+08:00" content="2015-10-13">
-            2015-10-13
+          <time itemprop="dateCreated" datetime="2016-07-11T16:15:00+08:00" content="2016-07-11">
+            2016-07-11
           </time>
         </span>
 
@@ -204,8 +192,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2015/10/13/AndroidSudio下用butterknife注解/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2015/10/13/AndroidSudio下用butterknife注解/" itemprop="commentsCount"></span>
+              <a href="/2016/07/11/优化 findViewById() 的方法（胜于 ButterKnife）/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/11/优化 findViewById() 的方法（胜于 ButterKnife）/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -219,19 +207,33 @@
       
 
       
-        <span itemprop="articleBody"><ol>
-<li>在gradle中引用 compile ‘compile ‘com.jakewharton:butterknife:7.0.1’’ 这个库<br>最新版本<a href="https://github.com/JakeWharton/butterknife" target="_blank" rel="external">点击这里查看</a></li>
-<li>在插件搜butterknife-zelezny，然后安装</li>
+        <span itemprop="articleBody"><p>附上目前自己在用的一种简化 findViewById() 的方法。<br>在 BaseActivity 和 BaseFragment 中加入如下代码  </p>
+<pre><code><span class="keyword">protected</span> <span class="function">TextView <span class="title">getTextView</span><span class="params">(<span class="keyword">int</span> id)</span> </span>{
+    <span class="keyword">return</span> ((TextView) findViewById(id));
+}
+
+<span class="keyword">protected</span> <span class="function">EditText <span class="title">getEditText</span><span class="params">(<span class="keyword">int</span> id)</span> </span>{
+    <span class="keyword">return</span> ((EditText) findViewById(id));
+}
+</code></pre><a id="more"></a>
+<p>使用方式如下 </p>
+<pre><code><span class="function"><span class="title">getTextView</span><span class="params">(R.id.tv_xxx)</span></span>.<span class="function"><span class="title">doSomething</span><span class="params">()</span></span>
+</code></pre><p>其他 View 以此类推…</p>
+<p>不用在类中定义变量，特别适用于只使用一两次的 View，是不是有一股如沐清风的感觉~</p>
+<blockquote>
+<p>项目中也用过 ButterKnife，总体来说是个不错的框架，但有个让我个人不爽的地方：虽说是省略了 findViewById() ,但随之带来的是大量的注解。每个 View 都需要一行注解 + 一行声明，View 多的话，会让人恶心。 新打开一个类，往往需要向下翻好长时间才可以找到正文</p>
+</blockquote>
+<p>个人对此工具的看法是，可以尝鲜，但不建议在正式项目中使用。</p>
+<p>附上 ButterKnife 的集成方法</p>
+<ol>
+<li>在 gradle 中引用 compile ‘compile ‘com.jakewharton:butterknife:7.0.1’’ 这个库<br>最新版本<a href="https://github.com/JakeWharton/butterknife" target="_blank" rel="external">点击这里查看</a></li>
+<li>在插件搜 butterknife-zelezny ，然后安装</li>
 <li>按<a href="https://github.com/avast/android-butterknife-zelezny" target="_blank" rel="external">这里</a>的动图提示的快捷键来就行了</li>
 </ol>
 <blockquote>
-<p>注意：使用快捷键的时候，需要把鼠标放在layout的资源文件名上。</p>
+<p>注意：使用快捷键的时候，需要把鼠标放在 layout 的资源文件名上。</p>
 </blockquote>
-<h3 id="2016某日_更新">2016某日 更新</h3><p>butterknife 有个让我个人不爽的地方</p>
-<blockquote>
-<p>优势是省略了 findViewById() ,但随之带来的是大量的注解。每个 View 都需要一行注解 + 一行声明，View 多的话，会让人恶心。 新打开一个类，往往需要向下翻好长时间才可以找到正文</p>
-</blockquote>
-<p>个人对此工具的看法是，可以尝鲜，但不建议在正式项目中使用。</p>
+<p>End，BaiBai~</p>
 </span>
       
     </div>
@@ -244,7 +246,7 @@
           
             <a href="/tags/Android-Studio/" rel="tag">#Android Studio</a>
           
-            <a href="/tags/butterknife/" rel="tag">#butterknife</a>
+            <a href="/tags/ButterKnife/" rel="tag">#ButterKnife</a>
           
         </div>
       
@@ -253,13 +255,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2015/10/13/Studio使用Java8的lambda命令/" rel="prev">Studio使用Java8的lambda命令</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/13/tools/那些年我所趟过的坑系列之Git配置双账号/" rel="next">那些年我所趟过的坑系列之Git配置双账号</a>
+              <a href="/2016/05/11/LitePal数据库框架保存改进/" rel="next">LitePal数据库框架保存改进</a>
             
           </div>
         </div>
@@ -284,8 +284,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2015/10/13/AndroidSudio下用butterknife注解/"
-                   data-title="Android Sudio 下用 butterknife 注解" data-url="http://wangqiankun.github.io/2015/10/13/AndroidSudio下用butterknife注解/">
+              <div class="ds-thread" data-thread-key="2016/07/11/优化 findViewById() 的方法（胜于 ButterKnife）/"
+                   data-title="优化 findViewById() 的方法（胜于 ButterKnife）" data-url="http://wangqiankun.github.io/2016/07/11/优化 findViewById() 的方法（胜于 ButterKnife）/">
               </div>
             
           </div>
@@ -339,7 +339,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
@@ -374,7 +374,7 @@
           <div class="post-toc">
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#2016某日_更新"><span class="nav-number">1.</span> <span class="nav-text">2016某日 更新</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>

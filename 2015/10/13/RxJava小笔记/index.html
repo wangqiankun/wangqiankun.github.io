@@ -47,7 +47,7 @@
 <meta property="og:site_name" content="Qiankun's Blog">
 <meta property="og:description" content="自用，摘抄于大头鬼blog
 ###基本流程一般响应式编程的信息流如下所示：Observable -&amp;gt; Operator 1 -&amp;gt; Operator 2 -&amp;gt; Operator 3 -&amp;gt; Subscriberobservable是事件的生产者，subscriber是事件最终的消费者。Operators 即操作符：为了解决对Observable对象的变换的问题。用于在Obser">
-<meta property="og:updated_time" content="2015-10-13T15:02:05.000Z">
+<meta property="og:updated_time" content="2016-07-11T08:37:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RxJava小笔记">
 <meta name="twitter:description" content="自用，摘抄于大头鬼blog
@@ -197,10 +197,14 @@
       
         <span itemprop="articleBody"><p>自用，摘抄于<a href="http://blog.csdn.net/lzyzsd/article/category/2767743" target="_blank" rel="external">大头鬼blog</a></p>
 <p>###基本流程<br>一般响应式编程的信息流如下所示：<br>Observable -&gt; Operator 1 -&gt; Operator 2 -&gt; Operator 3 -&gt; Subscriber<br>observable是事件的生产者，subscriber是事件最终的消费者。<br>Operators 即操作符：为了解决对Observable对象的变换的问题。用于在Observable和最终的Subscriber之间修改Observable发出的事件</p>
+<a id="more"></a>
 <ol>
 <li>Observable<string> stringObservable = Observable.create(new Observable.OnSub…){…}</string></li>
 <li>Subscriber<string> subscriber = new Subscriber<string>() {…}</string></string></li>
-<li>stringObservable.subscribe(subscriber);<br>通俗解释下上述代码：1为创建事件 2.</li>
+<li>stringObservable.subscribe(subscriber);<br>通俗解释下上述代码：</li>
+<li>为创建事件 </li>
+<li>新建一个事件接收者 </li>
+<li>关联1和2中的对象 </li>
 </ol>
 <h4 id="响应式特点">响应式特点</h4><p>Subscriber有三个方法</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">.subscribe(<span class="keyword">new</span> Subscriber&lt;String&gt;() &#123;</span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onNext</span><span class="params">(String s)</span> </span>&#123; System.out.println(s); &#125;</span><br><span class="line">    <span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCompleted</span><span class="params">()</span> </span>&#123; System.out.println(<span class="string">"Completed!"</span>); &#125;</span><br><span class="line">	<span class="annotation">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onError</span><span class="params">(Throwable e)</span> </span>&#123; System.out.println(<span class="string">"Ouch!"</span>); &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
@@ -324,7 +328,7 @@
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

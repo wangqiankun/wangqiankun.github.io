@@ -45,7 +45,7 @@
 <meta property="og:url" content="http://wangqiankun.github.io/2015/10/13/Studio使用Java8的lambda命令/index.html">
 <meta property="og:site_name" content="Qiankun's Blog">
 <meta property="og:description" content="###使用前1234567Button button = (Button) findViewById(R.id.button);button.setOnClickListener(new View.OnClickListener() &amp;#123;   @Override   public void onClick(View v) &amp;#123;       method();   &amp;#125;&amp;#1">
-<meta property="og:updated_time" content="2015-10-13T14:27:56.000Z">
+<meta property="og:updated_time" content="2016-07-11T08:34:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Studio使用Java8的lambda命令">
 <meta name="twitter:description" content="###使用前1234567Button button = (Button) findViewById(R.id.button);button.setOnClickListener(new View.OnClickListener() &amp;#123;   @Override   public void onClick(View v) &amp;#123;       method();   &amp;#125;&amp;#1">
@@ -193,6 +193,7 @@
 
       
         <span itemprop="articleBody"><p>###使用前<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Button</span> button = (<span class="type">Button</span>) findViewById(R.id.button);</span><br><span class="line">button.setOnClickListener(new <span class="type">View</span>.<span class="type">OnClickListener</span>() &#123;</span><br><span class="line">   @<span class="type">Override</span></span><br><span class="line">   public <span class="type">void</span> onClick(<span class="type">View</span> v) &#123;</span><br><span class="line">       <span class="keyword">method</span>();</span><br><span class="line">   &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <p>###使用后(我所知道的所有的匿名内部类都可简化)<br><figure class="highlight nimrod"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Button</span> button = (<span class="type">Button</span>) findViewById(R.id.button);</span><br><span class="line">button.setOnClickListener(v -&gt; <span class="keyword">method</span>());</span><br></pre></td></tr></table></figure></p>
 <p>1.在Project工程目录使用</p>
 <pre><code><span class="keyword">dependencies</span> {
@@ -272,7 +273,7 @@ retrolambda {
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2015/10/13/AndroidSudio下用butterknife注解/" rel="next">Android Sudio 下用 butterknife 注解</a>
+              <a href="/2015/10/13/tools/那些年我所趟过的坑系列之Git配置双账号/" rel="next">那些年我所趟过的坑系列之Git配置双账号</a>
             
           </div>
         </div>
@@ -352,7 +353,7 @@ retrolambda {
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
