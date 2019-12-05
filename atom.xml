@@ -4,7 +4,7 @@
   
   <link href="/atom.xml" rel="self"/>
   <link href="http://wangqiankun.github.io/"/>
-  <updated>2016-07-11T08:32:49.000Z</updated>
+  <updated>2019-12-05T06:31:36.722Z</updated>
   <id>http://wangqiankun.github.io/</id>
   
   <author>
@@ -15,11 +15,28 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title><![CDATA[Thu Dec 05 2019 00:00:00 GMT+0800 (GMT+08:00)]]></title>
+    <link href="http://wangqiankun.github.io/2019/12/05/%20essay/2019-12-05/"/>
+    <id>http://wangqiankun.github.io/2019/12/05/ essay/2019-12-05/</id>
+    <published>2019-12-05T06:31:36.753Z</published>
+    <updated>2019-12-05T06:31:36.722Z</updated>
+    <content type="html"><![CDATA[<p>优秀的人很多<br>卓越的人很少</p>
+]]></content>
+    <summary type="html">
+    <![CDATA[<p>优秀的人很多<br>卓越的人很少</p>
+]]>
+    </summary>
+    
+      <category term="Essay" scheme="http://wangqiankun.github.io/tags/Essay/"/>
+    
+  </entry>
+  
+  <entry>
     <title><![CDATA[优化 findViewById() 的方法（胜于 ButterKnife）]]></title>
     <link href="http://wangqiankun.github.io/2016/07/11/%E4%BC%98%E5%8C%96%20findViewById()%20%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%88%E8%83%9C%E4%BA%8E%20ButterKnife%EF%BC%89/"/>
     <id>http://wangqiankun.github.io/2016/07/11/优化 findViewById() 的方法（胜于 ButterKnife）/</id>
     <published>2016-07-11T08:15:00.000Z</published>
-    <updated>2016-07-11T08:32:49.000Z</updated>
+    <updated>2016-07-11T08:33:08.000Z</updated>
     <content type="html"><![CDATA[<p>附上目前自己在用的一种简化 findViewById() 的方法。<br>在 BaseActivity 和 BaseFragment 中加入如下代码  </p>
 <pre><code><span class="keyword">protected</span> <span class="function">TextView <span class="title">getTextView</span><span class="params">(<span class="keyword">int</span> id)</span> </span>{
     <span class="keyword">return</span> ((TextView) findViewById(id));
@@ -71,8 +88,8 @@
   
   <entry>
     <title><![CDATA[LitePal数据库框架保存改进]]></title>
-    <link href="http://wangqiankun.github.io/2016/05/11/LitePal%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A1%86%E6%9E%B6%E4%BF%9D%E5%AD%98%E6%94%B9%E8%BF%9B/"/>
-    <id>http://wangqiankun.github.io/2016/05/11/LitePal数据库框架保存改进/</id>
+    <link href="http://wangqiankun.github.io/2016/05/11/Litepal%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A1%86%E6%9E%B6%E4%BF%9D%E5%AD%98%E6%94%B9%E8%BF%9B/"/>
+    <id>http://wangqiankun.github.io/2016/05/11/Litepal数据库框架保存改进/</id>
     <published>2016-05-11T09:49:20.000Z</published>
     <updated>2016-07-11T04:47:45.000Z</updated>
     <content type="html"><![CDATA[<p>郭霖推荐的LitePal用起来非常方便，但是当保存大量数据数据时，往往会花费很长时间（一个1300多条的数据，使用saveAll()竟然耗时10s+）。<br>稍作修改，自己写了个保存的方法。时间控制在1s内。</p>
@@ -871,7 +888,7 @@ retrolambda {
     <link href="http://wangqiankun.github.io/2015/10/13/tools/AndroidStudio%E4%BD%BF%E7%94%A8Gerrit%E6%8F%92%E4%BB%B6/"/>
     <id>http://wangqiankun.github.io/2015/10/13/tools/AndroidStudio使用Gerrit插件/</id>
     <published>2015-10-13T14:13:03.000Z</published>
-    <updated>2016-07-11T08:38:19.000Z</updated>
+    <updated>2016-07-11T08:38:32.000Z</updated>
     <content type="html"><![CDATA[<ol>
 <li>搜索安装Gerrit插件</li>
 <li><p>在菜单中设置URL和Git用户名和密码<br> <img src="/pic/gerrit1.png" alt=""></p>
@@ -1090,115 +1107,6 @@ retrolambda {
     </summary>
     
       <category term="Tools" scheme="http://wangqiankun.github.io/tags/Tools/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[Activity研究之isFinishing()与isDestroyed()]]></title>
-    <link href="http://wangqiankun.github.io/2015/02/13/Activity%E7%A0%94%E7%A9%B6%E4%B9%8BisFinishing()%E4%B8%8EisDestroyed()/"/>
-    <id>http://wangqiankun.github.io/2015/02/13/Activity研究之isFinishing()与isDestroyed()/</id>
-    <published>2015-02-13T13:10:31.000Z</published>
-    <updated>2016-07-11T04:51:41.000Z</updated>
-    <content type="html"><![CDATA[<p>App carsh后，经常会遇到些奇奇怪怪的问题，很多都是因为Activity finish后，还在这个Activity操作相关数据的情况。这就需要进行对Activity的状态进行判断。google好久，大部分都跟这个博文中说的类似<a href="http://sdywcd.iteye.com/blog/2061734" target="_blank" rel="external">如何判断android activity是否运行</a>。</p>
-<a id="more"></a>
-<p>文章很好，可是，总觉得还有更好的东西。所以就在Activity源码上（其实都是.出来的）看到有两个方法，定睛，就是它！</p>
-<pre><code>/**
- * Check <span class="keyword">to</span> see whether this activity <span class="keyword">is</span> <span class="keyword">in</span> <span class="keyword">the</span> process <span class="keyword">of</span> finishing,
- * either because you called {@link <span class="comment">#finish} on it or someone else</span>
- * has requested <span class="keyword">that</span> <span class="keyword">it</span> finished.  This <span class="keyword">is</span> often used <span class="keyword">in</span>
- * {@link <span class="comment">#onPause} to determine whether the activity is simply pausing or</span>
- * completely finishing.
- *
- * @<span class="constant">return</span> If <span class="keyword">the</span> activity <span class="keyword">is</span> finishing, returns <span class="constant">true</span>; <span class="keyword">else</span> returns <span class="constant">false</span>.
- *
- * @see <span class="comment">#finish</span>
- */
-public <span class="type">boolean</span> isFinishing() {
-<span class="command">    return</span> mFinished;
-}
-
-/**
- * Returns <span class="constant">true</span> <span class="keyword">if</span> <span class="keyword">the</span> final {@link <span class="comment">#onDestroy()} call has been made</span>
- * <span class="function_start"><span class="keyword">on</span></span> <span class="keyword">the</span> Activity, so this instance <span class="keyword">is</span> now dead.
- */
-public <span class="type">boolean</span> isDestroyed() {
-<span class="command">    return</span> mDestroyed;
-}
-</code></pre><p>额，My English is poor，他两个区别很大吗？<br>Demo之</p>
-<p>Activity代码（Activity2基本一样）</p>
-<pre><code>public <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">AppCompatActivity</span> {</span>
-    <span class="type">MyThread</span> myThread;
-
-    <span class="annotation">@Override</span>
-    <span class="keyword">protected</span> void onCreate(<span class="type">Bundle</span> savedInstanceState) {
-        <span class="keyword">super</span>.onCreate(savedInstanceState);
-        setContentView(<span class="type">R</span>.layout.activity_main);
-
-        myThread = <span class="keyword">new</span> <span class="type">MyThread</span>();
-        myThread.run();
-
-    }
-
-    <span class="comment">//关闭Activity</span>
-    public void close(<span class="type">View</span> view) {
-        <span class="type">MainActivity</span>.<span class="keyword">this</span>.finish();
-        myThread.run();
-    }
-
-    <span class="comment">//跳转到Activity2</span>
-    public void jump2Activity2(<span class="type">View</span> view) {
-        <span class="type">Intent</span> intent = <span class="keyword">new</span> <span class="type">Intent</span>(<span class="keyword">this</span>, <span class="type">MainActivity2</span>.<span class="keyword">class</span>);
-        startActivity(intent);
-    }
-
-
-    public <span class="class"><span class="keyword">class</span> <span class="title">MyThread</span> <span class="keyword"><span class="keyword">extends</span></span> <span class="title">Thread</span> {</span>
-
-        <span class="annotation">@Override</span>
-        public void run() {
-            <span class="keyword">super</span>.run();
-            <span class="type">Log</span>.d(<span class="string">"activity-isDestroyed"</span>, <span class="type">MainActivity</span>.<span class="keyword">this</span>.isDestroyed() + <span class="string">""</span>);
-            <span class="type">Log</span>.d(<span class="string">"activity-isFinishing"</span>, <span class="type">MainActivity</span>.<span class="keyword">this</span>.isFinishing() + <span class="string">""</span>);
-        }
-    }
-
-}
-</code></pre><p>Log日志</p>
-<pre><code>打开Activity1
-<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">17</span>:<span class="number">12.142</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isDestroyed: <span class="literal">false</span>
-<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">17</span>:<span class="number">12.142</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isFinishing: <span class="literal">false</span>
-打开Activity2
-<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">28.213</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isDestroyed: <span class="literal">false</span>
-<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">28.213</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isFinishing: <span class="literal">false</span>
-关闭Activity2
-<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">35.476</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isDestroyed: <span class="literal">false</span>
-<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">35.476</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isFinishing: <span class="literal">true</span>
-关闭Activity1
-<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">40.503</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isDestroyed: <span class="literal">false</span>
-<span class="number">11</span>-<span class="number">23</span> <span class="number">15</span>:<span class="number">18</span>:<span class="number">40.503</span> <span class="number">792</span>-<span class="number">792</span>/com.wqk.testandroid D/activity-isFinishing: <span class="literal">true</span>
-</code></pre><p><code>isDestroyed()</code>基本都是false。接着又去Activity源码瞅瞅，唯一有用的代码却又没有调用，包括父类。</p>
-<pre><code>final void performDestroy<span class="literal">()</span> {
-    mDestroyed = <span class="literal">true</span>;
-    mWindow.destroy<span class="literal">()</span>;
-    mFragments.dispatchDestroy<span class="literal">()</span>;
-    onDestroy<span class="literal">()</span>;
-    mFragments.doLoaderDestroy<span class="literal">()</span>;
-    <span class="keyword">if</span> (mVoiceInteractor != null) {
-        mVoiceInteractor.detachActivity<span class="literal">()</span>;
-    }
-}
-</code></pre><p>所以就用<code>isFinishing()</code>了呗。</p>
-]]></content>
-    <summary type="html">
-    <![CDATA[<p>App carsh后，经常会遇到些奇奇怪怪的问题，很多都是因为Activity finish后，还在这个Activity操作相关数据的情况。这就需要进行对Activity的状态进行判断。google好久，大部分都跟这个博文中说的类似<a href="http://sdywcd.iteye.com/blog/2061734">如何判断android activity是否运行</a>。</p>]]>
-    
-    </summary>
-    
-      <category term="Activity" scheme="http://wangqiankun.github.io/tags/Activity/"/>
-    
-      <category term="Android" scheme="http://wangqiankun.github.io/tags/Android/"/>
-    
-      <category term="UI" scheme="http://wangqiankun.github.io/tags/UI/"/>
     
   </entry>
   
