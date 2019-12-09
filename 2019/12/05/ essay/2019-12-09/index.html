@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="Android,Button,UI," />
+  <meta name="keywords" content="Essay," />
 
 
 
@@ -39,16 +39,16 @@
   <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="由于产品需求，Button的点击状态、Clickable状态都要有不同的显示效果研究Selector半天也没有找到可以使不同状态同时展示于是，就迂回用笨方法搞定">
+<meta name="description" content="Open Your Heart试着接受其他人的缺点保持情绪 Under Control">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Button的点击效果和Clickable效果">
-<meta property="og:url" content="http://wangqiankun.github.io/2016/03/11/Button的点击效果和Clickable效果/index.html">
+<meta property="og:title" content="Open Your Heart">
+<meta property="og:url" content="http://wangqiankun.github.io/2019/12/05/ essay/2019-12-09/index.html">
 <meta property="og:site_name" content="Qiankun's Blog">
-<meta property="og:description" content="由于产品需求，Button的点击状态、Clickable状态都要有不同的显示效果研究Selector半天也没有找到可以使不同状态同时展示于是，就迂回用笨方法搞定">
-<meta property="og:updated_time" content="2016-07-11T04:48:54.000Z">
+<meta property="og:description" content="Open Your Heart试着接受其他人的缺点保持情绪 Under Control">
+<meta property="og:updated_time" content="2019-12-09T03:52:01.338Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Button的点击效果和Clickable效果">
-<meta name="twitter:description" content="由于产品需求，Button的点击状态、Clickable状态都要有不同的显示效果研究Selector半天也没有找到可以使不同状态同时展示于是，就迂回用笨方法搞定">
+<meta name="twitter:title" content="Open Your Heart">
+<meta name="twitter:description" content="Open Your Heart试着接受其他人的缺点保持情绪 Under Control">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -58,7 +58,7 @@
   };
 </script>
 
-  <title> Button的点击效果和Clickable效果 | Qiankun's Blog </title>
+  <title> Open Your Heart | Qiankun's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -157,7 +157,7 @@
           
           
             
-              Button的点击效果和Clickable效果
+              Open Your Heart
             
           
         </h1>
@@ -166,8 +166,8 @@
       <div class="post-meta">
         <span class="post-time">
           发表于
-          <time itemprop="dateCreated" datetime="2016-03-11T21:20:20+08:00" content="2016-03-11">
-            2016-03-11
+          <time itemprop="dateCreated" datetime="2019-12-05T00:00:00+08:00" content="2019-12-05">
+            2019-12-05
           </time>
         </span>
 
@@ -177,8 +177,8 @@
           
             <span class="post-comments-count">
               &nbsp; | &nbsp;
-              <a href="/2016/03/11/Button的点击效果和Clickable效果/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/11/Button的点击效果和Clickable效果/" itemprop="commentsCount"></span>
+              <a href="/2019/12/05/ essay/2019-12-09/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2019/12/05/ essay/2019-12-09/" itemprop="commentsCount"></span>
               </a>
             </span>
           
@@ -192,64 +192,7 @@
       
 
       
-        <span itemprop="articleBody"><p>由于产品需求，Button的点击状态、Clickable状态都要有不同的显示效果<br>研究Selector半天也没有找到可以使不同状态同时展示<br>于是，就迂回用笨方法搞定</p>
-<a id="more"></a>
-<ul>
-<li>1）自定义一个集成Button的类,重写setClickable状态，在两种状态设置不同背景色以及TextColor</li>
-</ul>
-<pre><code><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BtnBottom</span> <span class="keyword">extends</span> <span class="title">Button</span> </span>{
-
-    <span class="function"><span class="keyword">public</span> <span class="title">BtnBottom</span><span class="params">(Context context)</span> </span>{
-        <span class="keyword">super</span>(context);
-    }
-
-    <span class="function"><span class="keyword">public</span> <span class="title">BtnBottom</span><span class="params">(Context context, AttributeSet attrs)</span> </span>{
-        <span class="keyword">super</span>(context, attrs);
-    }
-
-    <span class="annotation">@Override</span>
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setClickable</span><span class="params">(<span class="keyword">boolean</span> clickable)</span> </span>{
-        <span class="keyword">super</span>.setClickable(clickable);
-        <span class="keyword">if</span> (clickable) {
-            <span class="keyword">this</span>.setBackgroundResource(R.drawable.bg_btn_bottom_normal);
-            <span class="keyword">this</span>.setTextColor(getResources().getColor(R.color.text_fff));
-        } <span class="keyword">else</span> {
-            <span class="keyword">this</span>.setBackgroundColor(getResources().getColor(R.color.btn_f1f1f2));
-            <span class="keyword">this</span>.setTextColor(getResources().getColor(R.color.text_d7d7d8));
-        }
-    }
-}
-
-
-<span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BtnBottom</span> <span class="keyword">extends</span> <span class="title">Button</span> </span>{
-
-    <span class="function"><span class="keyword">public</span> <span class="title">BtnBottom</span><span class="params">(Context context)</span> </span>{
-        <span class="keyword">super</span>(context);
-    }
-
-    <span class="function"><span class="keyword">public</span> <span class="title">BtnBottom</span><span class="params">(Context context, AttributeSet attrs)</span> </span>{
-        <span class="keyword">super</span>(context, attrs);
-    }
-
-    <span class="annotation">@Override</span>
-    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setClickable</span><span class="params">(<span class="keyword">boolean</span> clickable)</span> </span>{
-        <span class="keyword">super</span>.setClickable(clickable);
-        <span class="keyword">if</span> (clickable) {
-            <span class="keyword">this</span>.setBackgroundResource(R.drawable.bg_btn_bottom_normal);
-            <span class="keyword">this</span>.setTextColor(getResources().getColor(R.color.text_fff));
-        } <span class="keyword">else</span> {
-            <span class="keyword">this</span>.setBackgroundColor(getResources().getColor(R.color.btn_f1f1f2));
-            <span class="keyword">this</span>.setTextColor(getResources().getColor(R.color.text_d7d7d8));
-        }
-    }
-}
-</code></pre><ul>
-<li>2）因为需要点击效果，所以在clickable为true时，设置背景色为selector</li>
-</ul>
-<p>```<br>\&lt;?xml version=”1.0” encoding=”utf-8”?><br>\<selector xmlns:android="http://schemas.android.com/apk/res/android" \=""><br>    <item android:drawable="@color/btn_b311213a" android:state_pressed="true"><br>    <item android:drawable="@color/btn_b311213a" android:state_focused="true"><br>    <item android:drawable="@color/btn_11213a"><br></item></item></item></selector><br>```</p>
-<blockquote>
-<p>心得：selector 名为选择器，也就是说遇到对应的的item就会使用，可能之前顺序排列没做好，<br>或者可以在seletor中嵌套seletor？需待实验下</p>
-</blockquote>
+        <span itemprop="articleBody"><h1 id="Open_Your_Heart">Open Your Heart</h1><p>试着接受其他人的缺点<br>保持情绪 Under Control</p>
 </span>
       
     </div>
@@ -258,11 +201,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Android/" rel="tag">#Android</a>
-          
-            <a href="/tags/Button/" rel="tag">#Button</a>
-          
-            <a href="/tags/UI/" rel="tag">#UI</a>
+            <a href="/tags/Essay/" rel="tag">#Essay</a>
           
         </div>
       
@@ -271,13 +210,13 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/04/23/Android TextView真实字高研究/" rel="prev">Android TextView真实字高研究</a>
+              <a href="/2019/12/05/ essay/2019-12-05/" rel="prev">Thu Dec 05 2019 00:00:00 GMT+0800 (GMT+08:00)</a>
             
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/01/20/MaterialDesign跳转动画效果实现/" rel="next">MaterialDesign跳转动画效果实现</a>
+              <a href="/2016/07/11/优化 findViewById() 的方法（胜于 ButterKnife）/" rel="next">优化 findViewById() 的方法（胜于 ButterKnife）</a>
             
           </div>
         </div>
@@ -302,8 +241,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2016/03/11/Button的点击效果和Clickable效果/"
-                   data-title="Button的点击效果和Clickable效果" data-url="http://wangqiankun.github.io/2016/03/11/Button的点击效果和Clickable效果/">
+              <div class="ds-thread" data-thread-key="2019/12/05/ essay/2019-12-09/"
+                   data-title="Open Your Heart" data-url="http://wangqiankun.github.io/2019/12/05/ essay/2019-12-09/">
               </div>
             
           </div>
@@ -392,7 +331,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Open_Your_Heart"><span class="nav-number">1.</span> <span class="nav-text">Open Your Heart</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
